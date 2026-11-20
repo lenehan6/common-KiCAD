@@ -9,24 +9,30 @@ MPN and supplier part number already filled in.
 
 | Table | Library name | Contents |
 |---|---|---|
-| `Resistors_ThinFilm` | Resistors - Thin Film 0.1% | Vishay Dale TNPW, 0.1%, E96, 0402 / 0805 |
-| `Resistors_ThickFilm` | Resistors - Thick Film 5% | Vishay Dale CRCW, 5%, E12 (+0R), 0402 / 0805 |
-| `Capacitors` | Capacitors | MLCC, E12, >=50 V, C0G / X7R, 0402 / 0805 |
-| `Capacitors_RF` | Capacitors - RF 0402 C0G | 0402 C0G/NP0 fine-step values, >=50 V |
-| `Capacitors_Bulk` | Capacitors - Bulk | MLCC >=10 uF, >=50 V, X7R+, 1210 / 1812 / 2220 |
+| `Resistors_ThinFilm_Precision` | Resistors - Thin Film 0.1% Precision | Thin film 0.1%, E96, 0402 / 0805 (Vishay Dale TNPW) |
+| `Resistors_ThinFilm_1pct` | Resistors - Thin Film 1% | Thin film 1%, E96, 0402 / 0805 (Vishay first, YAGEO RT fallback) |
+| `Resistors_ThickFilm` | Resistors - Thick Film 5% | Thick film 5%, E12 (+0R), 0402 / 0805 (Vishay Dale CRCW) |
+| `Capacitors_Ceramic` | Capacitors - Ceramic | MLCC, E12, >=50 V, X7R or better (C0G/X7R), 0402 / 0805 |
+| `Capacitors_RF` | Capacitors - RF 0402 C0G | 0402 C0G/NP0 fine-step RF values, >=50 V |
+| `Capacitors_Bulk` | Capacitors - Bulk | Bulk MLCC >=10 uF, >=50 V, X7R or better, 1210 / 1812 / 2220 |
+| `Capacitors_Tantalum` | Capacitors - Tantalum 50V | SMD tantalum, 50 V, E6 values |
+| `Capacitors_Electrolytic` | Capacitors - Electrolytic 50V | SMD aluminium electrolytic, 50 V, E6 values |
 | `Inductors` | Inductors | E12, 0402 / 0805 |
 | `Inductors_RF` | Inductors - RF 0402 | 0402 fine-step RF inductors |
 | `Ferrite_Beads` | Ferrite Beads | 22 / 100 / 220 / 330 / 1k ohm @ 100 MHz, 0402 / 0805 |
 
-Manufacturers: Vishay Dale, Vishay Vitramon, Würth Elektronik. Supplier: DigiKey
+**Manufacturer policy:** Vishay (Dale, Vitramon, Sprague, BCcomponents) and Würth
+Elektronik are preferred. Parts from other manufacturers (for example YAGEO) are only
+used to fill values the preferred makers don't stock at DigiKey. Supplier: DigiKey
 (Cut Tape part numbers).
 
-The thin-film table is 0.1% rather than 1% because DigiKey doesn't stock TNPW at 1%
-across the full E96 series. The 0.1% parts are stocked.
+There are two thin-film tables. The 0.1% precision table uses Vishay Dale TNPW, which
+DigiKey stocks across the full E96 series. The 1% table uses Vishay where it's stocked
+and falls back to YAGEO RT for the remaining values.
 
 Symbols and footprints come from KiCad's standard libraries (`Device:R`, `Device:C`,
-`Device:L`, `Device:FerriteBead`, plus `Resistor_SMD`, `Capacitor_SMD` and `Inductor_SMD`),
-so you don't need any custom libraries.
+`Device:C_Polarized`, `Device:L`, `Device:FerriteBead`, plus `Resistor_SMD`, `Capacitor_SMD`,
+`Capacitor_Tantalum_SMD` and `Inductor_SMD`), so you don't need any custom libraries.
 
 ## Files
 
@@ -38,32 +44,25 @@ so you don't need any custom libraries.
 | `seed/schema.py` | Column list, table names, symbol/footprint mapping |
 | `seed/*.py` | Part data per category |
 | `digikey_enrich.py` | Refreshes DigiKey part numbers, stock, status and datasheets |
+| `SETUP_DB.md` | Step-by-step setup and maintenance guide |
 
-## Setup: Windows
+## Setup
 
-1. Install the SQLite ODBC driver from <http://www.ch-werner.de/sqliteodbc/>.
-   Use **`sqliteodbc_w64.exe`** for 64-bit KiCad, which is the normal install.
-2. Open **ODBC Data Sources (64-bit)** and check the **Drivers** tab. It should list
-   **`SQLite3 ODBC Driver`**. That name must match the `Driver={...}` part of
-   `connection_string` in `company_parts.kicad_dbl`.
-3. In KiCad, go to **Preferences → Manage Symbol Libraries → Global Libraries** (or
-   **Project Specific Libraries**). Add `company_parts.kicad_dbl` and set the Library
-   Format to **Database**.
-4. Keep `parts.sqlite` in the same folder as `company_parts.kicad_dbl`. The
-   connection string uses `Database=${CWD}/parts.sqlite`, and KiCad replaces `${CWD}`
-   with the folder that holds the `.kicad_dbl` file.
+For the full step-by-step guide (Windows first, plus macOS and Linux), with
+verification steps and troubleshooting, see **[SETUP_DB.md](SETUP_DB.md)**.
 
-No DSN is needed. The driver is selected directly in `connection_string`.
+In short:
 
-## Setup: macOS / Linux
+1. Install the **64-bit** SQLite ODBC driver (`sqliteodbc_w64.exe` from
+   <http://www.ch-werner.de/sqliteodbc/>). Check that it's listed as
+   `SQLite3 ODBC Driver` in **ODBC Data Sources (64-bit) → Drivers**.
+2. Keep `parts.sqlite` next to `company_parts.kicad_dbl`. KiCad replaces `${CWD}`
+   with the folder that holds the `.kicad_dbl`.
+3. In KiCad, go to **Preferences → Manage Symbol Libraries → Global Libraries** and add
+   `company_parts.kicad_dbl` (Library Format: **Database**, nickname e.g. `Company_Parts`).
 
-**macOS:** run `brew install sqliteodbc`, then register the driver in `odbcinst.ini`
-(`brew --prefix` gives you the path to `libsqlite3odbc.dylib`). Check the driver name
-with `odbcinst -q -d` and use that exact name in `Driver={...}`.
-
-**Linux (Debian/Ubuntu):** run `sudo apt install libsqliteodbc`. The driver name in
-`/etc/odbcinst.ini` is usually `SQLite3`, so change `connection_string` to
-`Driver={SQLite3};Database=${CWD}/parts.sqlite;`.
+On macOS and Linux, change the `Driver=` part of `connection_string` to the locally
+registered driver name (`odbcinst -q -d`). See SETUP_DB.md for details.
 
 ## Rebuilding the database
 
@@ -93,7 +92,7 @@ prints the remaining quota and stops when it drops below `--reserve` (default 20
 continue the next day, run `--only-unchecked` or `--older-than DAYS`.
 
 Other options:
-- `--tables Capacitors Inductors`: check only those tables.
+- `--tables Capacitors_Ceramic Inductors`: check only those tables.
 - `--limit N`: check at most N parts.
 - `--delay S`: wait S seconds between calls.
 - `--db PATH`: use a different database file.
@@ -123,5 +122,7 @@ Edit the matching `seed/*.py` module. Each row needs at least `Part_ID`, `Symbol
   sits next to the `.kicad_dbl` (that's where `${CWD}` points), and that `init_db.py`
   has been run. If the path still fails, replace `${CWD}` with an absolute path to test.
 - **Footprint not found when placing a part:** the standard KiCad footprint libraries
-  (`Resistor_SMD`, `Capacitor_SMD`, `Inductor_SMD`) need to be in your footprint
-  library table under their default nicknames.
+  (`Resistor_SMD`, `Capacitor_SMD`, `Capacitor_Tantalum_SMD`, `Inductor_SMD`) need to be
+  in your footprint library table under their default nicknames.
+
+For more cases, see the troubleshooting table in [SETUP_DB.md](SETUP_DB.md#12-troubleshooting).

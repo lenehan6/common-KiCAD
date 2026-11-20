@@ -14,8 +14,111 @@
   },
   "libraries": [
     {
-      "name": "Resistors - Thin Film 0.1%",
-      "table": "Resistors_ThinFilm",
+      "name": "Resistors - Thin Film 0.1% Precision",
+      "table": "Resistors_ThinFilm_Precision",
+      "key": "Part_ID",
+      "symbols": "Symbol",
+      "footprints": "Footprint",
+      "fields": [
+        {
+          "column": "Value",
+          "name": "Value",
+          "visible_on_add": true,
+          "visible_in_chooser": true,
+          "show_name": false,
+          "inherit_properties": false
+        },
+        {
+          "column": "Part_ID",
+          "name": "Part ID",
+          "visible_on_add": false,
+          "visible_in_chooser": true,
+          "show_name": false,
+          "inherit_properties": false
+        },
+        {
+          "column": "Manufacturer",
+          "name": "Manufacturer",
+          "visible_on_add": false,
+          "visible_in_chooser": true,
+          "show_name": false,
+          "inherit_properties": false
+        },
+        {
+          "column": "MPN",
+          "name": "MPN",
+          "visible_on_add": false,
+          "visible_in_chooser": true,
+          "show_name": false,
+          "inherit_properties": false
+        },
+        {
+          "column": "Supplier",
+          "name": "Supplier",
+          "visible_on_add": false,
+          "visible_in_chooser": true,
+          "show_name": false,
+          "inherit_properties": false
+        },
+        {
+          "column": "Supplier_PN",
+          "name": "Supplier PN",
+          "visible_on_add": false,
+          "visible_in_chooser": true,
+          "show_name": false,
+          "inherit_properties": false
+        },
+        {
+          "column": "Package",
+          "name": "Package",
+          "visible_on_add": false,
+          "visible_in_chooser": true,
+          "show_name": false,
+          "inherit_properties": false
+        },
+        {
+          "column": "Tolerance",
+          "name": "Tolerance",
+          "visible_on_add": false,
+          "visible_in_chooser": true,
+          "show_name": false,
+          "inherit_properties": false
+        },
+        {
+          "column": "Rating",
+          "name": "Power",
+          "visible_on_add": false,
+          "visible_in_chooser": true,
+          "show_name": false,
+          "inherit_properties": false
+        },
+        {
+          "column": "TC_Dielectric",
+          "name": "TCR",
+          "visible_on_add": false,
+          "visible_in_chooser": true,
+          "show_name": false,
+          "inherit_properties": false
+        },
+        {
+          "column": "DK_Stock",
+          "name": "DigiKey Stock",
+          "visible_on_add": false,
+          "visible_in_chooser": true,
+          "show_name": false,
+          "inherit_properties": false
+        }
+      ],
+      "properties": {
+        "description": "Description",
+        "footprint_filters": "FP_Filter",
+        "keywords": "Keywords",
+        "datasheet": "Datasheet"
+      }
+    },
+    {
+      "name": "Resistors - Thin Film 1%",
+      "table": "Resistors_ThinFilm_1pct",
       "key": "Part_ID",
       "symbols": "Symbol",
       "footprints": "Footprint",
@@ -220,8 +323,8 @@
       }
     },
     {
-      "name": "Capacitors",
-      "table": "Capacitors",
+      "name": "Capacitors - Ceramic",
+      "table": "Capacitors_Ceramic",
       "key": "Part_ID",
       "symbols": "Symbol",
       "footprints": "Footprint",
@@ -507,6 +610,212 @@
         {
           "column": "TC_Dielectric",
           "name": "Dielectric",
+          "visible_on_add": false,
+          "visible_in_chooser": true,
+          "show_name": false,
+          "inherit_properties": false
+        },
+        {
+          "column": "DK_Stock",
+          "name": "DigiKey Stock",
+          "visible_on_add": false,
+          "visible_in_chooser": true,
+          "show_name": false,
+          "inherit_properties": false
+        }
+      ],
+      "properties": {
+        "description": "Description",
+        "footprint_filters": "FP_Filter",
+        "keywords": "Keywords",
+        "datasheet": "Datasheet"
+      }
+    },
+    {
+      "name": "Capacitors - Tantalum 50V",
+      "table": "Capacitors_Tantalum",
+      "key": "Part_ID",
+      "symbols": "Symbol",
+      "footprints": "Footprint",
+      "fields": [
+        {
+          "column": "Value",
+          "name": "Value",
+          "visible_on_add": true,
+          "visible_in_chooser": true,
+          "show_name": false,
+          "inherit_properties": false
+        },
+        {
+          "column": "Part_ID",
+          "name": "Part ID",
+          "visible_on_add": false,
+          "visible_in_chooser": true,
+          "show_name": false,
+          "inherit_properties": false
+        },
+        {
+          "column": "Manufacturer",
+          "name": "Manufacturer",
+          "visible_on_add": false,
+          "visible_in_chooser": true,
+          "show_name": false,
+          "inherit_properties": false
+        },
+        {
+          "column": "MPN",
+          "name": "MPN",
+          "visible_on_add": false,
+          "visible_in_chooser": true,
+          "show_name": false,
+          "inherit_properties": false
+        },
+        {
+          "column": "Supplier",
+          "name": "Supplier",
+          "visible_on_add": false,
+          "visible_in_chooser": true,
+          "show_name": false,
+          "inherit_properties": false
+        },
+        {
+          "column": "Supplier_PN",
+          "name": "Supplier PN",
+          "visible_on_add": false,
+          "visible_in_chooser": true,
+          "show_name": false,
+          "inherit_properties": false
+        },
+        {
+          "column": "Package",
+          "name": "Package",
+          "visible_on_add": false,
+          "visible_in_chooser": true,
+          "show_name": false,
+          "inherit_properties": false
+        },
+        {
+          "column": "Tolerance",
+          "name": "Tolerance",
+          "visible_on_add": false,
+          "visible_in_chooser": true,
+          "show_name": false,
+          "inherit_properties": false
+        },
+        {
+          "column": "Rating",
+          "name": "Voltage",
+          "visible_on_add": false,
+          "visible_in_chooser": true,
+          "show_name": false,
+          "inherit_properties": false
+        },
+        {
+          "column": "TC_Dielectric",
+          "name": "Technology",
+          "visible_on_add": false,
+          "visible_in_chooser": true,
+          "show_name": false,
+          "inherit_properties": false
+        },
+        {
+          "column": "DK_Stock",
+          "name": "DigiKey Stock",
+          "visible_on_add": false,
+          "visible_in_chooser": true,
+          "show_name": false,
+          "inherit_properties": false
+        }
+      ],
+      "properties": {
+        "description": "Description",
+        "footprint_filters": "FP_Filter",
+        "keywords": "Keywords",
+        "datasheet": "Datasheet"
+      }
+    },
+    {
+      "name": "Capacitors - Electrolytic 50V",
+      "table": "Capacitors_Electrolytic",
+      "key": "Part_ID",
+      "symbols": "Symbol",
+      "footprints": "Footprint",
+      "fields": [
+        {
+          "column": "Value",
+          "name": "Value",
+          "visible_on_add": true,
+          "visible_in_chooser": true,
+          "show_name": false,
+          "inherit_properties": false
+        },
+        {
+          "column": "Part_ID",
+          "name": "Part ID",
+          "visible_on_add": false,
+          "visible_in_chooser": true,
+          "show_name": false,
+          "inherit_properties": false
+        },
+        {
+          "column": "Manufacturer",
+          "name": "Manufacturer",
+          "visible_on_add": false,
+          "visible_in_chooser": true,
+          "show_name": false,
+          "inherit_properties": false
+        },
+        {
+          "column": "MPN",
+          "name": "MPN",
+          "visible_on_add": false,
+          "visible_in_chooser": true,
+          "show_name": false,
+          "inherit_properties": false
+        },
+        {
+          "column": "Supplier",
+          "name": "Supplier",
+          "visible_on_add": false,
+          "visible_in_chooser": true,
+          "show_name": false,
+          "inherit_properties": false
+        },
+        {
+          "column": "Supplier_PN",
+          "name": "Supplier PN",
+          "visible_on_add": false,
+          "visible_in_chooser": true,
+          "show_name": false,
+          "inherit_properties": false
+        },
+        {
+          "column": "Package",
+          "name": "Package",
+          "visible_on_add": false,
+          "visible_in_chooser": true,
+          "show_name": false,
+          "inherit_properties": false
+        },
+        {
+          "column": "Tolerance",
+          "name": "Tolerance",
+          "visible_on_add": false,
+          "visible_in_chooser": true,
+          "show_name": false,
+          "inherit_properties": false
+        },
+        {
+          "column": "Rating",
+          "name": "Voltage",
+          "visible_on_add": false,
+          "visible_in_chooser": true,
+          "show_name": false,
+          "inherit_properties": false
+        },
+        {
+          "column": "TC_Dielectric",
+          "name": "Technology",
           "visible_on_add": false,
           "visible_in_chooser": true,
           "show_name": false,

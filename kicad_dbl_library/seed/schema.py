@@ -71,7 +71,24 @@ PREFERRED_MANUFACTURERS = ("Vishay", "Würth Elektronik")
 # Extra footprints used by polarized capacitors (tantalum case codes / electrolytic
 # can sizes). Filled in by the seed modules' authors after verifying each name
 # against the official KiCad footprint library.
-FOOTPRINTS_EXTRA = {}
+FOOTPRINTS_EXTRA = {
+    ('CP_ELEC', '4x5.4'): 'Capacitor_SMD:CP_Elec_4x5.4',
+    ('CP_ELEC', '4x5.8'): 'Capacitor_SMD:CP_Elec_4x5.8',
+    ('CP_ELEC', '5x5.4'): 'Capacitor_SMD:CP_Elec_5x5.4',
+    ('CP_ELEC', '5x5.8'): 'Capacitor_SMD:CP_Elec_5x5.8',
+    ('CP_ELEC', '6.3x5.4'): 'Capacitor_SMD:CP_Elec_6.3x5.4',
+    ('CP_ELEC', '6.3x5.8'): 'Capacitor_SMD:CP_Elec_6.3x5.8',
+    ('CP_ELEC', '6.3x7.7'): 'Capacitor_SMD:CP_Elec_6.3x7.7',
+    ('CP_ELEC', '8x10.5'): 'Capacitor_SMD:CP_Elec_8x10.5',
+    ('CP_ELEC', '10x10.5'): 'Capacitor_SMD:CP_Elec_10x10.5',
+    ('CP_ELEC', '16x17.5'): 'Capacitor_SMD:CP_Elec_16x17.5',
+    ('CP_ELEC', '16x22'): 'Capacitor_SMD:CP_Elec_16x22',
+    ('CP_TANT', '2012-12'): 'Capacitor_Tantalum_SMD:CP_EIA-2012-12_Kemet-R',
+    ('CP_TANT', '3528-21'): 'Capacitor_Tantalum_SMD:CP_EIA-3528-21_Kemet-B',
+    ('CP_TANT', '6032-28'): 'Capacitor_Tantalum_SMD:CP_EIA-6032-28_Kemet-C',
+    ('CP_TANT', '7343-31'): 'Capacitor_Tantalum_SMD:CP_EIA-7343-31_Kemet-D',
+    ('CP_TANT', '7343-43'): 'Capacitor_Tantalum_SMD:CP_EIA-7343-43_Kemet-X',
+}
 
 SUPPLIER = "DigiKey"
 DK_CHECKED = "2026-11-20"

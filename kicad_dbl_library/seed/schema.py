@@ -38,7 +38,7 @@ TABLES = [
     "Capacitors_Bulk",      # MLCC >=10uF, >=50V, X7R or better, 1210/1812/2220
     "Capacitors_Tantalum",  # SMD tantalum 50V, E6 1uF..max available
     "Capacitors_Electrolytic",  # SMD aluminium electrolytic 50V, E6 1uF..1000uF
-    "Inductors",            # E12 0402 + 0805
+    "Inductors",            # E12 0402 + 0805 (to 100uH) + 1210 (1uH..100uH)
     "Inductors_RF",         # 0402 fine-step RF inductors
     "Ferrite_Beads",        # 22/100/220/330/1k ohm @100MHz, 0402 + 0805
 ]
@@ -55,13 +55,14 @@ FOOTPRINTS = {
     ("C", "2220"): "Capacitor_SMD:C_2220_5750Metric",
     ("L", "0402"): "Inductor_SMD:L_0402_1005Metric",
     ("L", "0805"): "Inductor_SMD:L_0805_2012Metric",
+    ("L", "1210"): "Inductor_SMD:L_1210_3225Metric",
 }
 
 FP_FILTERS = {
     ("R", "0402"): "R_0402*", ("R", "0805"): "R_0805*",
     ("C", "0402"): "C_0402*", ("C", "0805"): "C_0805*",
     ("C", "1210"): "C_1210*", ("C", "1812"): "C_1812*", ("C", "2220"): "C_2220*",
-    ("L", "0402"): "L_0402*", ("L", "0805"): "L_0805*",
+    ("L", "0402"): "L_0402*", ("L", "0805"): "L_0805*", ("L", "1210"): "L_1210*",
 }
 
 # Manufacturer policy: Vishay / Würth Elektronik preferred. Other makers are used

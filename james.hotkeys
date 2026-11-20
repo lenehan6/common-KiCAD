@@ -1,0 +1,38 @@
+# Altium Designer Keymap for KiCad (v8 / v9 / v10)
+# Explicitly unmaps conflicting defaults and separates Schematic vs. PCB actions
+
+# --- Unmap Conflicting KiCad Defaults ---
+common.Control.resetLocalCoords	<unassigned>
+kicad.Control.closeProject	<unassigned>
+
+# --- Common (Schematic & PCB) ---
+common.Control.editProperties	Tab
+common.Control.measureTool	Ctrl+M
+common.Control.zoomIn	PgUp
+common.Control.zoomOut	PgDn
+common.Control.zoomFitObjects	Home
+common.Control.switchUnits	Ctrl+Q
+common.Control.gridPresetNext	G
+common.Control.delete	Del
+
+# --- Schematic Editor (Eeschema) ---
+eeschema.EditorControl.rotateCounterclockwise	Space
+eeschema.EditorControl.rotateClockwise	Shift+Space
+eeschema.EditorControl.mirrorX	X
+eeschema.EditorControl.mirrorY	Y
+eeschema.EditorControl.drawWire	Ctrl+W
+eeschema.EditorControl.placePower	Ctrl+P
+eeschema.EditorControl.placeNetLabel	Ctrl+L
+eeschema.EditorControl.placeNoConnect	Ctrl+N
+
+# --- PCB Editor (Pcbnew) ---
+pcbnew.EditorControl.rotateCounterclockwise	Space
+pcbnew.EditorControl.rotateClockwise	Shift+Space
+pcbnew.EditorControl.flip	L
+pcbnew.InteractiveRouter.routeSingleTrack	Ctrl+W
+pcbnew.InteractiveRouter.routeDiffPair	Ctrl+Shift+W
+pcbnew.InteractiveRouter.placeVia	V
+pcbnew.EditorControl.layerNext	+
+pcbnew.EditorControl.layerPrev	-
+pcbnew.EditorControl.layerToggle	*
+pcbnew.ZoneFiller.zoneFillAll	B

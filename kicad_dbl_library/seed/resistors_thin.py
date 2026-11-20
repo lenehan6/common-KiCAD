@@ -6,7 +6,7 @@ no runtime dependency on the dumps.
 from .schema import SYMBOLS, FOOTPRINTS, FP_FILTERS, SUPPLIER, DK_CHECKED
 
 ROWS = {
-    "Resistors_ThinFilm": [{'Part_ID': 'RES-TF-0402-49R9-0.1%',
+    "Resistors_ThinFilm_Precision": [{'Part_ID': 'RES-TF-0402-49R9-0.1%',
       'Symbol': SYMBOLS["R"],
       'Footprint': FOOTPRINTS[("R", "0402")],
       'Value': '49.9',

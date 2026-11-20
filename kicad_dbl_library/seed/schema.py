@@ -30,17 +30,20 @@ COLUMNS = [
 COLUMN_NAMES = [c for c, _ in COLUMNS]
 
 TABLES = [
-    "Resistors_ThinFilm",   # Vishay Dale TNPW 0.1% E96, 0402 + 0805
+    "Resistors_ThinFilm_Precision",  # Vishay Dale TNPW 0.1% E96, 0402 + 0805
+    "Resistors_ThinFilm_1pct",       # thin film 1% E96, 0402 + 0805 (Vishay first, Yageo fallback)
     "Resistors_ThickFilm",  # Vishay Dale CRCW 5% E12, 0402 + 0805 (+0R)
-    "Capacitors",           # MLCC E12 >=50V, C0G/X7R or better, 0402 + 0805
+    "Capacitors_Ceramic",   # MLCC E12 >=50V, C0G/X7R or better, 0402 + 0805
     "Capacitors_RF",        # MLCC 0402 C0G/NP0 fine-step values, >=50V
     "Capacitors_Bulk",      # MLCC >=10uF, >=50V, X7R or better, 1210/1812/2220
+    "Capacitors_Tantalum",  # SMD tantalum 50V, E6 1uF..max available
+    "Capacitors_Electrolytic",  # SMD aluminium electrolytic 50V, E6 1uF..1000uF
     "Inductors",            # E12 0402 + 0805
     "Inductors_RF",         # 0402 fine-step RF inductors
     "Ferrite_Beads",        # 22/100/220/330/1k ohm @100MHz, 0402 + 0805
 ]
 
-SYMBOLS = {"R": "Device:R", "C": "Device:C", "L": "Device:L", "FB": "Device:FerriteBead"}
+SYMBOLS = {"R": "Device:R", "C": "Device:C", "CP": "Device:C_Polarized", "L": "Device:L", "FB": "Device:FerriteBead"}
 
 FOOTPRINTS = {
     ("R", "0402"): "Resistor_SMD:R_0402_1005Metric",
@@ -60,6 +63,15 @@ FP_FILTERS = {
     ("C", "1210"): "C_1210*", ("C", "1812"): "C_1812*", ("C", "2220"): "C_2220*",
     ("L", "0402"): "L_0402*", ("L", "0805"): "L_0805*",
 }
+
+# Manufacturer policy: Vishay / Würth Elektronik preferred. Other makers are used
+# only to fill values the preferred makers do not stock at DigiKey.
+PREFERRED_MANUFACTURERS = ("Vishay", "Würth Elektronik")
+
+# Extra footprints used by polarized capacitors (tantalum case codes / electrolytic
+# can sizes). Filled in by the seed modules' authors after verifying each name
+# against the official KiCad footprint library.
+FOOTPRINTS_EXTRA = {}
 
 SUPPLIER = "DigiKey"
 DK_CHECKED = "2026-11-20"

@@ -19,9 +19,11 @@ from seed.schema import COLUMNS, COLUMN_NAMES, TABLES  # noqa: E402
 
 SEED_MODULES = [
     "seed.resistors_thin",
+    "seed.resistors_thin_1pct",
     "seed.resistors_thick",
     "seed.capacitors",
     "seed.capacitors_bulk",
+    "seed.capacitors_polarized",
     "seed.inductors",
 ]
 

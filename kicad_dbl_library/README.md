@@ -17,7 +17,7 @@ MPN and supplier part number already filled in.
 | `Capacitors_Bulk` | Capacitors - Bulk | Bulk MLCC >=10 uF, >=50 V, X7R or better, 1210 / 1812 / 2220 |
 | `Capacitors_Tantalum` | Capacitors - Tantalum 50V | SMD tantalum, 50 V, E6 values |
 | `Capacitors_Electrolytic` | Capacitors - Electrolytic 50V | SMD aluminium electrolytic, 50 V, E6 values |
-| `Inductors` | Inductors | E12, 0402 / 0805 |
+| `Inductors` | Inductors | E12: 0402 (1n–470n), 0805 (2.2n–100u), 1210 (1u–100u) |
 | `Inductors_RF` | Inductors - RF 0402 | 0402 fine-step RF inductors |
 | `Ferrite_Beads` | Ferrite Beads | 22 / 100 / 220 / 330 / 1k ohm @ 100 MHz, 0402 / 0805 |
 

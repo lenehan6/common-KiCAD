@@ -15,6 +15,7 @@ import time
 import urllib.error
 import urllib.parse
 import urllib.request
+import zlib
 
 HERE = os.path.dirname(os.path.abspath(__file__))
 CACHE_PATH = os.environ.get("DK_CACHE", os.path.join(HERE, "cache", "dk_cache.sqlite"))
@@ -58,12 +59,12 @@ class DigiKey:
     def _get_cached(self, req, max_age_days):
         row = self.db.execute("SELECT ts, body FROM cache WHERE k=?", (self._key(req),)).fetchone()
         if row and (max_age_days is None or time.time() - row[0] < max_age_days * 86400):
-            return json.loads(row[1])
+            return _unpack(row[1])
         return None
 
     def _put(self, req, body):
         self.db.execute("INSERT OR REPLACE INTO cache VALUES (?,?,?,?)",
-                        (self._key(req), json.dumps(req, sort_keys=True), time.time(), json.dumps(body)))
+                        (self._key(req), json.dumps(req, sort_keys=True), time.time(), _pack(body)))
         self.db.commit()
 
     # ---------------- http ----------------
@@ -170,6 +171,47 @@ class DigiKey:
         res = self._call("GET", DETAILS_URL.format(mpn=urllib.parse.quote(mpn, safe="")))
         self._put(req, res)
         return res
+
+
+# ---------------- cache compaction ----------------
+def trim_product(p):
+    """Keep only the fields slim() and the selectors use (keeps the cache small)."""
+    return {
+        "ManufacturerProductNumber": p.get("ManufacturerProductNumber"),
+        "Manufacturer": {"Name": (p.get("Manufacturer") or {}).get("Name")},
+        "Series": {"Name": (p.get("Series") or {}).get("Name")},
+        "Description": p.get("Description"), "ProductStatus": p.get("ProductStatus"),
+        "NormallyStocking": p.get("NormallyStocking"), "DatasheetUrl": p.get("DatasheetUrl"),
+        "ProductUrl": p.get("ProductUrl"), "Category": {"Name": (p.get("Category") or {}).get("Name")},
+        "Parameters": [{"ParameterText": x.get("ParameterText"), "ValueText": x.get("ValueText")}
+                       for x in p.get("Parameters", [])],
+        "ProductVariations": [{"DigiKeyProductNumber": v.get("DigiKeyProductNumber"),
+                               "PackageType": {"Name": (v.get("PackageType") or {}).get("Name")},
+                               "QuantityAvailableforPackageType": v.get("QuantityAvailableforPackageType"),
+                               "MinimumOrderQuantity": v.get("MinimumOrderQuantity")}
+                              for v in p.get("ProductVariations", [])],
+    }
+
+
+def trim_response(body):
+    if not isinstance(body, dict):
+        return body
+    if "Product" in body:  # productdetails
+        return {"Product": trim_product(body["Product"])}
+    out = {"ProductsCount": body.get("ProductsCount")}
+    for k in ("Products", "ExactMatches"):
+        out[k] = [trim_product(p) for p in (body.get(k) or [])]
+    return out
+
+
+def _pack(body):
+    return zlib.compress(json.dumps(trim_response(body), separators=(",", ":")).encode(), 9)
+
+
+def _unpack(blob):
+    if isinstance(blob, str):  # legacy uncompressed row
+        return json.loads(blob)
+    return json.loads(zlib.decompress(blob))
 
 
 # ---------------- helpers shared by selectors ----------------

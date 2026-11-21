@@ -1,13 +1,15 @@
 #!/usr/bin/env python3
-"""Build parts.sqlite for the KiCad database library from the seed modules.
+"""Build parts.sqlite for the KiCad commodity database library.
 
 Usage:  python init_db.py [--db PATH]
 
-Drops and recreates every table listed in seed/schema.py and loads the rows
-exported by each seed module (``ROWS = {table: [row, ...]}``).
+Creates every table in seed/schema.py, loads seed/generated/<Table>.json and
+creates a "<Table>_Active" view per table (Status != 'Obsolete'), which is what
+company_parts.kicad_dbl points KiCad at. Tables without a generated file are
+created empty so the .kicad_dbl always resolves.
 """
 import argparse
-import importlib
+import json
 import os
 import sqlite3
 import sys
@@ -15,41 +17,29 @@ import sys
 HERE = os.path.dirname(os.path.abspath(__file__))
 sys.path.insert(0, HERE)
 
-from seed.schema import COLUMNS, COLUMN_NAMES, TABLES  # noqa: E402
+from seed.schema import COLUMNS, COLUMN_NAMES, TABLES, view_name  # noqa: E402
 
-SEED_MODULES = [
-    "seed.resistors_thin",
-    "seed.resistors_thin_1pct",
-    "seed.resistors_thick",
-    "seed.capacitors",
-    "seed.capacitors_bulk",
-    "seed.capacitors_polarized",
-    "seed.inductors",
-]
-
+GENERATED = os.path.join(HERE, "seed", "generated")
 REQUIRED = ("Part_ID", "Symbol", "Footprint", "Value")
 
 
-def collect_rows():
-    rows = {t: [] for t in TABLES}
-    for modname in SEED_MODULES:
-        mod = importlib.import_module(modname)
-        for table, items in mod.ROWS.items():
-            if table not in rows:
-                raise SystemExit(f"{modname}: unknown table {table!r}")
-            for r in items:
-                extra = set(r) - set(COLUMN_NAMES)
-                if extra:
-                    raise SystemExit(f"{modname}: {r.get('Part_ID')}: unknown columns {sorted(extra)}")
-                missing = [c for c in REQUIRED if not r.get(c)]
-                if missing:
-                    raise SystemExit(f"{modname}: {r.get('Part_ID')}: missing {missing}")
-            rows[table].extend(items)
+def load_rows(table):
+    path = os.path.join(GENERATED, f"{table}.json")
+    if not os.path.exists(path):
+        return []
+    rows = json.load(open(path, encoding="utf-8"))
+    for r in rows:
+        extra = set(r) - set(COLUMN_NAMES)
+        if extra:
+            raise SystemExit(f"{table}: {r.get('Part_ID')}: unknown columns {sorted(extra)}")
+        missing = [c for c in REQUIRED if not r.get(c)]
+        if missing:
+            raise SystemExit(f"{table}: {r.get('Part_ID')}: missing {missing}")
+        r.setdefault("Status", "Active")
     return rows
 
 
 def build(db_path):
-    rows = collect_rows()
     if os.path.exists(db_path):
         os.remove(db_path)
     con = sqlite3.connect(db_path)
@@ -58,13 +48,16 @@ def build(db_path):
     collist = ",".join(f'"{c}"' for c in COLUMN_NAMES)
     total = 0
     for table in TABLES:
+        rows = load_rows(table)
         con.execute(f'CREATE TABLE "{table}" (\n    {cols_sql}\n)')
         con.execute(f'CREATE INDEX "idx_{table}_MPN" ON "{table}"("MPN")')
         con.execute(f'CREATE INDEX "idx_{table}_Value" ON "{table}"("Value")')
-        data = [tuple(r.get(c) for c in COLUMN_NAMES) for r in rows[table]]
-        con.executemany(f'INSERT INTO "{table}" ({collist}) VALUES ({placeholders})', data)
-        print(f"  {table:<22} {len(data):>5} rows")
-        total += len(data)
+        con.execute(f'CREATE VIEW "{view_name(table)}" AS SELECT * FROM "{table}" '
+                    f"WHERE COALESCE(\"Status\", 'Active') <> 'Obsolete'")
+        con.executemany(f'INSERT INTO "{table}" ({collist}) VALUES ({placeholders})',
+                        [tuple(r.get(c) for c in COLUMN_NAMES) for r in rows])
+        print(f"  {table:<30} {len(rows):>5} rows")
+        total += len(rows)
     con.commit()
     con.execute("VACUUM")
     con.close()

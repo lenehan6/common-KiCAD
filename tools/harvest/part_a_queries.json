@@ -1,0 +1,18 @@
+{
+ "Diodes_Signal": ["switching diode SOD-123", "switching diode SOD-323", "1N4148W", "1N4148WS", "BAS16 SOD-323", "BAS16W", "BAV16W", "Vishay switching diode SOD-123", "Nexperia switching diode SOD-323"],
+ "Diodes_Schottky": ["schottky diode SOD-123", "schottky diode SOD-323", "schottky diode SMA", "Vishay schottky SOD-123", "Nexperia schottky SOD-123", "Nexperia schottky SOD-323", "BAT54W", "B5819W", "SS14 SMA", "SS34 SMA", "PMEG"],
+ "Diodes_Zener": ["zener diode SOD-123", "zener diode SOD-323", "BZT52C", "MMSZ52", "BZX384", "BZT52H", "Vishay zener SOD-123", "Nexperia zener SOD-323", "Nexperia zener SOD-123"],
+ "Diodes_TVS": ["Littelfuse SMAJ", "Littelfuse SMBJ", "SMAJ CA", "SMBJ CA", "Vishay SMAJ", "Vishay SMBJ", "TVS diode SMA unidirectional", "TVS diode SMB bidirectional"],
+ "ESD_Protection": ["ESD protection diode SOD-323", "ESD protection diode SOD-523", "ESD suppressor 0402", "PESD5V0", "PESD3V3", "USBLC6-2", "PRTR5V0U2X", "TPD2E", "TPD4E", "Littelfuse ESD SOD-323"],
+ "LEDs": ["Kingbright LED 0402", "Kingbright LED 0603", "Kingbright LED 0805", "Wurth LED 0603", "Wurth LED 0805", "Wurth LED 0402", "Lite-On LED 0603", "Lite-On LED 0805", "Lite-On LED 0402"],
+ "MOSFETs_SmallSignal": ["2N7002", "2N7002K", "BSS138", "BSS84", "BSS123", "AO3400A", "AO3401A", "DMG2302U", "DMG2301L", "SI2302", "SI2301", "PMV", "N-channel MOSFET SOT-23", "P-channel MOSFET SOT-23", "Nexperia MOSFET SOT-23", "Vishay MOSFET SOT-23", "onsemi MOSFET SOT-23"],
+ "BJTs_SmallSignal": ["MMBT3904", "MMBT3906", "BC847", "BC857", "BC817", "BC807", "MMBT2222A", "PMBT3904", "PMBT3906", "PMBT2222A", "NPN transistor SOT-23", "PNP transistor SOT-23", "Nexperia transistor SOT-23", "Taiwan Semiconductor transistor SOT-23"],
+ "LDOs": ["TLV75533", "TLV75518", "TLV757P", "TLV75733", "TLV75718", "TPS7A02", "TPS7A0233", "TPS7A0218", "LP5907 3.3", "LP5907 1.8", "LP5912", "TLV733P", "TLV70033", "TLV70018", "TPS7A2033", "TPS7A2018", "TLV76733", "TLV76718", "TPS73633", "TPS73618", "LDO 3.3V Texas Instruments", "LDO 1.8V Texas Instruments"],
+ "Polyfuses": ["Littelfuse PTC resettable fuse 0402", "Littelfuse PTC resettable fuse 0603", "Littelfuse PTC resettable fuse 0805", "Littelfuse PTC resettable fuse 1206", "Littelfuse PTC resettable fuse 1210", "Littelfuse PTC resettable fuse 1812", "Littelfuse femtoSMD", "Littelfuse picoSMD", "Littelfuse nanoSMD", "Littelfuse microSMD", "Littelfuse miniSMD", "Littelfuse 1206L", "Littelfuse 1210L", "Littelfuse 1812L", "Littelfuse 0805L", "Littelfuse 0603L"],
+ "Fuses_Chip": ["Littelfuse fuse 0603 fast", "Littelfuse fuse 1206 fast", "Littelfuse 0466", "Littelfuse 0467", "Littelfuse 0435", "Littelfuse 0437", "Littelfuse fuse 0402"],
+ "Switches_Tactile": ["tactile switch SMD 6x6", "tactile switch SMD 4x4", "tactile switch SMD 3x6", "Wurth tactile switch SMD", "Wurth WS-TASV", "C&K tactile switch SMD", "E-Switch tactile switch SMD", "Omron B3FS", "C&K PTS526", "C&K PTS810", "C&K PTS645"],
+ "Headers_2p54mm": ["Wurth pin header 2.54mm single row", "Wurth pin header 2.54mm dual row", "Wurth WR-PHD 2.54mm", "Samtec TSW pin header", "Amphenol pin header 2.54mm", "Sullins pin header 2.54mm"],
+ "Headers_1p27mm": ["Wurth pin header 1.27mm", "Wurth WR-PHD 1.27mm", "Samtec FTSH", "Samtec FTS", "pin header 1.27mm dual row", "pin header 1.27mm single row"],
+ "Headers_IDC_Shrouded": ["Wurth WR-BHD", "Wurth box header 2.54mm", "shrouded header 2.54mm", "box header 2.54mm", "Amphenol box header 2.54mm", "box header 1.27mm"],
+ "TestPoints": ["Keystone test point SMD", "Keystone test point PC", "Keystone 5015", "Keystone 5019", "Keystone 5000", "Keystone 5001", "Keystone 5005", "test point SMD"]
+}

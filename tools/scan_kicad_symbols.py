@@ -288,8 +288,8 @@ def manufacturer_hint(datasheet, description, name):
 # First-token patterns that are functional / connector-family names even
 # though they contain digits.
 GENERIC_FIRST = re.compile(
-    r"^(?:USB\d*|RJ\d{2}[A-Z]?|D[ABCDE]\d{1,2}|XLR\d*|DIN-?\d*|Mini-DIN-?\d*|"
-    r"\d+P\d+C|IEC\d*|HDMI\d*|DVI\d*|SATA\d*|PCIe?\d*|TRRS\d*|TRS\d*|\d+x\d+)$")
+    r"^(?:USB\d?|RJ\d{2}[A-Z]?|D[ABCDE]\d{1,2}|XLR\d*|DIN-?\d*|Mini-DIN-?\d*|"
+    r"\d+P\d+C|IEC[\d-]*|HDMI\d*|DVI\d*|SATA\d*|PCIe?\d*|TRRS\d*|TRS\d*|\d+x\d+)$")
 
 # Lowercase runs that are part of real part numbers.
 MPN_LOWER_PREFIX = re.compile(r"^(?:AT(?:x?mega|tiny)|dsPIC|nRF|iCE|ADuC|ADuM|Si|EFM|ispPAC)")
@@ -329,40 +329,57 @@ def mpn_core(name):
     return out
 
 
+# Leading maker words KiCad puts in front of an MPN (Relay:Panasonic_ALFG2PF09).
+MAKER_PREFIX = {"Panasonic", "Wuerth", "Wurth", "COTO", "CK", "EA", "Fujitsu", "Omron", "SANYOU",
+                "HONGFA", "TE", "Triad", "Samtec", "JAE", "LiteOn", "Inolux", "CUI", "Microchip",
+                "Microsemi", "Ai-Thinker", "Jadak", "Olimex", "WSEN", "Hirose", "Molex", "JST",
+                "Amphenol", "Bourns", "Murata", "Vishay", "Littelfuse", "Kycon", "Neutrik"}
+# Traco/LEM style "TMR_1-2411SM" = MPN "TMR 1-2411SM" (space in MPN).
+SPACED_SERIES = re.compile(r"^[A-Z]{2,5}$")
+SPACED_REST = re.compile(r"^\d+(?:\.\d+)?-[0-9A-Z]")
+
+
+def _is_mpn_token(first):
+    if GENERIC_FIRST.match(first):
+        return False
+    if not re.search(r"\d", first):
+        # no digits: only an MPN pattern like ABPxxxxxxxxxA / ACO-xxxMHz
+        return bool(re.match(r"^[A-Z]{2,}[A-Z-]*x{2,}", first))
+    if MPN_LOWER_PREFIX.match(first):
+        return True
+    for m in re.finditer(r"[a-z]{3,}", first):
+        if set(m.group(0)) != {"x"}:
+            return False  # lower-case word => functional name
+    return True
+
+
 def classify_name(name, library):
     """Return (name_kind, search_stem, match_regex)."""
-    first = name.split("_")[0]
-    generic = False
     if library in GENERIC_LIBS:
-        generic = True
-    elif not re.search(r"\d", first):
-        generic = True
-    elif GENERIC_FIRST.match(first):
-        generic = True
-    else:
-        # lower-case words (>=3 letters, not just 'x' placeholders) => functional
-        for m in re.finditer(r"[a-z]{3,}", first):
-            run = m.group(0)
-            if set(run) == {"x"}:
-                continue
-            if MPN_LOWER_PREFIX.match(first):
-                continue
-            generic = True
-            break
-    if generic:
         return "generic", None, None
-    core = mpn_core(name)
+    toks = name.split("_")
+    prefix_rx = ""
+    lit_join = ""
+    if len(toks) > 1 and toks[0] in MAKER_PREFIX:
+        prefix_rx = "(?:%s[ _-]?)?" % re.escape(toks[0])
+        toks = toks[1:]
+    elif len(toks) > 1 and SPACED_SERIES.match(toks[0]) and SPACED_REST.match(toks[1]):
+        toks = [toks[0] + " " + toks[1]] + toks[2:]
+    rest = "_".join(toks)
+    if not _is_mpn_token(toks[0]):
+        return "generic", None, None
+    core = mpn_core(rest)
     kind = "mpn_pattern" if any(k != "lit" for k, _ in core) else "mpn"
     stem = ""
     for k, v in core:
         if k != "lit":
             break
         stem += v
-    stem = stem.rstrip("-/.,")
-    rx = "(?i)^"
+    stem = stem.rstrip("-/., ")
+    rx = "(?i)^" + prefix_rx
     for k, v in core:
         if k == "lit":
-            rx += re.escape(v)
+            rx += re.escape(v).replace("\\ ", "[ _-]?")
         elif k == "wild":
             rx += "[A-Z0-9]" if v == 1 else "[A-Z0-9]{%d}" % v
         else:
@@ -399,7 +416,7 @@ LEGACY = {
     "CPU_NXP_6800": "Motorola 6800-family CPUs/peripherals, obsolete",
     "CPU_NXP_68000": "68000-family CPUs, obsolete",
     "CPU_PowerPC": "single legacy PowerPC part",
-    "CPU": "checked: CDP1802, Z80 (Z84C00), Z8000, P4080 - all vintage/EOL",
+    "CPU": "checked: CDP1802, Z80 (Z0840004/Z84C00/TMPZ84C00), P4080 - vintage/EOL",
     "DSP_Motorola": "56k DSP, obsolete",
     "DSP_Freescale": "single legacy DSP",
     "MCU_NXP_HC11": "68HC11, obsolete",
@@ -466,6 +483,7 @@ def triage_library(lib):
     return "application", app_priority(lib), APP_NOTES.get(lib, "")
 
 
+FAMILY_RE = re.compile(r"^[^0-9]*[0-9]+(?:\.[0-9]+)?(?:[A-Z]{1,3}[0-9]+)?")
 SOT23 = re.compile(r"SOT-?23(?![0-9])|SOT\?23|SOT\*23|SC-?70|SOT-?323|SOT-?523|SOT-?416", re.I)
 USB_NAME = re.compile(r"^USB")
 
@@ -520,7 +538,10 @@ def build_rows(raw, overrides):
         ov = overrides.get(lib) or {}
         if ov:
             grp = ov.get("grp", grp)
-            prio = ov.get("priority", prio)
+            if "priority" in ov:
+                prio = ov["priority"]
+            elif "grp" in ov:
+                prio = {"application": app_priority(lib), "legacy": 9}.get(grp)
             note = ov.get("note", (note + " [override]").strip())
         lib_info[lib] = [grp, prio, note]
     rows = []
@@ -673,15 +694,26 @@ def write_triage(path, ref, table_libs, lib_info, rows, files_seen, errors, over
         L.append("| %s | %d | %d | %d | %d |" % (p, syms_p[p], gen_p[p], per_p[p], cum))
     L.append("| **total** | %d | %d | **%d** | |" % (len(app), sum(gen_p.values()), len(stem_prio)))
     L.append("")
+    fam = {}
+    for st, p in stem_prio.items():
+        m = FAMILY_RE.match(st)
+        f = m.group(0) if m else st
+        fam[f] = min(p, fam.get(f, 99))
+    fam_p = Counter(fam.values())
+    L.append("Family-keyword alternative (stem cut after the first letter+digit groups, e.g. `STM32F405RGT`->`STM32F405`, "
+             "`ATMEGA328P-PU`->`ATMEGA328`): **%d** keywords (%s). Fewer calls, but each returns more hits "
+             "(DigiKey pages at 50 results), so paging eats part of the saving.\n"
+             % (len(fam), ", ".join("p%s: %d" % (p, fam_p[p]) for p in sorted(fam_p))))
     L.append("Assumptions: one DigiKey KeywordSearch call per distinct stem (stems de-duplicated "
              "case-insensitively across libraries, credited to the lowest priority number); results are matched "
              "back to symbols with `match_regex` (prefix match, `x`/`?` -> `[A-Z0-9]`). "
              "Rough call estimate: ~%d calls, plus ~%d%% for paging/retry of stems with many hits "
              "-> **~%d calls**. Generic symbols (%d) need manual MPN selection and are not counted. "
              "%d stems come from `commodity_overlap` transistors and could be skipped (handled by the commodity DB). "
-             "At the default DigiKey quota of 1,000 calls/day that is ~%d day(s).\n"
+             "At DigiKey's ~1,000 calls/day (see tools/dk_client.py) that is ~%d day(s); priorities 1-2 alone fit in ~%d days.\n"
              % (len(stem_prio), 20, round(len(stem_prio) * 1.2), sum(gen_p.values()), len(overlap_stems),
-                -(-round(len(stem_prio) * 1.2) // 1000)))
+                -(-round(len(stem_prio) * 1.2) // 1000),
+                -(-round(sum(per_p[p] for p in per_p if p is not None and p <= 2) * 1.2) // 1000)))
 
     # USB list
     usb = [r for r in rows if r["is_usb"]]

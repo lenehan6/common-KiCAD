@@ -17,7 +17,7 @@ Behaviour
 * Candidates come from the DigiKey cache (tools/cache/dk_cache.sqlite); with
   --offline nothing is fetched, cache misses are reported.
 * Only Active parts with a Cut Tape or Bulk variation in stock are eligible.
-* seed/locks.json pins Part_ID -> MPN. A locked slot keeps its existing row unless
+* seed/locks/<Table>.json pins Part_ID -> MPN. A locked slot keeps its existing row unless
   fresh data shows the MPN is no longer eligible; then the old row is marked
   Deprecated (Superseded_By = new Part_ID "<part_id>-R<n>") and a replacement added.
   Rows are never deleted.
@@ -41,7 +41,7 @@ import dk_client  # noqa: E402
 from seed.schema import COLUMN_NAMES, TABLES  # noqa: E402
 
 GEN = os.path.join(LIB, "seed", "generated")
-LOCKS = os.path.join(LIB, "seed", "locks.json")
+LOCKS = os.path.join(LIB, "seed", "locks")
 SPECS = os.path.join(LIB, "specs")
 REPORTS = os.path.join(LIB, "reports")
 
@@ -117,8 +117,8 @@ def build(table, dk, refresh=False):
     if spec is None:
         print(f"{table}: no spec, skipped")
         return
-    locks_all = json.load(open(LOCKS)) if os.path.exists(LOCKS) else {}
-    locks = locks_all.setdefault(table, {})
+    lock_path = os.path.join(LOCKS, f"{table}.json")
+    locks = json.load(open(lock_path)) if os.path.exists(lock_path) else {}
     gen_path = os.path.join(GEN, f"{table}.json")
     rows = {r["Part_ID"]: r for r in (json.load(open(gen_path, encoding="utf-8")) if os.path.exists(gen_path) else [])}
     cands, misses = harvest(dk, spec)
@@ -171,7 +171,8 @@ def build(table, dk, refresh=False):
     out = sorted(rows.values(), key=lambda r: r["Part_ID"])
     os.makedirs(GEN, exist_ok=True)
     json.dump(out, open(gen_path, "w", encoding="utf-8"), indent=1, ensure_ascii=False)
-    json.dump(locks_all, open(LOCKS, "w"), indent=1, sort_keys=True)
+    os.makedirs(LOCKS, exist_ok=True)
+    json.dump(locks, open(lock_path, "w"), indent=1, sort_keys=True)
     os.makedirs(REPORTS, exist_ok=True)
     with open(os.path.join(REPORTS, f"{table}.md"), "w", encoding="utf-8") as f:
         f.write(f"# {table}\n\nBuilt {dt.date.today().isoformat()}: {len(out)} rows, "

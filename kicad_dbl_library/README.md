@@ -5,7 +5,9 @@ backed by a single SQLite file. Each part row carries its KiCad symbol, footprin
 footprint filter, datasheet and DigiKey ordering info, so placed parts arrive with
 MPN and supplier part number already filled in.
 
-**Tables** (each appears as its own library in the symbol chooser):
+**Tables.** There are 27, and each one appears as its own library in the symbol chooser.
+KiCad reads a `<Table>_Active` view of each table rather than the table itself (see
+[Part status](#part-status)).
 
 | Table | Library name | Contents |
 |---|---|---|
@@ -20,31 +22,83 @@ MPN and supplier part number already filled in.
 | `Inductors` | Inductors | E12: 0402 (1n–470n), 0805 (2.2n–100u), 1210 (1u–100u) |
 | `Inductors_RF` | Inductors - RF 0402 | 0402 fine-step RF inductors |
 | `Ferrite_Beads` | Ferrite Beads | 22 / 100 / 220 / 330 / 1k ohm @ 100 MHz, 0402 / 0805 |
+| `Diodes_Signal` | Diodes - Signal | Small-signal switching diodes, SOD-123 / SOD-323 / SOD-523 |
+| `Diodes_Schottky` | Diodes - Schottky | Schottky rectifiers 0.2–3 A, 20–60 V, SOD-323 / SOD-123 / SMA |
+| `Diodes_Zener` | Diodes - Zener | Zener E24 2.4–36 V, SOD-123 / SOD-323 |
+| `Diodes_TVS` | Diodes - TVS | SMAJ / SMBJ TVS, unidirectional and bidirectional |
+| `ESD_Protection` | ESD Protection | Low-capacitance ESD diodes and small USB/data-line arrays |
+| `LEDs` | LEDs | Indicator LEDs, 0402 / 0603 / 0805 |
+| `MOSFETs_SmallSignal` | Transistors - MOSFET Small Signal | SOT-23 N- and P-channel |
+| `BJTs_SmallSignal` | Transistors - BJT Small Signal | SOT-23 NPN / PNP |
+| `LDOs` | Regulators - LDO | 3.3 V and 1.8 V LDOs (TI preferred) |
+| `Polyfuses` | Fuses - Resettable PTC | Resettable PTC fuses (Littelfuse preferred) |
+| `Fuses_Chip` | Fuses - Chip | Fast-acting SMD chip fuses, 0402 / 0603 / 1206 |
+| `Switches_Tactile` | Switches - Tactile | SMD tactile switches |
+| `Headers_2p54mm` | Headers - 2.54mm | 2.54 mm pin headers, 1xN / 2xN |
+| `Headers_1p27mm` | Headers - 1.27mm | 1.27 mm pin headers, 1xN / 2xN |
+| `Headers_IDC_Shrouded` | Headers - IDC Shrouded | Shrouded IDC box headers |
+| `TestPoints` | Test Points | SMD / THT test points |
 
 **Manufacturer policy:** Vishay (Dale, Vitramon, Sprague, BCcomponents) and Würth
-Elektronik are preferred. Parts from other manufacturers (for example YAGEO) are only
-used to fill values the preferred makers don't stock at DigiKey. Supplier: DigiKey
-(Cut Tape part numbers).
+Elektronik are preferred for passives. Each table's spec in `specs/` sets the preferred
+makers for that category; other makers are used only to fill gaps. Supplier: DigiKey,
+using **Cut Tape** part numbers (Bulk for loose or through-hole parts). Tape & Reel and
+Digi-Reel part numbers are never used.
 
-There are two thin-film tables. The 0.1% precision table uses Vishay Dale TNPW, which
-DigiKey stocks across the full E96 series. The 1% table uses Vishay where it's stocked
-and falls back to YAGEO RT for the remaining values.
+## Part status
 
-Symbols and footprints come from KiCad's standard libraries (`Device:R`, `Device:C`,
-`Device:C_Polarized`, `Device:L`, `Device:FerriteBead`, plus `Resistor_SMD`, `Capacitor_SMD`,
-`Capacitor_Tantalum_SMD` and `Inductor_SMD`), so you don't need any custom libraries.
+Every row has a `Status` column. The chooser shows it as a column.
+
+- **Active:** use it.
+- **Deprecated:** still shown, so existing designs resolve, but don't use it in new
+  designs. `Superseded_By` names the replacement Part_ID.
+- **Obsolete:** hidden. Each `<Table>_Active` view (for example
+  `Resistors_ThickFilm_Active`) leaves out Obsolete rows, and `company_parts.kicad_dbl`
+  points KiCad at those views.
+
+Rows are never deleted and Part_IDs are never renamed, because placed symbols reference
+them.
+
+## Symbols and footprints
+
+All symbols and footprints come from KiCad's **standard libraries**, so you don't need
+any custom libraries. You do need these **default symbol libraries enabled** in
+*Preferences → Manage Symbol Libraries*:
+
+`Device`, `Diode`, `Transistor_FET`, `Transistor_BJT`, `Regulator_Linear`,
+`Connector_Generic`, `Switch`, `Connector`, `Power_Protection`
+
+If one is disabled or missing, parts from that category are placed as **text only, with
+no symbol body**. You also need the default footprint libraries (`Resistor_SMD`,
+`Capacitor_SMD`, `Capacitor_Tantalum_SMD`, `Inductor_SMD`, `Diode_SMD`, `LED_SMD`,
+`Fuse`, `Package_TO_SOT_SMD`, `Package_SON`, `Button_Switch_SMD`,
+`Connector_PinHeader_2.54mm`, `Connector_PinHeader_1.27mm`, `Connector_IDC`,
+`TestPoint`).
+
+Transistors and regulators use **pin-order-specific symbols**: the part's own KiCad
+symbol (for example `Transistor_FET:2N7002` or `Transistor_BJT:BC817`), or an explicit
+variant such as `Transistor_FET:Q_NMOS_GSD`. The generic `Device:Q_*` symbols are **not
+used**, because their pin order doesn't have to match the package. Each semiconductor
+row records its physical `Pinout` (for example `1=G 2=S 3=D`), and `tools/validate.py`
+checks it against the symbol.
 
 ## Files
 
 | File | Purpose |
 |---|---|
-| `company_parts.kicad_dbl` | KiCad library definition (ODBC connection + table/field mapping) |
+| `company_parts.kicad_dbl` | KiCad library definition (ODBC connection + view/field mapping) |
 | `parts.sqlite` | The database. Keep it **next to** the `.kicad_dbl` |
-| `init_db.py` | Rebuilds `parts.sqlite` from `seed/*.py` |
-| `seed/schema.py` | Column list, table names, symbol/footprint mapping |
-| `seed/*.py` | Part data per category |
-| `digikey_enrich.py` | Refreshes DigiKey part numbers, stock, status and datasheets |
-| `SETUP_DB.md` | Step-by-step setup and maintenance guide |
+| `init_db.py` | Rebuilds `parts.sqlite` (tables + `*_Active` views) from `seed/generated/*.json` |
+| `seed/schema.py` | Column list, table names, view naming |
+| `seed/generated/*.json` | Part data per table (generated by `tools/build_commodity.py`) |
+| `seed/locks/*.json` | Part_ID -> MPN pins, so a rebuild keeps chosen parts |
+| `specs/*.py` | Selection rules per table (queries, slots, ranking) |
+| `reports/*.md` | Build reports: changes, gaps, cache misses |
+| `../tools/build_commodity.py` | Spec-driven builder, using the DigiKey API and cache |
+| `../tools/validate.py` | Offline validation, also run in CI |
+| `digikey_enrich.py` | Legacy ad-hoc DigiKey spot check (see MAINTAINING.md) |
+| `SETUP_DB.md` | Step-by-step setup guide for users |
+| `MAINTAINING.md` | Maintainer guide: adding parts and tables, monthly refresh, rules |
 
 ## Setup
 
@@ -60,57 +114,25 @@ In short:
    with the folder that holds the `.kicad_dbl`.
 3. In KiCad, go to **Preferences → Manage Symbol Libraries → Global Libraries** and add
    `company_parts.kicad_dbl` (Library Format: **Database**, nickname e.g. `Company_Parts`).
+4. Make sure the default symbol libraries listed [above](#symbols-and-footprints) are
+   enabled.
 
 On macOS and Linux, change the `Driver=` part of `connection_string` to the locally
 registered driver name (`odbcinst -q -d`). See SETUP_DB.md for details.
 
-## Rebuilding the database
+## Maintaining
 
-```
-python init_db.py
-```
+See **[MAINTAINING.md](MAINTAINING.md)** for how the build works, adding values and
+tables, the monthly DigiKey refresh, retiring parts, and the Cut Tape and pinout rules.
+In short, from the repository root:
 
-This regenerates `parts.sqlite` from `seed/*.py`. Close KiCad (or reload the library)
-first, so the file isn't locked.
-
-## Refreshing DigiKey data
-
-You need a DigiKey API app (developer.digikey.com, Product Information v4, production)
-that uses client credentials. Credentials are read only from environment variables.
-
-PowerShell:
-
-```powershell
-$env:DIGIKEY_CLIENT_ID="..."
-$env:DIGIKEY_CLIENT_SECRET="..."
-python digikey_enrich.py --dry-run          # query only; the database isn't changed
-python digikey_enrich.py --prune            # update rows, and delete dead/out-of-stock parts
+```sh
+python tools/build_commodity.py all --refresh   # needs DIGIKEY_CLIENT_ID / DIGIKEY_CLIENT_SECRET
+python kicad_dbl_library/init_db.py
+python tools/validate.py
 ```
 
-The API allows about **1000 calls per day**, and each part uses one call. The script
-prints the remaining quota and stops when it drops below `--reserve` (default 20). To
-continue the next day, run `--only-unchecked` or `--older-than DAYS`.
-
-Other options:
-- `--tables Capacitors_Ceramic Inductors`: check only those tables.
-- `--limit N`: check at most N parts.
-- `--delay S`: wait S seconds between calls.
-- `--db PATH`: use a different database file.
-
-See `--help` for the full list.
-
-`--prune` deletes a row when its MPN is unknown to DigiKey, is Obsolete or
-Discontinued, or has zero stock in every package. Every pruned row is listed in the
-output. Run it with `--dry-run` first to preview. To keep a pruned part permanently,
-remove it from the seed module or fix its MPN there, because `init_db.py` brings
-seeded rows back.
-
-## Adding parts
-
-Edit the matching `seed/*.py` module. Each row needs at least `Part_ID`, `Symbol`,
-`Footprint` and `Value`, and the columns are listed in `seed/schema.py`. Then run
-`python init_db.py`, and optionally
-`python digikey_enrich.py --only-unchecked` to fill in the DigiKey data.
+Close KiCad (or reload the library) before rebuilding, so the file isn't locked.
 
 ## Troubleshooting
 
@@ -121,8 +143,10 @@ Edit the matching `seed/*.py` module. Each row needs at least `Part_ID`, `Symbol
 - **Libraries appear but are empty:** KiCad can't find `parts.sqlite`. Make sure it
   sits next to the `.kicad_dbl` (that's where `${CWD}` points), and that `init_db.py`
   has been run. If the path still fails, replace `${CWD}` with an absolute path to test.
+- **Placed part shows only text (Value/Reference) and no symbol body:** the symbol's
+  library (`Device`, `Transistor_FET`, ...) is disabled or missing in your symbol library
+  table. Enable it under *Manage Symbol Libraries*, using its default nickname.
 - **Footprint not found when placing a part:** the standard KiCad footprint libraries
-  (`Resistor_SMD`, `Capacitor_SMD`, `Capacitor_Tantalum_SMD`, `Inductor_SMD`) need to be
-  in your footprint library table under their default nicknames.
+  need to be in your footprint library table under their default nicknames.
 
 For more cases, see the troubleshooting table in [SETUP_DB.md](SETUP_DB.md#12-troubleshooting).

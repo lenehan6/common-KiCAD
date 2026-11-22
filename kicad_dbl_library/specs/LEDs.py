@@ -6,8 +6,11 @@ OSRAM, Rohm; parts with <1000 pcs on DigiKey Cut Tape rank after well-stocked on
 Amber only where a stocked part exists (0603/0805).
 
 Symbol Device:LED (1=K 2=A); KiCad LED_SMD footprints have pad 1 = cathode, so Pinout is
-"1=K 2=A". Pinout_Source = datasheet + cathode-mark note once the datasheet has been read
-(VERIFIED below); otherwise it starts with "UNVERIFIED".
+"1=K 2=A". Only parts whose datasheet was downloaded and read are accepted (VERIFIED below:
+datasheet page with numbered terminals 1/2 and a diode symbol whose bar = cathode is on
+terminal 1). Würth (we-online.com) and Lite-On (optoelectronics.liteon.com) refuse automated
+datasheet downloads, so their parts are not accepted; slots without a verified part are gaps
+(0603/0805 Amber, 0805 White -> rows set Obsolete 2026-11-22).
 """
 from _common import pkg_is, mfr_rank, num
 from dk_client import https
@@ -32,10 +35,27 @@ PICK = {
     ("0603", "Orange"): ["APT1608SECK"], ("0603", "Blue"): ["APT1608QBC/D"], ("0603", "White"): ["APT1608QWF/D"],
     ("0805", "Red"): ["APT2012SURCK"], ("0805", "Green"): ["APT2012CGCK"], ("0805", "Yellow"): ["APT2012SYCK"],
     ("0805", "Orange"): ["APT2012SECK"], ("0805", "Blue"): ["APT2012QBC/D"],
-    ("0603", "Amber"): ["150060AS75000"], ("0805", "Amber"): ["150080AS75000"],
+    ("0402", "White"): ["APG1005VWF-A1-5MAV"],
 }
 PINOUT = "1=K 2=A"
-VERIFIED = {}  # MPN -> "datasheet URL p.N: cathode mark ..." once read
+# Datasheets read 2026-11-22 (Kingbright SPEC PDFs, page 1 'PACKAGE DIMENSIONS'): terminals drawn
+# and numbered 1 / 2 on the package outline, circuit symbol "1 -|<- 2" (bar = cathode on terminal 1);
+# APT parts additionally show the polarity mark pointing at terminal 1.
+_KB = "https://www.kingbrightusa.com/images/catalog/SPEC/"
+_KB_Q = (" p.1 Package Dimensions: terminals numbered 1/2 on outline, symbol '1 -|<- 2' "
+         "(cathode bar at terminal 1) -> terminal 1 = K = KiCad pad 1")
+_KB_QP = _KB_Q + "; polarity mark at terminal 1"
+VERIFIED = {mpn: _KB + f + (_KB_QP if mpn.startswith("APT") else _KB_Q) for mpn, f in (
+    ("APHHS1005QBC/D", "APHHS1005QBC-D.pdf"), ("APHHS1005CGCK", "APHHS1005CGCK.pdf"),
+    ("APHHS1005SECK", "APHHS1005SECK.pdf"), ("APHHS1005SYCK", "APHHS1005SYCK.pdf"),
+    ("APG1005SEC/E-T", "APG1005SEC-E-T.pdf"), ("APG1005VWF-A1-5MAV", "APG1005VWF-A1-5MAV.pdf"),
+    ("APT1608QBC/D", "APT1608QBC-D.pdf"), ("APT1608CGCK", "APT1608CGCK.pdf"),
+    ("APT1608SECK", "APT1608SECK.pdf"), ("APT1608SURCK", "APT1608SURCK.pdf"),
+    ("APT1608SYCK", "APT1608SYCK.pdf"), ("APT1608QWF/D", "APT1608QWF-D.pdf"),
+    ("APT2012QBC/D", "APT2012QBC-D.pdf"), ("APT2012CGCK", "APT2012CGCK.pdf"),
+    ("APT2012SECK", "APT2012SECK.pdf"), ("APT2012SURCK", "APT2012SURCK.pdf"),
+    ("APT2012SYCK", "APT2012SYCK.pdf"))}
+REQUIRE_VERIFIED = True
 
 
 def slots():
@@ -48,6 +68,8 @@ def accept(sp, slot):
     if not pkg_is(sp, slot["size"]) or (p.get("Color") or "") != slot["colour"]:
         return False
     if (p.get("Configuration") or "") != "Standard":
+        return False
+    if REQUIRE_VERIFIED and sp["mpn"] not in VERIFIED:
         return False
     it = num(p.get("Current - Test"), "A")
     lo = 0.005 if slot["colour"] == "White" else 0.02

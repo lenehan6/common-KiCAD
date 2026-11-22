@@ -1,0 +1,18 @@
+name: Validate parts database
+
+on:
+  push:
+  pull_request:
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Build parts.sqlite from seed/generated
+        run: python kicad_dbl_library/init_db.py
+      - name: Validate database and company_parts.kicad_dbl (offline)
+        run: python tools/validate.py

@@ -143,7 +143,8 @@ def pick(spec, cands, slot, exclude=()):
 def finish_row(row, sp, var):
     row.setdefault("Manufacturer", sp["mfr"])
     row.setdefault("MPN", sp["mpn"])
-    row.setdefault("Datasheet", dk_client.https(sp.get("datasheet")))
+    if not row.get("Datasheet"):
+        row["Datasheet"] = dk_client.https(sp.get("datasheet")) or sp.get("url")  # DigiKey page if no datasheet
     row.update(Supplier="DigiKey", Supplier_PN=var["dkpn"], DK_Status=sp["status"],
                DK_Stock=int(var.get("qty") or 0), DK_Checked=dt.date.today().isoformat())
     row.setdefault("Status", "Active")

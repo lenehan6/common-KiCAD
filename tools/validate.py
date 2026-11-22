@@ -82,15 +82,19 @@ SIZED_TABLES = {  # tables whose Package must be one of these and appear in the 
 }
 
 # Pin-name aliases: each set is one canonical meaning.
-_ALIASES = [
-    {"K", "CATHODE", "KATHODE"}, {"A", "ANODE"},
-    {"G", "GATE"}, {"S", "SOURCE"}, {"D", "DRAIN"},
-    {"B", "BASE"}, {"E", "EMITTER"}, {"C", "COLLECTOR"},
-    {"IN", "VIN", "VI", "INPUT"}, {"OUT", "VOUT", "VO", "OUTPUT"},
-    {"GND", "VSS", "EP", "PAD", "EPAD", "TAB", "THERMALPAD", "GNDPAD"},
-    {"EN", "ENABLE", "CE"}, {"NC", "DNC", "N.C."}, {"SNS", "SENSE", "FB"},
+_ALIASES = [  # first entry is the canonical name
+    ("K", "CATHODE", "KATHODE"), ("A", "ANODE"),
+    ("G", "GATE"), ("S", "SOURCE"), ("D", "DRAIN"),
+    ("B", "BASE"), ("E", "EMITTER"), ("C", "COLLECTOR"),
+    ("IN", "VIN", "VI", "INPUT"), ("OUT", "VOUT", "VO", "OUTPUT"),
+    ("GND", "VSS", "EP", "PAD", "EPAD", "TAB", "THERMALPAD", "GNDPAD"),
+    ("EN", "ENABLE", "CE"), ("NC", "DNC", "N.C."), ("SNS", "SENSE", "FB"),
 ]
-ALIAS = {n: min(s) for s in _ALIASES for n in s}
+ALIAS = {n: s[0] for s in _ALIASES for n in s}
+# DigiKey part-number suffix convention, used when a PN is not in the cache.
+DK_SUFFIX_PKG = (("DKR-ND", "Digi-Reel (from PN suffix)"), ("-6-ND", "Digi-Reel (from PN suffix)"),
+                 ("TR-ND", "Tape & Reel (from PN suffix)"), ("-2-ND", "Tape & Reel (from PN suffix)"),
+                 ("CT-ND", "Cut Tape (from PN suffix)"), ("-1-ND", "Cut Tape (from PN suffix)"))
 PIN_TOKEN = re.compile(r"^(\d+)(\([^)]*\))?=(\S+)$")
 
 
@@ -345,8 +349,9 @@ def check_pinout(t, r, names, rep):
             continue
         if have.upper() in ("A1", "A2") and norm_pin(want) in ("K", "A"):
             # e.g. Diode:SMAJxxA is drawn unidirectional (bar on pin 1) but its pins are named A1/A2
-            rep.warn(t, f"{pid}: symbol {r['Symbol']} names pin {no} '{have}', polarity {want} not checkable by name")
-            continue
+            rep.warn(t, f"{pid}: symbol {r['Symbol']} names its pins A1/A2, so Pinout '{pin_text}' "
+                        f"is not checkable by name (check the symbol graphic)")
+            break
         if norm_pin(have) != norm_pin(want):
             rep.err(t, f"{pid}: Pinout says pin {no}={want} but symbol {r['Symbol']} has pin {no}={have} "
                        f"(symbol pins: {' '.join(f'{k}={v}' for k, v in pins.items())})")
@@ -428,6 +433,8 @@ def check_rows(rows_by_table, names, dk_pkg, rep):
                 rep.err(t, f"{pid}: Supplier_PN {spn} does not end in -ND")
             if spn and dk_pkg is not None:
                 pk = dk_pkg.get(spn)
+                if pk is None:
+                    pk = next((p for suf, p in DK_SUFFIX_PKG if spn.endswith(suf)), None)
                 if pk is None:
                     rep.warn(t, f"{pid}: Supplier_PN {spn} not in DigiKey cache (packaging unknown)")
                 elif any(b in pk for b in BAD_PACKAGING):
@@ -535,7 +542,9 @@ def main():
         else:  # group by kind, a few examples each
             kinds = collections.defaultdict(list)
             for w in rep.warnings:
-                kinds[re.sub(r"[A-Za-z0-9_]+-[A-Za-z0-9_.+-]+|\d+", "#", w)[:70]].append(w)
+                head, _, msg = w.partition(": ")
+                msg = msg.split(": ", 1)[-1]
+                kinds[(head, re.sub(r"'[^']*'|\S*\d\S*", "#", msg))].append(w)
             for _, ws in sorted(kinds.items(), key=lambda kv: -len(kv[1])):
                 for w in ws[:3]:
                     print("  WARN", w)

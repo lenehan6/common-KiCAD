@@ -1,1 +1,8 @@
-{}
+{
+ "USB-C16-GCT": {
+  "Review_Date": "2026-11-22",
+  "Review_Notes": "pinout checked vs USB4105 drawing",
+  "Review_Status": "Approved",
+  "Reviewed_By": "TEST"
+ }
+}

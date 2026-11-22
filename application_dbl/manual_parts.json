@@ -1,0 +1,10 @@
+[
+ {
+  "Symbol": "Connector:USB_C_Receptacle_USB2.0_16P",
+  "MPN": "USB4110-GF-A",
+  "Table": "Connectors_USB",
+  "Added_By": "TEST",
+  "Added_Date": "2026-11-22",
+  "Footprint": "Connector_USB:USB_C_Receptacle_GCT_USB4110"
+ }
+]

@@ -5,7 +5,13 @@ For every row in every table (seed.schema.TABLES) the MPN is looked up with the
 DigiKey Product Information API v4 ("productdetails"). Supplier_PN (Cut Tape
 DigiKey part number), DK_Status, DK_Stock and DK_Checked are updated, and
 Datasheet is filled in when empty. With --prune, rows whose MPN is unknown,
-obsolete/discontinued, or out of stock everywhere are deleted.
+obsolete/discontinued, or out of stock everywhere are marked Status='Obsolete'
+(rows are never deleted).
+
+NOTE: this is an ad-hoc spot check that edits parts.sqlite in place; the next
+init_db.py run rebuilds the file from seed/generated/*.json and discards those
+edits. The maintained refresh path is ``tools/build_commodity.py all --refresh``
+(see MAINTAINING.md).
 
 Credentials are read ONLY from the environment:
     DIGIKEY_CLIENT_ID, DIGIKEY_CLIENT_SECRET
@@ -152,8 +158,8 @@ def pick_variation(product):
     for v in vars_:
         if "cut tape" in ((v.get("PackageType") or {}).get("Name") or "").lower():
             return v
-    for v in vars_:
-        if "digi-reel" not in ((v.get("PackageType") or {}).get("Name") or "").lower():
+    for v in vars_:  # never Tape & Reel / Digi-Reel (see MAINTAINING.md, Cut Tape/Bulk rule)
+        if "bulk" in ((v.get("PackageType") or {}).get("Name") or "").lower():
             return v
     return None
 
@@ -235,7 +241,8 @@ def run(args, client, conn, today=None):
                     pruned.append((table, part_id, mpn, reason))
                     print("  %-28s %-24s PRUNE: %s%s" % (part_id, mpn, reason, rem))
                     if not args.dry_run:
-                        conn.execute('DELETE FROM "%s" WHERE Part_ID = ?' % table, (part_id,))
+                        conn.execute('UPDATE "%s" SET "Status" = \'Obsolete\' WHERE Part_ID = ?' % table,
+                                     (part_id,))
                     stats["pruned"] += 1
                     continue
                 if product is None:
@@ -301,7 +308,7 @@ def parse_args(argv=None):
     p.add_argument("--limit", type=int, metavar="N", help="check at most N rows")
     p.add_argument("--dry-run", action="store_true", help="query the API but do not write to the DB")
     p.add_argument("--prune", action="store_true",
-                   help="delete rows that 404, are Obsolete/Discontinued, or have no stock anywhere")
+                   help="mark rows Status=Obsolete that 404, are Obsolete/Discontinued, or have no stock anywhere")
     p.add_argument("--delay", type=float, default=0.6, help="seconds to sleep between calls (default 0.6)")
     p.add_argument("--reserve", type=int, default=20,
                    help="stop when API quota remaining drops below this (default 20)")

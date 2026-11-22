@@ -2480,6 +2480,12 @@
     "1": "1"
    }
   },
+  "Connector_Generic:Conn_01x01": {
+   "extends": null,
+   "pins": {
+    "1": "Pin_1"
+   }
+  },
   "Connector_Generic:Conn_01x02": {
    "extends": null,
    "pins": {
@@ -2782,6 +2788,13 @@
     "7": "Pin_7",
     "8": "Pin_8",
     "9": "Pin_9"
+   }
+  },
+  "Connector_Generic:Conn_02x01": {
+   "extends": null,
+   "pins": {
+    "1": "Pin_1",
+    "2": "Pin_2"
    }
   },
   "Connector_Generic:Conn_02x02_Odd_Even": {

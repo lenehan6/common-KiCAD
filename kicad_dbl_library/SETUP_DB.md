@@ -1,7 +1,8 @@
 # Setting up the Company Parts database library
 
-This guide covers installing, connecting and maintaining the KiCad database library
-in this folder (`company_parts.kicad_dbl` + `parts.sqlite`). It covers **Windows** first,
+This guide covers installing and connecting the KiCad database library in this folder
+(`company_parts.kicad_dbl` + `parts.sqlite`). For maintainer tasks (adding parts, the
+monthly DigiKey refresh, retiring parts, validation), see [MAINTAINING.md](MAINTAINING.md). It covers **Windows** first,
 because that's the target OS, followed by short sections for [macOS](#macos) and
 [Linux](#linux).
 
@@ -34,9 +35,24 @@ because that's the target OS, followed by short sections for [macOS](#macos) and
 | **SQLite ODBC driver, 64-bit** | Using the library | See step 2. Its bitness must match KiCad's. |
 | **Python 3.9+** | Only for rebuilding or refreshing the DB | Not needed just to *use* the parts. `parts.sqlite` ships ready-made. |
 
-The library uses only KiCad's standard symbol libraries (`Device`) and footprint
-libraries (`Resistor_SMD`, `Capacitor_SMD`, `Inductor_SMD`, ...), so you don't need any
-custom libraries.
+The library uses only KiCad's **standard** symbol and footprint libraries, so you don't
+need any custom libraries. These default **symbol** libraries must be present and
+**enabled** in *Preferences → Manage Symbol Libraries*, under their default nicknames:
+
+`Device`, `Diode`, `Transistor_FET`, `Transistor_BJT`, `Regulator_Linear`,
+`Connector_Generic`, `Switch`, `Connector`, `Power_Protection`
+
+If one of them is disabled, parts that use it are placed as **text only, with no symbol
+body** (see [Troubleshooting](#12-troubleshooting)). The default footprint libraries
+(`Resistor_SMD`, `Capacitor_SMD`, `Capacitor_Tantalum_SMD`, `Inductor_SMD`, `Diode_SMD`,
+`LED_SMD`, `Fuse`, `Package_TO_SOT_SMD`, `Package_SON`, `Button_Switch_SMD`,
+`Connector_PinHeader_2.54mm`, `Connector_PinHeader_1.27mm`, `Connector_IDC`,
+`TestPoint`) must be in the footprint library table.
+
+Transistors and regulators use pin-order-specific symbols (for example
+`Transistor_FET:2N7002`, `Transistor_BJT:BC817`, `Transistor_FET:Q_NMOS_GSD`). The generic
+`Device:Q_*` symbols are not used, because their pin order doesn't have to match the
+package.
 
 ### 2. Install the SQLite ODBC driver
 
@@ -78,7 +94,7 @@ To confirm that the database file itself is readable, you can run this optional 
 (it needs Python):
 
 ```powershell
-python -c "import sqlite3; c=sqlite3.connect('parts.sqlite'); print(c.execute('select count(*) from Capacitors_Ceramic').fetchone())"
+python -c "import sqlite3; c=sqlite3.connect('parts.sqlite'); print(c.execute('select count(*) from Capacitors_Ceramic_Active').fetchone())"
 ```
 
 ### 5. Place the library folder
@@ -111,25 +127,47 @@ python -c "import sqlite3; c=sqlite3.connect('parts.sqlite'); print(c.execute('s
 ### 7. Confirm it works
 
 1. Open the Schematic Editor and press **A** (*Add Symbol*) to open the Symbol Chooser.
-2. Expand **Company_Parts**. It should list these 11 categories:
+2. Expand **Company_Parts**. It should list these 27 categories. Each one reads the
+   `<Table>_Active` view, which hides parts with `Status = Obsolete`:
 
-   | Library (in KiCad) | Table |
+   | Library (in KiCad) | Table (view) |
    |---|---|
-   | Resistors - Thin Film 0.1% Precision | `Resistors_ThinFilm_Precision` |
-   | Resistors - Thin Film 1% | `Resistors_ThinFilm_1pct` |
-   | Resistors - Thick Film 5% | `Resistors_ThickFilm` |
-   | Capacitors - Ceramic | `Capacitors_Ceramic` |
-   | Capacitors - RF 0402 C0G | `Capacitors_RF` |
-   | Capacitors - Bulk | `Capacitors_Bulk` |
-   | Capacitors - Tantalum 50V | `Capacitors_Tantalum` |
-   | Capacitors - Electrolytic 50V | `Capacitors_Electrolytic` |
-   | Inductors | `Inductors` |
-   | Inductors - RF 0402 | `Inductors_RF` |
-   | Ferrite Beads | `Ferrite_Beads` |
+   | Resistors - Thin Film 0.1% Precision | `Resistors_ThinFilm_Precision` (`Resistors_ThinFilm_Precision_Active`) |
+   | Resistors - Thin Film 1% | `Resistors_ThinFilm_1pct` (`Resistors_ThinFilm_1pct_Active`) |
+   | Resistors - Thick Film 5% | `Resistors_ThickFilm` (`Resistors_ThickFilm_Active`) |
+   | Capacitors - Ceramic | `Capacitors_Ceramic` (`Capacitors_Ceramic_Active`) |
+   | Capacitors - RF 0402 C0G | `Capacitors_RF` (`Capacitors_RF_Active`) |
+   | Capacitors - Bulk | `Capacitors_Bulk` (`Capacitors_Bulk_Active`) |
+   | Capacitors - Tantalum 50V | `Capacitors_Tantalum` (`Capacitors_Tantalum_Active`) |
+   | Capacitors - Electrolytic 50V | `Capacitors_Electrolytic` (`Capacitors_Electrolytic_Active`) |
+   | Inductors | `Inductors` (`Inductors_Active`) |
+   | Inductors - RF 0402 | `Inductors_RF` (`Inductors_RF_Active`) |
+   | Ferrite Beads | `Ferrite_Beads` (`Ferrite_Beads_Active`) |
+   | Diodes - Signal | `Diodes_Signal` (`Diodes_Signal_Active`) |
+   | Diodes - Schottky | `Diodes_Schottky` (`Diodes_Schottky_Active`) |
+   | Diodes - Zener | `Diodes_Zener` (`Diodes_Zener_Active`) |
+   | Diodes - TVS | `Diodes_TVS` (`Diodes_TVS_Active`) |
+   | ESD Protection | `ESD_Protection` (`ESD_Protection_Active`) |
+   | LEDs | `LEDs` (`LEDs_Active`) |
+   | Transistors - MOSFET Small Signal | `MOSFETs_SmallSignal` (`MOSFETs_SmallSignal_Active`) |
+   | Transistors - BJT Small Signal | `BJTs_SmallSignal` (`BJTs_SmallSignal_Active`) |
+   | Regulators - LDO | `LDOs` (`LDOs_Active`) |
+   | Fuses - Resettable PTC | `Polyfuses` (`Polyfuses_Active`) |
+   | Fuses - Chip | `Fuses_Chip` (`Fuses_Chip_Active`) |
+   | Switches - Tactile | `Switches_Tactile` (`Switches_Tactile_Active`) |
+   | Headers - 2.54mm | `Headers_2p54mm` (`Headers_2p54mm_Active`) |
+   | Headers - 1.27mm | `Headers_1p27mm` (`Headers_1p27mm_Active`) |
+   | Headers - IDC Shrouded | `Headers_IDC_Shrouded` (`Headers_IDC_Shrouded_Active`) |
+   | Test Points | `TestPoints` (`TestPoints_Active`) |
+
+   The chooser also shows a **Status** column. *Deprecated* parts still work, but don't
+   use them in new designs; their `Superseded_By` names the replacement.
 
 3. Place any part, then open its properties (**E**). Check that:
    - **Value**, **MPN**, **Manufacturer**, **Supplier** and **Supplier PN** are filled in.
    - A **footprint** is assigned, for example `Resistor_SMD:R_0402_1005Metric`.
+   - The **symbol body** is drawn. If you see only text, a standard symbol library is
+     disabled (see [Troubleshooting](#12-troubleshooting)).
    - The datasheet link opens.
 
 ### 8. BOM tips
@@ -142,43 +180,29 @@ the DigiKey part number column for the DigiKey BOM upload.
 
 ### 9. Rebuilding the database
 
-Only needed after you edit the part data in `seed/*.py`:
+`parts.sqlite` is generated from `seed/generated/*.json`. Only rebuild it after you've
+pulled or made data changes. Run this from the repository root:
 
 ```powershell
-cd C:\KiCad\common-KiCAD\kicad_dbl_library
-python init_db.py
+cd C:\KiCad\common-KiCAD
+python kicad_dbl_library\init_db.py
+python tools\validate.py
 ```
 
-This deletes and regenerates `parts.sqlite`. Close KiCad first, or at least close the
-Symbol Chooser, so the file isn't locked.
+This deletes and regenerates `parts.sqlite`, including the 27 tables and their
+`*_Active` views. Close KiCad first, or at least close the Symbol Chooser, so the file
+isn't locked. `validate.py` should end with `0 errors`.
 
 ### 10. Refreshing DigiKey data
 
-`digikey_enrich.py` refreshes DigiKey part numbers, stock, product status and
-datasheet links. You need a DigiKey API application (developer.digikey.com,
-*Product Information v4*, production) that uses client credentials. The script reads
-the credentials **only from environment variables**.
+The monthly refresh is a maintainer task, documented in
+[MAINTAINING.md](MAINTAINING.md#5-monthly-refresh). It uses
+`tools/build_commodity.py all --refresh` with `DIGIKEY_CLIENT_ID` /
+`DIGIKEY_CLIENT_SECRET` set as environment variables. **Never commit credentials.**
+Don't put them in scripts, `.kicad_dbl` files or the repository.
 
-```powershell
-$env:DIGIKEY_CLIENT_ID="..."
-$env:DIGIKEY_CLIENT_SECRET="..."
-
-python digikey_enrich.py --dry-run                  # query only; the DB isn't changed
-python digikey_enrich.py                            # update rows in place
-python digikey_enrich.py --prune --dry-run          # preview which parts would be removed
-python digikey_enrich.py --prune                    # also delete dead / out-of-stock parts
-python digikey_enrich.py --only-unchecked           # continue where a previous run stopped
-python digikey_enrich.py --tables Capacitors_Tantalum Capacitors_Electrolytic
-```
-
-- **Rate limit:** about **1000 API calls per day**, one call per part. The script stops
-  when the remaining quota drops below `--reserve` (default 20). Continue the next day
-  with `--only-unchecked` or `--older-than DAYS`.
-- `--prune` deletes rows whose MPN is unknown to DigiKey, Obsolete/Discontinued, or out
-  of stock everywhere. `init_db.py` brings seeded rows back, so to keep a part removed,
-  delete it from (or fix it in) `seed/*.py` too.
-- **Never commit credentials.** Don't put them in scripts, `.kicad_dbl` files or the
-  repository. Set them per session as shown above, or as user environment variables.
+Parts are never deleted. A part that DigiKey no longer stocks becomes *Deprecated*, and
+a replacement row is added and linked through `Superseded_By`.
 
 ### 11. Updating KiCad after database changes
 
@@ -199,8 +223,10 @@ use **Tools → Update Symbols from Library**.
 | *"Data source name not found and no default driver specified"* / driver not found | Driver name mismatch, or 32-bit driver with 64-bit KiCad | Check the **ODBC Data Sources (64-bit)** Drivers tab (step 3). Install `sqliteodbc_w64.exe`. Make `Driver={...}` match the installed name exactly. |
 | Library loads but the categories are empty | KiCad can't find or open `parts.sqlite` | Keep it next to the `.kicad_dbl` (that's what `${CWD}` resolves to). Check that the file exists (run `init_db.py`), isn't locked by another program or in an online-only sync folder. To test, replace `${CWD}` with an absolute path such as `Database=C:/KiCad/.../parts.sqlite;`. |
 | Library missing or shown with an error icon | Wrong format or path in the library table | Check that **Library Format** is *Database* and the path or path variable is correct. |
+| Placed part shows only text (Reference/Value), no symbol body | The symbol's standard library (`Device`, `Diode`, `Transistor_FET`, `Transistor_BJT`, `Regulator_Linear`, `Connector_Generic`, `Switch`, `Connector`, `Power_Protection`) is disabled or missing in the symbol library table, so KiCad can't resolve e.g. `Device:R` | In **Preferences → Manage Symbol Libraries**, enable the library (tick *Active*), or add it back from KiCad's default `sym-lib-table` under its default nickname. Then use **Tools → Update Symbols from Library** in existing schematics. |
+| A part you used before is missing from the chooser | It was retired as *Obsolete* (hidden by the `*_Active` view) | Placed copies keep working. Check `Superseded_By` for the replacement in `parts.sqlite`. |
 | Some fields are missing or blank on placed parts | A `column` in the `.kicad_dbl` doesn't match a column in the DB, or the value is empty | Column names are case-sensitive and must match `seed/schema.py`. Rebuild the DB if you've changed the schema. |
-| Footprint "not found" when placing | Standard footprint libraries aren't in your footprint table under their default nicknames | Add `Resistor_SMD`, `Capacitor_SMD`, `Inductor_SMD` (and `Capacitor_Tantalum_SMD` for polarized caps) through **Manage Footprint Libraries**. |
+| Footprint "not found" when placing | Standard footprint libraries aren't in your footprint table under their default nicknames | Add the missing library (see [Prerequisites](#1-prerequisites) for the list) through **Manage Footprint Libraries**. |
 | Slow loading or timeouts | Slow network drive | Copy the folder to a local disk, or increase `"timeout_seconds"` in the `source` section of the `.kicad_dbl`. |
 | Changes not visible | KiCad cache | Restart KiCad (step 11). |
 

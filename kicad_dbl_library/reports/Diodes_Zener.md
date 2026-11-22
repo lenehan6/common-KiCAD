@@ -1,0 +1,66 @@
+# Diodes_Zener
+
+Built 2026-11-21: 58 rows, 1835 candidates, 0 gaps.
+
+## Changes
+- added D-ZEN-SOD123-2V4 BZT52C2V4-E3-08 (Vishay General Semiconductor - Diodes Division) 112-BZT52C2V4-E3-08CT-ND
+- added D-ZEN-SOD123-2V7 BZT52C2V7-E3-08 (Vishay General Semiconductor - Diodes Division) 112-BZT52C2V7-E3-08CT-ND
+- added D-ZEN-SOD123-3V0 BZT52C3V0-E3-08 (Vishay General Semiconductor - Diodes Division) 112-BZT52C3V0-E3-08CT-ND
+- added D-ZEN-SOD123-3V3 BZT52C3V3-E3-08 (Vishay General Semiconductor - Diodes Division) BZT52C3V3-E3-08GICT-ND
+- added D-ZEN-SOD123-3V6 BZT52C3V6-E3-08 (Vishay General Semiconductor - Diodes Division) 112-BZT52C3V6-E3-08CT-ND
+- added D-ZEN-SOD123-3V9 BZT52C3V9-E3-08 (Vishay General Semiconductor - Diodes Division) BZT52C3V9-E3-08CT-ND
+- added D-ZEN-SOD123-4V3 BZT52C4V3-E3-18 (Vishay General Semiconductor - Diodes Division) 112-BZT52C4V3-E3-18CT-ND
+- added D-ZEN-SOD123-4V7 BZT52C4V7-G3-08 (Vishay General Semiconductor - Diodes Division) 112-BZT52C4V7-G3-08CT-ND
+- added D-ZEN-SOD123-5V1 BZT52C5V1-G3-08 (Vishay General Semiconductor - Diodes Division) 112-BZT52C5V1-G3-08CT-ND
+- added D-ZEN-SOD123-5V6 BZT52C5V6-G3-08 (Vishay General Semiconductor - Diodes Division) 112-BZT52C5V6-G3-08CT-ND
+- added D-ZEN-SOD123-6V2 BZT52C6V2-G3-08 (Vishay General Semiconductor - Diodes Division) 112-BZT52C6V2-G3-08CT-ND
+- added D-ZEN-SOD123-6V8 BZT52C6V8-G3-08 (Vishay General Semiconductor - Diodes Division) 112-BZT52C6V8-G3-08CT-ND
+- added D-ZEN-SOD123-7V5 BZT52C7V5-G3-08 (Vishay General Semiconductor - Diodes Division) 112-BZT52C7V5-G3-08CT-ND
+- added D-ZEN-SOD123-8V2 BZT52C8V2-G3-08 (Vishay General Semiconductor - Diodes Division) 112-BZT52C8V2-G3-08CT-ND
+- added D-ZEN-SOD123-9V1 BZT52C9V1-E3-08 (Vishay General Semiconductor - Diodes Division) 112-BZT52C9V1-E3-08CT-ND
+- added D-ZEN-SOD123-10V BZT52C10-E3-08 (Vishay General Semiconductor - Diodes Division) BZT52C10-E3-08GICT-ND
+- added D-ZEN-SOD123-11V BZT52C11-E3-08 (Vishay General Semiconductor - Diodes Division) 112-BZT52C11-E3-08CT-ND
+- added D-ZEN-SOD123-12V BZT52C12-G3-08 (Vishay General Semiconductor - Diodes Division) 112-BZT52C12-G3-08CT-ND
+- added D-ZEN-SOD123-13V BZT52C13-E3-08 (Vishay General Semiconductor - Diodes Division) 112-BZT52C13-E3-08CT-ND
+- added D-ZEN-SOD123-15V BZT52C15-G3-08 (Vishay General Semiconductor - Diodes Division) 112-BZT52C15-G3-08CT-ND
+- added D-ZEN-SOD123-16V BZT52C16-G3-08 (Vishay General Semiconductor - Diodes Division) 112-BZT52C16-G3-08CT-ND
+- added D-ZEN-SOD123-18V BZT52C18-G3-08 (Vishay General Semiconductor - Diodes Division) 112-BZT52C18-G3-08CT-ND
+- added D-ZEN-SOD123-20V BZT52C20-E3-08 (Vishay General Semiconductor - Diodes Division) BZT52C20-E3-08GICT-ND
+- added D-ZEN-SOD123-22V BZT52C22-E3-08 (Vishay General Semiconductor - Diodes Division) 112-BZT52C22-E3-08CT-ND
+- added D-ZEN-SOD123-24V BZT52C24-G3-08 (Vishay General Semiconductor - Diodes Division) 112-BZT52C24-G3-08CT-ND
+- added D-ZEN-SOD123-27V BZT52C27-E3-08 (Vishay General Semiconductor - Diodes Division) BZT52C27-E3-08GICT-ND
+- added D-ZEN-SOD123-30V MMSZ5256B-E3-08 (Vishay General Semiconductor - Diodes Division) 112-MMSZ5256B-E3-08CT-ND
+- added D-ZEN-SOD123-33V BZT52C33-E3-08 (Vishay General Semiconductor - Diodes Division) BZT52C33-E3-08GICT-ND
+- added D-ZEN-SOD123-36V MMSZ5258B-E3-08 (Vishay General Semiconductor - Diodes Division) 112-MMSZ5258B-E3-08CT-ND
+- added D-ZEN-SOD323-2V4 BZX384C2V4-G3-08 (Vishay General Semiconductor - Diodes Division) 112-BZX384C2V4-G3-08CT-ND
+- added D-ZEN-SOD323-2V7 BZX384C2V7-E3-08 (Vishay General Semiconductor - Diodes Division) 112-BZX384C2V7-E3-08CT-ND
+- added D-ZEN-SOD323-3V0 BZX384C3V0-G3-08 (Vishay General Semiconductor - Diodes Division) 112-BZX384C3V0-G3-08CT-ND
+- added D-ZEN-SOD323-3V3 BZX384C3V3-E3-18 (Vishay General Semiconductor - Diodes Division) BZX384C3V3-E3-18GICT-ND
+- added D-ZEN-SOD323-3V6 BZX384C3V6-G3-08 (Vishay General Semiconductor - Diodes Division) 112-BZX384C3V6-G3-08CT-ND
+- added D-ZEN-SOD323-3V9 BZX384C3V9-E3-08 (Vishay General Semiconductor - Diodes Division) 112-BZX384C3V9-E3-08CT-ND
+- added D-ZEN-SOD323-4V3 BZX384C4V3-E3-08 (Vishay General Semiconductor - Diodes Division) 112-BZX384C4V3-E3-08CT-ND
+- added D-ZEN-SOD323-4V7 BZX384C4V7-E3-08 (Vishay General Semiconductor - Diodes Division) BZX384C4V7-E3-08GICT-ND
+- added D-ZEN-SOD323-5V1 BZX384C5V1-G3-08 (Vishay General Semiconductor - Diodes Division) BZX384C5V1-G3-08GICT-ND
+- added D-ZEN-SOD323-5V6 BZX384C5V6-G3-08 (Vishay General Semiconductor - Diodes Division) BZX384C5V6-G3-08GICT-ND
+- added D-ZEN-SOD323-6V2 BZX384C6V2-E3-08 (Vishay General Semiconductor - Diodes Division) 112-BZX384C6V2-E3-08CT-ND
+- added D-ZEN-SOD323-6V8 BZX384C6V8-E3-08 (Vishay General Semiconductor - Diodes Division) BZX384C6V8-E3-08GICT-ND
+- added D-ZEN-SOD323-7V5 BZX384B7V5-E3-18 (Vishay General Semiconductor - Diodes Division) BZX384B7V5-E3-18GICT-ND
+- added D-ZEN-SOD323-8V2 BZX384C8V2-G3-08 (Vishay General Semiconductor - Diodes Division) 112-BZX384C8V2-G3-08CT-ND
+- added D-ZEN-SOD323-9V1 BZX384C9V1-G3-08 (Vishay General Semiconductor - Diodes Division) 112-BZX384C9V1-G3-08CT-ND
+- added D-ZEN-SOD323-10V BZX384C10-E3-18 (Vishay General Semiconductor - Diodes Division) BZX384C10-E3-18GICT-ND
+- added D-ZEN-SOD323-11V BZX384-C11,115 (Nexperia USA Inc.) 1727-BZX384-C11,115CT-ND
+- added D-ZEN-SOD323-12V BZX384C12-E3-08 (Vishay General Semiconductor - Diodes Division) BZX384C12-E3-08GICT-ND
+- added D-ZEN-SOD323-13V BZX384C13-G3-08 (Vishay General Semiconductor - Diodes Division) 112-BZX384C13-G3-08CT-ND
+- added D-ZEN-SOD323-15V BZX384C15-E3-18 (Vishay General Semiconductor - Diodes Division) BZX384C15-E3-18GICT-ND
+- added D-ZEN-SOD323-16V BZX384C16-E3-18 (Vishay General Semiconductor - Diodes Division) 112-BZX384C16-E3-18CT-ND
+- added D-ZEN-SOD323-18V BZX384C18-E3-08 (Vishay General Semiconductor - Diodes Division) 112-BZX384C18-E3-08CT-ND
+- added D-ZEN-SOD323-20V BZX384C20-G3-08 (Vishay General Semiconductor - Diodes Division) 112-BZX384C20-G3-08CT-ND
+- added D-ZEN-SOD323-22V BZX384C22-E3-08 (Vishay General Semiconductor - Diodes Division) BZX384C22-E3-08GICT-ND
+- added D-ZEN-SOD323-24V BZX384C24-E3-08 (Vishay General Semiconductor - Diodes Division) BZX384C24-E3-08GICT-ND
+- added D-ZEN-SOD323-27V BZX384C27-E3-08 (Vishay General Semiconductor - Diodes Division) BZX384C27-E3-08GICT-ND
+- added D-ZEN-SOD323-30V BZX384C30-E3-08 (Vishay General Semiconductor - Diodes Division) BZX384C30-E3-08GICT-ND
+- added D-ZEN-SOD323-33V BZX384C33-E3-08 (Vishay General Semiconductor - Diodes Division) 112-BZX384C33-E3-08CT-ND
+- added D-ZEN-SOD323-36V BZX384C36-E3-08 (Vishay General Semiconductor - Diodes Division) BZX384C36-E3-08GICT-ND
+
+## Gaps (no eligible stocked part)
+- none

@@ -1,8 +1,10 @@
-"""Shared schema contract for all seed modules.
+"""Shared schema contract for the commodity database.
 
-Every seed module exposes ``ROWS: dict[str, list[dict]]`` mapping a table name
-(from TABLES) to a list of row dicts whose keys are a subset of COLUMNS.
-``Part_ID``, ``Symbol``, ``Footprint`` and ``Value`` are mandatory.
+Row data lives in ``seed/generated/<Table>.json`` (a list of row dicts whose keys
+are a subset of COLUMN_NAMES). Those files are produced by
+``tools/build_commodity.py`` from the selection specs in ``specs/`` and pinned by
+``seed/locks.json``. ``Part_ID``, ``Symbol``, ``Footprint`` and ``Value`` are
+mandatory. Rows are never deleted: retire them with Status/Superseded_By.
 """
 
 COLUMNS = [
@@ -26,6 +28,10 @@ COLUMNS = [
     ("DK_Status",     "TEXT"),          # DigiKey product status (Active, ...)
     ("DK_Stock",      "INTEGER"),       # DigiKey quantity available (CT) at harvest time
     ("DK_Checked",    "TEXT"),          # ISO date the DigiKey data was fetched
+    ("Status",        "TEXT"),          # Active | Deprecated | Obsolete (Obsolete rows are hidden from KiCad)
+    ("Superseded_By", "TEXT"),          # Part_ID of the replacement when Status != Active
+    ("Pinout",        "TEXT"),          # semis: physical pin order, e.g. "1=G 2=S 3=D", "1=K 2=A"
+    ("Pinout_Source", "TEXT"),          # where Pinout was verified (datasheet URL + page, or KiCad stock symbol)
 ]
 COLUMN_NAMES = [c for c, _ in COLUMNS]
 
@@ -41,7 +47,27 @@ TABLES = [
     "Inductors",            # E12 0402 + 0805 (to 100uH) + 1210 (1uH..100uH)
     "Inductors_RF",         # 0402 fine-step RF inductors
     "Ferrite_Beads",        # 22/100/220/330/1k ohm @100MHz, 0402 + 0805
+    "Diodes_Signal",        # small-signal switching diodes, SOD-123/SOD-323
+    "Diodes_Schottky",      # Schottky rectifiers 0.2-3A, 20-60V, SOD-323/SOD-123/SMA
+    "Diodes_Zener",         # Zener E24 2.4-36V, SOD-123/SOD-323
+    "Diodes_TVS",           # TVS SMAJ/SMBJ uni/bi-directional
+    "ESD_Protection",       # low-capacitance ESD diodes / small arrays
+    "LEDs",                 # indicator LEDs, 0402/0603/0805
+    "MOSFETs_SmallSignal",  # SOT-23 N/P-channel
+    "BJTs_SmallSignal",     # SOT-23 NPN/PNP
+    "LDOs",                 # 3.3V and 1.8V LDO regulators (TI preferred)
+    "Polyfuses",            # resettable PTC fuses, Littelfuse preferred
+    "Fuses_Chip",           # fast-acting SMD chip fuses
+    "Switches_Tactile",     # SMD tactile switches
+    "Headers_2p54mm",       # 2.54mm pin headers 1x01..1x20, 2x01..2x20
+    "Headers_1p27mm",       # 1.27mm pin headers 1x01..1x20, 2x01..2x20
+    "Headers_IDC_Shrouded", # shrouded IDC box headers
+    "TestPoints",           # SMD / THT test points
 ]
+
+# KiCad reads these views (Obsolete rows hidden) instead of the raw tables.
+def view_name(table):
+    return f"{table}_Active"
 
 SYMBOLS = {"R": "Device:R", "C": "Device:C", "CP": "Device:C_Polarized", "L": "Device:L", "FB": "Device:FerriteBead"}
 
@@ -92,4 +118,5 @@ FOOTPRINTS_EXTRA = {
 }
 
 SUPPLIER = "DigiKey"
-DK_CHECKED = "2026-11-20"
+import datetime as _dt
+DK_CHECKED = _dt.date.today().isoformat()

@@ -1,5 +1,27 @@
 [
  {
+  "Symbol": "Connector_Generic:Conn_02x03_Odd_Even",
+  "Footprint": "Connector_IDC:IDC-Header_2x03_P2.54mm_Vertical",
+  "Value": "IDC 2x03 P2.54mm",
+  "Package": "THT box header 2x03 2.54mm",
+  "Description": "Shrouded IDC box header 2x03 (6 pins) 2.54mm male vertical THT, polarized",
+  "Keywords": "IDC box header shrouded connector 2.54mm 2x03 6pin vertical THT ribbon",
+  "Rating": "1.75A",
+  "FP_Filter": "IDC*Header*2x03*P2.54mm*",
+  "Pinout": "Odd_Even (1,3,5.. in row A; 2 opposite 1)",
+  "Pinout_Source": "DIN 41651 / IEC 60603-13 numbering (pin 2 across from pin 1) = KiCad IDC-Header footprint (pin 1 square pad, polarization key notch drawn on the long wall at the pin-1 row) + Connector_Generic Odd_Even symbol; check key side vs. cable on first layout; mfr datasheet https://images.salsify.com/image/upload/s--UikA0Djk--/4db46896cdbc051babe175b7457572559ef4946d.pdf,https://images.salsify.com/image/upload/s--PbqHSaW_--/a80aad6611a5445a74db9fca316e51bcc9f49972.pdf",
+  "Manufacturer": "3M",
+  "MPN": "N2506-6002RB",
+  "Datasheet": "https://images.salsify.com/image/upload/s--UikA0Djk--/4db46896cdbc051babe175b7457572559ef4946d.pdf,https://images.salsify.com/image/upload/s--PbqHSaW_--/a80aad6611a5445a74db9fca316e51bcc9f49972.pdf",
+  "Supplier": "DigiKey",
+  "Supplier_PN": "2992-N2506-6002RB-ND",
+  "DK_Status": "Active",
+  "DK_Stock": 8215,
+  "DK_Checked": "2026-11-22",
+  "Status": "Active",
+  "Part_ID": "IDC-2.54-2x03"
+ },
+ {
   "Symbol": "Connector_Generic:Conn_02x04_Odd_Even",
   "Footprint": "Connector_IDC:IDC-Header_2x04_P2.54mm_Vertical",
   "Value": "IDC 2x04 P2.54mm",

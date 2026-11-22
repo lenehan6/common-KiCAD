@@ -3,6 +3,8 @@ THT preferred (Würth WR-PHD, then Samtec FTS/FTSH, then others); SMD only when 
 stocked, and only Samtec FTSH-1xx-xx-x-DV dual-row SMD (its recommended land pattern -
 0.74x2.4mm pads, 3.9mm row-to-row pad centres - is the one KiCad's PinHeader_2xNN_P1.27mm_Vertical_SMD
 uses). Alignment-pin (-A) and locking-clip (-LC) options are excluded (need extra PCB holes).
+Single-column parts carry no pitch at DigiKey; 2x01 is identified by its 1.27mm row spacing, 1x01 by
+a known 1.27mm family MPN. Standard ~3mm mating posts rank ahead of long-post variants.
 Single-row SMD headers are not used (KiCad's Pin1Left/Pin1Right land patterns not verified)."""
 import re
 from _common import mfr_rank
@@ -47,8 +49,9 @@ QUERIES += [dict(keywords=k) for k in (
     'Harwin M50 pin header 1.27mm',
     'Sullins GRPB 1.27mm header',
 )]
-PREFERRED = ["Würth", "Samtec"]
+PREFERRED = ["Würth", "Samtec", "Sullins", "Harwin"]
 PITCH = "1.27"
+FAMILY_1P27 = re.compile(r"^(FTSH?-1\d\d-|GRPB\d|M50-)")
 FTSH_DV = re.compile(r"^FTSH-1\d\d-\d\d-[A-Z]{1,2}-DV(-[A-Z]+)*$")
 
 
@@ -74,7 +77,11 @@ def accept(sp, slot):
     except (TypeError, ValueError):
         return False
     mount = p.get("Mounting Type")
-    ok = (p.get("Contact Type") == "Male Pin" and PITCH in (p.get("Pitch - Mating") or "")
+    pitch = p.get("Pitch - Mating") or "-"
+    # single-column parts have no pitch on DigiKey ("-"): 2x01 is identified by the 1.27mm row spacing
+    # below, 1x01 only when the MPN belongs to a known 1.27mm header family
+    one_col = slot["cols"] == 1 and pitch == "-" and (slot["rows"] == 2 or bool(FAMILY_1P27.match(sp["mpn"])))
+    ok = (p.get("Contact Type") == "Male Pin" and (PITCH in pitch or one_col)
           and rows == slot["rows"] and pos == slot["rows"] * slot["cols"]
           and p.get("Number of Positions Loaded") == "All"
           and (p.get("Shrouding") or "Unshrouded") == "Unshrouded" and _vertical(sp)
@@ -88,7 +95,9 @@ def rank(sp, slot):
     smd = sp["params"].get("Mounting Type") != "Through Hole"
     gold = 0 if "Gold" in (sp["params"].get("Contact Finish - Mating") or "") else 1
     std = 0 if re.search(r"-01-", sp["mpn"]) or "Samtec" not in sp["mfr"] else 1   # Samtec -01- = standard lead style
-    return (int(smd), mfr_rank(sp, PREFERRED), std, gold)
+    m = re.search(r"\(([\d.]+)mm\)", sp["params"].get("Contact Length - Mating") or "")
+    mate = 0 if m and 2.5 <= float(m.group(1)) <= 3.6 else 1   # standard ~3mm mating post (FTS/GRPB/M50)
+    return (int(smd), mfr_rank(sp, PREFERRED), mate, std, gold)
 
 
 def make_row(sp, slot, var):

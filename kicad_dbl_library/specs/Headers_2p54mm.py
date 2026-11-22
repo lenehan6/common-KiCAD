@@ -46,7 +46,9 @@ def accept(sp, slot):
         rows, pos = int(p.get("Number of Rows")), int(p.get("Number of Positions"))
     except (TypeError, ValueError):
         return False
-    ok = (p.get("Contact Type") == "Male Pin" and PITCH in (p.get("Pitch - Mating") or "")
+    pitch = p.get("Pitch - Mating") or "-"
+    # single-column parts (1x01, 2x01) have no pitch on DigiKey ("-"); row spacing / post length decide
+    ok = (p.get("Contact Type") == "Male Pin" and (PITCH in pitch or (slot["cols"] == 1 and pitch == "-"))
           and rows == slot["rows"] and pos == slot["rows"] * slot["cols"]
           and p.get("Number of Positions Loaded") == "All"
           and (p.get("Shrouding") or "Unshrouded") == "Unshrouded"
@@ -54,6 +56,9 @@ def accept(sp, slot):
           and _vertical(sp))
     mate = _mm(p.get("Contact Length - Mating"))
     ok = ok and mate is not None and 5.0 <= mate <= 7.0   # standard mating post (sockets / jumpers)
+    if ok and pitch == "-":   # no pitch given: require the 2.54mm-family ~2.5mm insulator
+        ins = _mm(p.get("Insulation Height"))
+        ok = ins is not None and 2.3 <= ins <= 2.8
     if ok and rows == 2:
         ok = PITCH in (p.get("Row Spacing - Mating") or "")
     return ok

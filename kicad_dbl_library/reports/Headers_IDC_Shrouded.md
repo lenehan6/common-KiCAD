@@ -1,6 +1,6 @@
 # Headers_IDC_Shrouded
 
-Built 2026-11-22: 9 rows, 783 candidates, 5 gaps.
+Built 2026-11-22: 10 rows, 783 candidates, 4 gaps.
 
 ## Cache misses (run online)
 - `Wurth box header 2.54mm`
@@ -20,13 +20,9 @@ Built 2026-11-22: 9 rows, 783 candidates, 5 gaps.
 - `box header 2.54mm 2x20 through hole`
 
 ## Changes
-- added IDC-2.54-2x04 HTST-104-01-L-D (Samtec Inc.) HTST-104-01-L-D-ND
-- added IDC-2.54-2x15 N2530-6002-RB (3M) MHC30K-ND
-- added IDC-2.54-2x17 N2534-6002-RB (3M) MHC34K-ND
-- added IDC-2.54-2x20 N2540-6002-RB (3M) MHC40K-ND
+- added IDC-2.54-2x03 N2506-6002RB (3M) 2992-N2506-6002RB-ND
 
 ## Gaps (no eligible stocked part)
-- IDC-2.54-2x03
 - IDC-2.54-2x06
 - IDC-2.54-2x09
 - IDC-2.54-2x11

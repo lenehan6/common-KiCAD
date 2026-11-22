@@ -2,7 +2,7 @@
 bidirectional (..CA), 5% breakdown tolerance ("A" suffix) only.
 
 Standoff voltages 3.3, 5.0, 6.0, 12, 15, 18, 24, 26, 33, 36, 48, 58V. The MPN must be the
-standard SMxJ<V>[C]A designation (maker suffixes allowed) and DigiKey's standoff voltage,
+standard SMxJ<V>[C]A designation (maker suffixes allowed; see ALT_MPN for the one exception) and DigiKey's standoff voltage,
 peak pulse power and uni/bi channel count must agree.
 Preferred makers Littelfuse, then Vishay, Bourns, onsemi; others fill gaps. Base
 (non-automotive, non-HE3) part numbers first.
@@ -61,9 +61,19 @@ def _auto(sp):
     return (sp["params"].get("Grade") == "Automotive") or bool(re.search(r"(HE3|HM3|-Q|Q1|-AU|-HR)", sp["mpn"]))
 
 
+# Exception: no SMBJ3.3A (5% "A" grade) is stocked; Vishay's low-voltage TRANSZORB SMBJ3V3
+# (3.3V standoff, 600W, unidirectional, DO-214AA) fills the SMB 3.3V uni slot under its own name.
+ALT_MPN = {"TVS-SMB-3V3-UNI": (r"^SMBJ3V3-[EM]3/", "Vishay", "SMBJ3V3")}
+
+
+def _alt(sp, slot):
+    a = ALT_MPN.get(slot["part_id"])
+    return bool(a and re.match(a[0], sp["mpn"]) and a[1].lower() in sp["mfr"].lower())
+
+
 def accept(sp, slot):
     p = sp["params"]
-    if not re.match(rf"^{slot['value'].replace('.', r'[.]')}(?![0-9A-Z])", sp["mpn"]):
+    if not (re.match(rf"^{slot['value'].replace('.', r'[.]')}(?![0-9A-Z])", sp["mpn"]) or _alt(sp, slot)):
         return False
     vrwm = num(p.get("Voltage - Reverse Standoff (Typ)"), "V")
     w = num(p.get("Power - Peak Pulse"), "W")
@@ -97,9 +107,12 @@ def make_row(sp, slot, var):
         sym, pin = "Device:D_Zener", "1=K 2=A"
         src = (f"{ds} (cathode band = pin 1 = K); Device:D_Zener pin1=K/pin2=A (no generic unidirectional TVS "
                f"symbol in KiCad); {fpnote}")
+    value, tol = slot["value"], "5%"
+    if _alt(sp, slot):
+        value, tol = ALT_MPN[slot["part_id"]][2], ""   # Vishay low-voltage part: no "A" 5% Vbr grade
     return dict(
-        Symbol=sym, Footprint=slot["fp"], Value=slot["value"], Package=slot["disp"],
+        Symbol=sym, Footprint=slot["fp"], Value=value, Package=slot["disp"],
         Description=f"TVS diode {d} {v} standoff {slot['w']}W {slot['disp']}, Vbr {vbr} min, Vc {vc}",
-        Keywords=f"TVS transient suppressor {d} {slot['value']} {slot['disp']} {v}",
-        Tolerance="5%", Rating=f"{slot['w']}W {v}", TC_Dielectric=f"Vc {vc}" + (f" @ {ipp}" if ipp else ""),
+        Keywords=f"TVS transient suppressor {d} {value} {slot['disp']} {v}",
+        Tolerance=tol, Rating=f"{slot['w']}W {v}", TC_Dielectric=f"Vc {vc}" + (f" @ {ipp}" if ipp else ""),
         FP_Filter=slot["flt"], Pinout=pin, Pinout_Source=src)

@@ -237,9 +237,10 @@ def slim(p):
 def orderable_variation(sp):
     """Cut Tape first, then Bulk. Never Tape & Reel / Digi-Reel. Returns variation dict or None."""
     for want in ORDERABLE:
-        for v in sp["variations"]:
-            if want in v["pkg"]:
-                return v
+        hits = [v for v in sp["variations"] if want in (v["pkg"] or "")]
+        if hits:
+            stocked = [v for v in hits if (v.get("qty") or 0) > 0]
+            return max(stocked, key=lambda v: v.get("qty") or 0) if stocked else hits[0]
     return None
 
 

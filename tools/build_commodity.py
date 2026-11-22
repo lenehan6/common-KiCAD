@@ -1,7 +1,13 @@
 #!/usr/bin/env python3
 """Spec-driven builder for the commodity database tables.
 
-    python tools/build_commodity.py <Table|all> [--offline] [--refresh] [--budget N]
+    python tools/build_commodity.py <Table|all> [--offline] [--refresh] [--budget N] [--lib DIR]
+
+--lib DIR (default kicad_dbl_library) selects the library folder: specs are read from
+DIR/specs, output goes to DIR/seed/{generated,locks} and DIR/reports, and the column
+list / table list come from DIR/seed/schema.py, or else the single DIR/*_schema.py
+(e.g. application_dbl/app_schema.py). That schema module may also define ORDERABLE,
+the packaging preference used for eligibility (default: Cut Tape, then Bulk).
 
 A spec is a Python module ``kicad_dbl_library/specs/<Table>.py`` that defines:
 
@@ -44,6 +50,39 @@ GEN = os.path.join(LIB, "seed", "generated")
 LOCKS = os.path.join(LIB, "seed", "locks")
 SPECS = os.path.join(LIB, "specs")
 REPORTS = os.path.join(LIB, "reports")
+ORDERABLE = None  # None -> dk_client.orderable_variation (Cut Tape, Bulk)
+
+
+def use_lib(lib_dir):
+    """Point the engine at another library folder (see --lib). Default lib is untouched."""
+    global LIB, GEN, LOCKS, SPECS, REPORTS, COLUMN_NAMES, TABLES, ORDERABLE
+    LIB = os.path.abspath(lib_dir if os.path.isabs(lib_dir) else os.path.join(ROOT, lib_dir))
+    if LIB == os.path.join(ROOT, "kicad_dbl_library"):
+        return
+    cands = [os.path.join(LIB, "seed", "schema.py")]
+    if not os.path.exists(cands[0]):
+        cands = sorted(os.path.join(LIB, f) for f in os.listdir(LIB) if f.endswith("_schema.py"))
+    if len(cands) != 1:
+        raise SystemExit(f"--lib {lib_dir}: need seed/schema.py or exactly one *_schema.py, found {cands}")
+    spec = importlib.util.spec_from_file_location("lib_schema", cands[0])
+    mod = importlib.util.module_from_spec(spec)
+    spec.loader.exec_module(mod)
+    COLUMN_NAMES, TABLES = list(mod.COLUMN_NAMES), list(mod.TABLES)
+    ORDERABLE = getattr(mod, "ORDERABLE", None)
+    GEN, LOCKS = os.path.join(LIB, "seed", "generated"), os.path.join(LIB, "seed", "locks")
+    SPECS, REPORTS = os.path.join(LIB, "specs"), os.path.join(LIB, "reports")
+    sys.path.insert(0, SPECS)
+    sys.modules.pop("_common", None)  # specs of this lib import their own _common
+
+
+def orderable(sp):
+    if ORDERABLE is None:
+        return dk_client.orderable_variation(sp)
+    for want in ORDERABLE:
+        for v in sp["variations"]:
+            if want in v["pkg"]:
+                return v
+    return None
 
 
 def load_spec(table):
@@ -79,7 +118,7 @@ def harvest(dk, spec):
 def eligible(sp):
     if sp["status"] != "Active":
         return None
-    v = dk_client.orderable_variation(sp)
+    v = orderable(sp)
     if not v or (v.get("qty") or 0) <= 0:
         return None
     return v
@@ -93,7 +132,9 @@ def pick(spec, cands, slot, exclude=()):
         v = eligible(sp)
         if not v:
             continue
-        key = (tuple(spec.rank(sp, slot)), "Cut Tape" not in v["pkg"], -(v.get("qty") or 0), sp["mpn"])
+        pk = "Cut Tape" not in v["pkg"] if ORDERABLE is None else \
+            next(i for i, w in enumerate(ORDERABLE) if w in v["pkg"])
+        key = (tuple(spec.rank(sp, slot)), pk, -(v.get("qty") or 0), sp["mpn"])
         if best is None or key < best[0]:
             best = (key, sp, v)
     return (best[1], best[2]) if best else (None, None)
@@ -191,7 +232,10 @@ def main():
     ap.add_argument("--offline", action="store_true", help="cache only, no API calls")
     ap.add_argument("--refresh", action="store_true", help="update stock/status of locked rows")
     ap.add_argument("--budget", type=int, default=900)
+    ap.add_argument("--lib", default="kicad_dbl_library",
+                    help="library folder holding specs/, seed/ and reports/ (default kicad_dbl_library)")
     a = ap.parse_args()
+    use_lib(a.lib)
     dk = dk_client.DigiKey(dk_client.Budget(a.budget), offline=a.offline)
     tables = TABLES if a.table == "all" else [a.table]
     for t in tables:

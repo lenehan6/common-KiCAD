@@ -6,6 +6,10 @@ Footprint = the symbol's default Footprint property (TLV1117 has none; SOT-223 T
 matches its 1=GND 2=OUT 3=IN, tab=OUT pinout). Slot order per voltage:
 ultra-low-Iq 200mA, general 300mA, 500mA, 1A (SOT-23-5 / SOT-223 / 16V-input WSON),
 low-noise RF (LP5907, TPS7A20).
+
+Pinouts verified 2026-11-22 against the TI datasheet pin-functions table for the exact package
+(PIN_CHECK, keyed by datasheet + package) and against the KiCad stock symbol pin numbers
+(kicad-symbols sources, extends resolved).
 """
 import re
 
@@ -40,7 +44,7 @@ def _fam(v):  # v = "33" | "18"
          f"Regulator_Linear:TLV757{v}PDBV", SOT5, "SOT-23-5", "SOT?23*", PIN_SOT5, TI + "tlv757p.pdf",
          "DYD = SOT-23-5, DBV pinout"),
         ("GP", "1A", f"TLV1117LV{v}", [rf"TLV1117LV{v}DCY[RT]$"], f"Regulator_Linear:TLV1117-{v}", SOT223,
-         "SOT-223", "SOT?223*", "1=GND 2=OUT 3=IN 4(tab)=OUT", TI + "tlv1117lv.pdf",
+         "SOT-223", "SOT?223*", "1=GND 2=OUT 3=IN tab=OUT (footprint tab pad 2)", TI + "tlv1117lv.pdf",
          "TLV1117 stock symbol, pin-compatible"),
         ("HV", "1A", f"TLV767{v}", [rf"TLV767{v}DRV[RT]$"], f"Regulator_Linear:TLV767{v}DRVx", WSON6TV,
          "WSON-6", "*WSON*1EP*2x2mm*P0.65mm*", "1=OUT 2=SNS 3=GND 4=EN 5=GND 6=IN 7=EP", TI + "tlv767.pdf",
@@ -51,6 +55,31 @@ def _fam(v):  # v = "33" | "18"
         ("LN", "300MA", f"TPS7A20{v}P", [rf"TPS7A20{v}PDBV[RT]$"], "Regulator_Linear:TPS7A20xxxDBV", SOT5,
          "SOT-23-5", "SOT?23*", PIN_SOT5, TI + "tps7a20.pdf", "7uVrms"),
     ]
+
+
+# (datasheet, package code) -> "p.N <table>: <pin numbers>" read from the TI pin-functions table.
+PIN_CHECK = {
+    ("tps7a05.pdf", "DBZ"): "p.5 Pin Functions, DBZ column: IN 3, GND 1, OUT 2",
+    ("tps7a05.pdf", "DBV"): "p.5 Pin Functions, DBV column: IN 1, GND 2, EN 3, NC 4, OUT 5",
+    ("tlv733p.pdf", "DBV"): "p.4 Pin Functions, DBV column: IN 1, GND 2, EN 3, NC 4, OUT 5",
+    ("tlv755p.pdf", "DBV"): "p.3 Table 4-1, DBV column: IN 1, GND 2, EN 3, NC 4, OUT 5",
+    ("tlv755p.pdf", "DRV"): "p.3 Table 4-1, DRV column: OUT 1, NC 2/5, GND 3, EN 4, IN 6, "
+                            "thermal pad 'internally connected to GND'",
+    ("tlv757p.pdf", "DYD"): "p.3 Table 4-1, DYD column: IN 1, GND 2, EN 3, NC 4, OUT 5",
+    ("tlv1117lv.pdf", "DCY"): "p.3 Table 5-1 (DCY SOT-223): GND 1, OUT 2 and Tab, IN 3",
+    ("tlv767.pdf", "DRV"): "p.4 Table 5-1, DRV (Fixed) column: OUT 1, SNS 2, GND 3/5, EN 4, IN 6, thermal pad",
+    ("lp5907.pdf", "DBV"): "p.3 Table 4-2, SOT-23 column: IN 1, GND 2, EN 3, N/C 4, OUT 5",
+    ("tps7a20.pdf", "DBV"): "p.4 Pin Functions X2SON/SOT-23, SOT-23 column: IN 1, GND 2, EN 3, N/C 4, OUT 5",
+}
+_PKGCODE = {"SOT-23-3": "DBZ", "SOT-223": "DCY", "WSON-6": "DRV", "SOT-23-5": "DBV"}
+
+
+def _pin_check(slot):
+    code = _PKGCODE[slot["pkg"]]
+    ds = slot["ds"].rsplit("/", 1)[-1]
+    if ds == "tlv757p.pdf":
+        code = "DYD"
+    return ds, PIN_CHECK[(ds, code)]
 
 
 VARIANT_500 = {  # TLV755P: DBV preferred, WSON-6 DRV fallback (DBV not stocked for 3.3V at harvest time)
@@ -104,5 +133,5 @@ def make_row(sp, slot, var):
                 Rating=f"{vtxt} {cur}", TC_Dielectric=f"Iq {iq}, Vdo {vdo}, Vin max {vin}",
                 Datasheet=slot["ds"], FP_Filter=slot["flt"], Manufacturer="Texas Instruments",
                 Pinout=slot["pin"],
-                Pinout_Source=f"KiCad stock symbol {slot['sym']}; TI datasheet {slot['ds']} "
-                              f"(Pin Configuration and Functions)")
+                Pinout_Source=f"{slot['ds']} {_pin_check(slot)[1]}; matches KiCad symbol {slot['sym']} "
+                              f"pin numbers")

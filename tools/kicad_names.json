@@ -3838,16 +3838,6 @@
     "3": "D"
    }
   },
-  "Transistor_FET:AO3401A": {
-   "extends": [
-    "TP0610T"
-   ],
-   "pins": {
-    "1": "G",
-    "2": "S",
-    "3": "D"
-   }
-  },
   "Transistor_FET:BSS123": {
    "extends": [
     "Q_NMOS_GSD"

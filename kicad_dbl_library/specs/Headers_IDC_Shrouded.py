@@ -14,6 +14,39 @@ TABLE = "Headers_IDC_Shrouded"
 QUERIES = [dict(keywords=k) for k in (
     "Wurth WR-BHD", "Wurth box header 2.54mm", "shrouded header 2.54mm", "box header 2.54mm",
     "Amphenol box header 2.54mm", "box header 1.27mm")]
+# targeted gap-fill queries (tools/harvest/requests_Headers_IDC_Shrouded.json)
+QUERIES += [dict(keywords=k) for k in (
+    '302-S061',
+    '302-S081',
+    '302-S121',
+    '302-S181',
+    '302-S221',
+    '302-S241',
+    '302-S301',
+    '302-S341',
+    '302-S401',
+    'N2506-6002-RB',
+    'N2508-6002-RB',
+    'N2512-6002-RB',
+    'N2518-6002-RB',
+    'N2522-6002-RB',
+    'N2524-6002-RB',
+    'N2530-6002-RB',
+    'N2534-6002-RB',
+    'N2540-6002-RB',
+    'HTST-103-01-L-D',
+    'HTST-104-01-L-D',
+    'HTST-106-01-L-D',
+    'HTST-109-01-L-D',
+    'HTST-111-01-L-D',
+    'HTST-112-01-L-D',
+    'HTST-115-01-L-D',
+    'HTST-117-01-L-D',
+    'HTST-120-01-L-D',
+    'Amphenol T821 box header',
+    'TE AMP-LATCH box header 2.54mm',
+    'box header 2.54mm 2x20 through hole',
+)]
 PREFERRED = ["Würth", "Amphenol", "TE Connectivity", "On Shore", "3M", "Molex", "Samtec"]
 KICAD_IDC = [3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 15, 17, 20]
 

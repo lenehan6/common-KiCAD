@@ -11,6 +11,22 @@ TABLE = "Headers_2p54mm"
 QUERIES = [dict(keywords=k) for k in (
     "Wurth pin header 2.54mm single row", "Wurth pin header 2.54mm dual row", "Wurth WR-PHD 2.54mm",
     "Samtec TSW pin header", "Amphenol pin header 2.54mm", "Sullins pin header 2.54mm")]
+# targeted gap-fill queries (tools/harvest/requests_Headers_2p54mm.json)
+QUERIES += [dict(keywords=k) for k in (
+    'TSW-101-07-G-S',
+    'TSW-113-07-G-S',
+    'TSW-117-07-G-S',
+    'TSW-118-07-G-S',
+    'TSW-119-07-G-S',
+    'TSW-101-07-G-D',
+    'TSW-111-07-G-D',
+    'TSW-119-07-G-D',
+    'Sullins PRPC001SAAN-RC',
+    'Sullins PREC013SAAN-RC',
+    'Sullins PRPC019SAAN-RC',
+    'Sullins PRPC011DAAN-RC',
+    'Sullins PRPC019DAAN-RC',
+)]
 PREFERRED = ["Würth", "Samtec", "Amphenol", "Sullins", "Harwin"]
 PITCH = "2.54"
 

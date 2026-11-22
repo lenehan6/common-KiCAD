@@ -1,47 +1,43 @@
 # Headers_1p27mm
 
-Built 2026-11-21: 20 rows, 486 candidates, 20 gaps.
+Built 2026-11-22: 38 rows, 958 candidates, 2 gaps.
+
+## Cache misses (run online)
+- `FTS-101-01-L-S`
+- `FTS-111-01-L-S`
+- `FTS-112-01-L-S`
+- `FTS-113-01-L-S`
+- `FTS-114-01-L-S`
+- `FTS-115-01-L-S`
+- `FTS-117-01-L-S`
+- `FTS-119-01-L-S`
+- `FTS-120-01-L-S`
+- `FTSH-109-01-L-D`
+- `FTSH-109-01-L-DV`
+- `FTS-114-01-L-D`
+- `FTS-118-01-L-D`
+- `FTS-119-01-L-D`
 
 ## Changes
-- added HDR-1.27-1x02-V FTS-102-01-F-S (Samtec Inc.) SAM15176-ND
-- added HDR-1.27-1x03-V FTS-103-01-F-S (Samtec Inc.) 612-FTS-103-01-F-S-ND
-- added HDR-1.27-1x04-V FTS-104-01-F-S (Samtec Inc.) 2266-FTS-104-01-F-S-ND
-- added HDR-1.27-1x06-V 2211-1X06G00S/2.6/2.8B (Oupiin) 2553-2211-1X06G00S/2.6/2.8B-ND
-- added HDR-1.27-1x07-V 2211-1X07G00S/2.6/2.8B (Oupiin) 2553-2211-1X07G00S/2.6/2.8B-ND
-- added HDR-1.27-1x09-V 2211-1X09G00S-2.6-2.8B (Oupiin) 2553-2211-1X09G00S-2.6-2.8B-ND
-- added HDR-1.27-2x02-V FTSH-102-01-L-D (Samtec Inc.) SAM11244-ND
-- added HDR-1.27-2x03-V FTS-103-01-L-D (Samtec Inc.) 612-FTS-103-01-L-D-ND
-- added HDR-1.27-2x04-V FTS-104-01-F-D (Samtec Inc.) SAM9419-ND
-- added HDR-1.27-2x05-V 62201021121 (Würth Elektronik) 732-5374-ND
-- added HDR-1.27-2x06-V FTS-106-01-L-D (Samtec Inc.) 612-FTS-106-01-L-D-ND
-- added HDR-1.27-2x07-V FTSH-107-01-F-DV-K-P-TR (Samtec Inc.) SAM13170CT-ND
-- added HDR-1.27-2x08-V FTSH-108-01-L-DV-K-P-TR (Samtec Inc.) SAM13173CT-ND
-- added HDR-1.27-2x10-V FTSH-110-01-L-DV-K-P-TR (Samtec Inc.) SAM13177CT-ND
-- added HDR-1.27-2x12-V FTSH-112-01-L-DV-P-TR (Samtec Inc.) 612-FTSH-112-01-L-DV-P-TRCT-ND
-- added HDR-1.27-2x13-V FTSH-113-01-F-DV-K-P-TR (Samtec Inc.) SAM13966CT-ND
-- added HDR-1.27-2x15-V FTSH-115-01-L-DV-K-P-TR (Samtec Inc.) SAM13970CT-ND
-- added HDR-1.27-2x16-V FTSH-116-01-L-DV (Samtec Inc.) 612-FTSH-116-01-L-DV-ND
-- added HDR-1.27-2x17-V FTSH-117-01-F-DV-K-P-TR (Samtec Inc.) 612-FTSH-117-01-F-DV-K-P-TRCT-ND
-- added HDR-1.27-2x20-V FTSH-120-01-F-DV-K-P-TR (Samtec Inc.) SAM13974CT-ND
+- added HDR-1.27-1x05-V GRPB051VWVN-RC (Sullins Connector Solutions) S9014E-05-ND
+- added HDR-1.27-1x08-V GRPB081VWVN-RC (Sullins Connector Solutions) S9014E-08-ND
+- added HDR-1.27-1x10-V GRPB101VWVN-RC (Sullins Connector Solutions) S9014E-10-ND
+- added HDR-1.27-1x11-V SLM N 1 063 11 G (Fischer Elektronik) 5496-SLMN106311G-ND
+- added HDR-1.27-1x12-V GRPB121VWVN-RC (Sullins Connector Solutions) S9014E-12-ND
+- added HDR-1.27-1x13-V SLM N 1 063 13 G (Fischer Elektronik) 5496-SLMN106313G-ND
+- added HDR-1.27-1x14-V SLM N 1 063 14 G (Fischer Elektronik) 5496-SLMN106314G-ND
+- added HDR-1.27-1x15-V SLM N 1 063 15 G (Fischer Elektronik) 5496-SLMN106315G-ND
+- added HDR-1.27-1x16-V SLM N 1 063 16 G (Fischer Elektronik) 5496-SLMN106316G-ND
+- added HDR-1.27-1x17-V SLM N 1 063 17 G (Fischer Elektronik) 5496-SLMN106317G-ND
+- added HDR-1.27-1x18-V SLM N 1 063 18 Z (Fischer Elektronik) 5496-SLMN106318Z-ND
+- added HDR-1.27-1x19-V SLM N 1 063 19 Z (Fischer Elektronik) 5496-SLMN106319Z-ND
+- added HDR-1.27-1x20-V SLV N 11 105 20 G (Fischer Elektronik) 5496-SLVN1110520G-ND
+- added HDR-1.27-2x09-V GRPB092VWVN-RC (Sullins Connector Solutions) S9015E-09-ND
+- added HDR-1.27-2x11-V FTSH-111-01-L-DV (Samtec Inc.) 612-FTSH-111-01-L-DV-ND
+- added HDR-1.27-2x14-V FTSH-114-01-L-DV (Samtec Inc.) 612-FTSH-114-01-L-DV-ND
+- added HDR-1.27-2x18-V FTSH-118-01-L-DV (Samtec Inc.) 612-FTSH-118-01-L-DV-ND
+- added HDR-1.27-2x19-V FTSH-119-01-L-DV (Samtec Inc.) 612-FTSH-119-01-L-DV-ND
 
 ## Gaps (no eligible stocked part)
 - HDR-1.27-1x01-V
-- HDR-1.27-1x05-V
-- HDR-1.27-1x08-V
-- HDR-1.27-1x10-V
-- HDR-1.27-1x11-V
-- HDR-1.27-1x12-V
-- HDR-1.27-1x13-V
-- HDR-1.27-1x14-V
-- HDR-1.27-1x15-V
-- HDR-1.27-1x16-V
-- HDR-1.27-1x17-V
-- HDR-1.27-1x18-V
-- HDR-1.27-1x19-V
-- HDR-1.27-1x20-V
 - HDR-1.27-2x01-V
-- HDR-1.27-2x09-V
-- HDR-1.27-2x11-V
-- HDR-1.27-2x14-V
-- HDR-1.27-2x18-V
-- HDR-1.27-2x19-V

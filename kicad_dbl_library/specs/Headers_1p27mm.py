@@ -11,6 +11,42 @@ TABLE = "Headers_1p27mm"
 QUERIES = [dict(keywords=k) for k in (
     "Wurth pin header 1.27mm", "Wurth WR-PHD 1.27mm", "Samtec FTSH", "Samtec FTS",
     "pin header 1.27mm dual row", "pin header 1.27mm single row")]
+# targeted gap-fill queries (tools/harvest/requests_Headers_1p27mm.json)
+QUERIES += [dict(keywords=k) for k in (
+    'FTS-101-01-L-S',
+    'FTS-105-01-L-S',
+    'FTS-108-01-L-S',
+    'FTS-110-01-L-S',
+    'FTS-111-01-L-S',
+    'FTS-112-01-L-S',
+    'FTS-113-01-L-S',
+    'FTS-114-01-L-S',
+    'FTS-115-01-L-S',
+    'FTS-116-01-L-S',
+    'FTS-117-01-L-S',
+    'FTS-118-01-L-S',
+    'FTS-119-01-L-S',
+    'FTS-120-01-L-S',
+    'FTSH-101-01-L-D',
+    'FTSH-109-01-L-D',
+    'FTSH-111-01-L-D',
+    'FTSH-114-01-L-D',
+    'FTSH-118-01-L-D',
+    'FTSH-119-01-L-D',
+    'FTSH-109-01-L-DV',
+    'FTSH-111-01-L-DV',
+    'FTSH-114-01-L-DV',
+    'FTSH-118-01-L-DV',
+    'FTSH-119-01-L-DV',
+    'FTS-109-01-L-D',
+    'FTS-111-01-L-D',
+    'FTS-114-01-L-D',
+    'FTS-118-01-L-D',
+    'FTS-119-01-L-D',
+    'pin header 1.27mm 1 row through hole',
+    'Harwin M50 pin header 1.27mm',
+    'Sullins GRPB 1.27mm header',
+)]
 PREFERRED = ["Würth", "Samtec"]
 PITCH = "1.27"
 FTSH_DV = re.compile(r"^FTSH-1\d\d-\d\d-[A-Z]{1,2}-DV(-[A-Z]+)*$")

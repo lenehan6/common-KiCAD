@@ -23,6 +23,12 @@ TABLE = "ESD_Protection"
 QUERIES = [dict(keywords=k) for k in (
     "ESD protection diode SOD-323", "ESD protection diode SOD-523", "ESD suppressor 0402", "PESD5V0",
     "PESD3V3", "USBLC6-2", "PRTR5V0U2X", "TPD2E", "TPD4E", "Littelfuse ESD SOD-323")]
+# targeted gap-fill queries (tools/harvest/requests_ESD_Protection.json)
+QUERIES += [dict(keywords=k) for k in (
+    'PRTR5V0U2X,215',
+    'USBLC6-2SC6 STMicroelectronics',
+    'TPD4E05U06DQAR',
+)]
 
 PREFERRED = ["Nexperia", "Littelfuse", "STMicro", "Texas Instruments", "onsemi", "Diodes Inc", "Vishay",
              "Rohm", "Toshiba", "Infineon", "Semtech", "Bourns"]

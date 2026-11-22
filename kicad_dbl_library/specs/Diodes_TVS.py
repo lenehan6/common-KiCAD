@@ -25,6 +25,15 @@ TABLE = "Diodes_TVS"
 QUERIES = [dict(keywords=k) for k in (
     "Littelfuse SMAJ", "Littelfuse SMBJ", "SMAJ CA", "SMBJ CA", "Vishay SMAJ", "Vishay SMBJ",
     "TVS diode SMA unidirectional", "TVS diode SMB bidirectional")]
+# targeted gap-fill queries (tools/harvest/requests_Diodes_TVS.json)
+QUERIES += [dict(keywords=k) for k in (
+    'SMAJ3.3A',
+    'SMAJ3.3CA',
+    'SMBJ3.3A',
+    'SMBJ3.3CA',
+    'Bourns SMAJ',
+    'Bourns SMBJ',
+)]
 
 PREFERRED = ["Littelfuse", "Vishay", "Bourns", "onsemi", "STMicro", "Taiwan Semiconductor", "Diodes Inc",
              "SMC Diode", "Micro Commercial", "MCC"]

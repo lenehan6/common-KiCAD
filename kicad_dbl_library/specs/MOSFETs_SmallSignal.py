@@ -4,10 +4,12 @@ One row per base part. Symbol = the stock KiCad symbol named after the base part
 exists (all of them extend Q_NMOS_GSD / Q_PMOS_GSD / TP0610T -> pins 1=G 2=S 3=D), else the
 generic Q_NMOS_GSD / Q_PMOS_GSD. The generic Device:Q_NMOS/Q_PMOS (letter pins) are never used.
 
-Pinout policy: every row has Pinout "1=G 2=S 3=D". Pinout_Source is the MPN datasheet page
-that was actually read (VERIFIED below). Rows whose datasheet could not be read in the build
-environment are kept but their Pinout_Source starts with "UNVERIFIED"; set
-REQUIRE_VERIFIED = True to drop them (their slots then become gaps).
+Pinout policy: every row has Pinout "1=G 2=S 3=D" (Q_NMOS_GSD / Q_PMOS_GSD / TP0610T pins
+1=G 2=S 3=D, checked in the kicad-symbols sources). Only parts whose own datasheet was downloaded
+and read are accepted (REQUIRE_VERIFIED); Pinout_Source is that datasheet page + pin quote
+(VERIFIED, exact MPN). aosmd.com is not reachable from the build env, so AO3401A was replaced
+in slot Q-P-AO3401A-SOT23 by Diodes DMP3056L (-30V, 50mR@-10V); onsemi 2N7002K (Fairchild
+2N7002K-FSC/D datasheet has no numbered pinout) is replaced by onsemi 2N7002KT7G (2N7002K/D).
 Maker preference: Nexperia, onsemi, Diodes, Vishay, Taiwan Semi, AOS; parts with
 <1000 pcs on DigiKey Cut Tape rank after well-stocked ones.
 """
@@ -21,18 +23,36 @@ QUERIES = [dict(keywords=k) for k in (
     "SI2302", "SI2301", "PMV", "N-channel MOSFET SOT-23", "P-channel MOSFET SOT-23",
     "Nexperia MOSFET SOT-23", "Vishay MOSFET SOT-23", "onsemi MOSFET SOT-23")]
 PREFERRED = ["Nexperia", "onsemi", "Diodes", "Vishay", "Taiwan", "Alpha"]
-REQUIRE_VERIFIED = False
+REQUIRE_VERIFIED = True
 FOOTPRINT = "Package_TO_SOT_SMD:SOT-23"
 PINOUT = "1=G 2=S 3=D"
 
-# Datasheets read and checked (pin diagram matches symbol pins 1=G 2=S 3=D).
+# Datasheets read and checked 2026-11-22 (pin numbers vs symbol pins 1=G 2=S 3=D).
 _VISHAY_P1 = " p.1 'SOT-23 (TO-236) Top View' pin diagram: 1=G 2=S 3=D"
+_ON21 = "CASE 318 STYLE 21 (p.{s}: 'PIN 1. GATE 2. SOURCE 3. DRAIN')"
+_ON = "https://www.onsemi.com/pub/Collateral/"
 VERIFIED = {
-    "SI2302CDS": "https://www.vishay.com/docs/68645/si2302cds.pdf" + _VISHAY_P1,
-    "SI2302DDS": "https://www.vishay.com/docs/63653/si2302dds.pdf" + _VISHAY_P1,
-    "SI2301HDS": "https://www.vishay.com/docs/61626/si2301hds.pdf" + _VISHAY_P1,
-    "SI2366DS": "https://www.vishay.com/docs/67509/si2366ds.pdf" + _VISHAY_P1,
-    "SI2347DS": "https://www.vishay.com/docs/62827/si2347ds.pdf p.1 '(SOT-23) Top View' pin diagram: G 1, S 2, D 3",
+    "SI2302CDS-T1-GE3": "https://www.vishay.com/docs/68645/si2302cds.pdf" + _VISHAY_P1,
+    "SI2302CDS-T1-E3": "https://www.vishay.com/docs/68645/si2302cds.pdf" + _VISHAY_P1,
+    "SI2302CDS-T1-BE3": "https://www.vishay.com/docs/68645/si2302cds.pdf" + _VISHAY_P1,
+    "SI2302DDS-T1-GE3": "https://www.vishay.com/docs/63653/si2302dds.pdf" + _VISHAY_P1,
+    "SI2302DDS-T1-BE3": "https://www.vishay.com/docs/63653/si2302dds.pdf" + _VISHAY_P1,
+    "SI2301HDS-T1-GE3": "https://www.vishay.com/docs/61626/si2301hds.pdf" + _VISHAY_P1,
+    "SI2366DS-T1-GE3": "https://www.vishay.com/docs/67509/si2366ds.pdf" + _VISHAY_P1,
+    "SI2366DS-T1-BE3": "https://www.vishay.com/docs/67509/si2366ds.pdf" + _VISHAY_P1,
+    "SI2347DS-T1-GE3": "https://www.vishay.com/docs/62827/si2347ds.pdf p.1 '(SOT-23) Top View' pin diagram: G 1, S 2, D 3",
+    "SI2347DS-T1-BE3": "https://www.vishay.com/docs/62827/si2347ds.pdf p.1 '(SOT-23) Top View' pin diagram: G 1, S 2, D 3",
+    "2N7002LT1G": _ON + "2N7002L-D.PDF p.1 SOT-23 " + _ON21.format(s=5),
+    "2N7002LT3G": _ON + "2N7002L-D.PDF p.1 SOT-23 " + _ON21.format(s=5),
+    "2N7002KT7G": _ON + "2N7002K-D.PDF p.1 simplified schematic (Top View): 'Gate 1, Source 2, 3 Drain'",
+    "BSS138LT1G": _ON + "BSS138LT1-D.PDF p.1 SOT-23 " + _ON21.format(s=8),
+    "BSS123": _ON + "BSS123-D.PDF p.1 SOT-23 " + _ON21.format(s=8),
+    "BSS84": _ON + "BSS84-D.PDF p.1 SOT-23-3 marking diagram: '1 Gate, 2 Source, 3 Drain'",
+    "AO3400A": "https://mm.digikey.com/Volume0/opasdata/d220001/medias/docus/1133/AO3400A_ds.pdf p.1 "
+               "'SOT23 Top View' drawing: pin-1 dot on G lead, D = single lead (3), S (2) -> 1=G 2=S 3=D "
+               "(drawing, pins not numbered in text)",
+    "DMP3056L-7": "https://www.diodes.com/assets/Datasheets/DMP3056L.pdf p.1 'Top View Pin Configuration' "
+                  "SOT23: D = single top lead (3), G lower-left (1), S lower-right (2) -> 1=G 2=S 3=D",
 }
 
 # (part_id, value, symbol, channel, MPN regex)
@@ -45,17 +65,15 @@ _S = [
     ("Q-N-SI2366DS-SOT23", "SI2366DS", "Transistor_FET:Q_NMOS_GSD", "N", r"SI2366DS-T1-[BG]?E3"),
     ("Q-N-SI2302-SOT23", "SI2302CDS", "Transistor_FET:Q_NMOS_GSD", "N", r"SI2302[CD]DS-T1-[BG]?E3"),
     ("Q-P-BSS84-SOT23", "BSS84", "Transistor_FET:BSS84", "P", r"BSS84(LT[13]G|-7-F(-W)?| RFG|)"),
-    ("Q-P-AO3401A-SOT23", "AO3401A", "Transistor_FET:AO3401A", "P", r"AO3401A"),
+    # AO3401A datasheet (aosmd.com) unreachable -> Diodes DMP3056L, keeps Part_ID
+    ("Q-P-AO3401A-SOT23", "DMP3056L", "Transistor_FET:Q_PMOS_GSD", "P", r"DMP3056L-7"),
     ("Q-P-SI2347DS-SOT23", "SI2347DS", "Transistor_FET:Q_PMOS_GSD", "P", r"SI2347DS-T1-[BG]?E3"),
     ("Q-P-SI2301-SOT23", "SI2301HDS", "Transistor_FET:Q_PMOS_GSD", "P", r"SI2301[CH]DS-T1-[BG]?E3"),
 ]
 
 
 def _verified(sp):
-    for k, src in VERIFIED.items():
-        if sp["mpn"].upper().startswith(k):
-            return src
-    return None
+    return VERIFIED.get(sp["mpn"])
 
 
 def slots():

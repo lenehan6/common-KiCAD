@@ -352,6 +352,28 @@
   "Part_ID": "HDR-2.54-1x16-V"
  },
  {
+  "Symbol": "Connector_Generic:Conn_01x17",
+  "Footprint": "Connector_PinHeader_2.54mm:PinHeader_1x17_P2.54mm_Vertical",
+  "Value": "1x17 P2.54mm",
+  "Package": "THT 1x17 2.54mm",
+  "Description": "Pin header 1x17 2.54mm male vertical THT Gold",
+  "Keywords": "pin header connector male 2.54mm 0.1in 1x17 vertical THT",
+  "Rating": "3A per Contact",
+  "FP_Filter": "PinHeader_1x17*P2.54mm*",
+  "Pinout": "1..17 (single row)",
+  "Pinout_Source": "Standard header numbering pin 1..N along the row = KiCad PinHeader footprint + Connector_Generic symbol; mfr datasheet //mm.digikey.com/Volume0/opasdata/d220001/medias/docus/386/xRxCzzzSxxN-RC_ST_11635-B.pdf",
+  "Manufacturer": "Sullins Connector Solutions",
+  "MPN": "PRPC017SAAN-RC",
+  "Datasheet": "https://mm.digikey.com/Volume0/opasdata/d220001/medias/docus/386/xRxCzzzSxxN-RC_ST_11635-B.pdf",
+  "Supplier": "DigiKey",
+  "Supplier_PN": "35-PRPC017SAAN-RC-ND",
+  "DK_Status": "Active",
+  "DK_Stock": 837,
+  "DK_Checked": "2026-11-25",
+  "Status": "Active",
+  "Part_ID": "HDR-2.54-1x17-V"
+ },
+ {
   "Symbol": "Connector_Generic:Conn_01x18",
   "Footprint": "Connector_PinHeader_2.54mm:PinHeader_1x18_P2.54mm_Vertical",
   "Value": "1x18 P2.54mm",

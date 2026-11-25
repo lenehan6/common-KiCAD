@@ -1,13 +1,15 @@
 # Diodes_TVS
 
-Built 2026-11-22: 45 rows, 1134 candidates, 3 gaps.
+Built 2026-11-25: 45 rows, 1139 candidates, 3 gaps.
 
 ## Cache misses (run online)
 - `SMAJ CA`
 - `SMBJ CA`
+- `SMAJ3.3A-TP`
+- `SMAJ3V3`
 
 ## Changes
-- added TVS-SMB-3V3-UNI SMBJ3V3-E3/52 (Vishay General Semiconductor - Diodes Division) SMBJ3V3-E3/52GICT-ND
+- none
 
 ## Gaps (no eligible stocked part)
 - TVS-SMA-3V3-UNI

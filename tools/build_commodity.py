@@ -95,9 +95,23 @@ def load_spec(table):
     return mod
 
 
+def extra_queries(table):
+    """Follow-up keyword queries queued in tools/harvest/requests*_<Table>.json."""
+    import glob
+    out = []
+    for f in sorted(glob.glob(os.path.join(ROOT, "tools", "harvest", f"requests*_{table}.json"))):
+        for q in json.load(open(f)):
+            q = q.get("keywords") if isinstance(q, dict) else q
+            if q:
+                out.append(dict(keywords=q))
+    return out
+
+
 def harvest(dk, spec):
     cands, misses = {}, []
-    for q in spec.QUERIES:
+    have = {q.get("keywords") for q in spec.QUERIES}
+    queries = list(spec.QUERIES) + [q for q in extra_queries(spec.TABLE) if q["keywords"] not in have]
+    for q in queries:
         mfr = q.get("mfr_ids")
         stock = q.get("in_stock", True)
         if q.get("split"):

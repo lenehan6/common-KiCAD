@@ -1,6 +1,6 @@
 # Headers_1p27mm
 
-Built 2026-11-22: 39 rows, 958 candidates, 1 gaps.
+Built 2026-11-25: 39 rows, 1152 candidates, 1 gaps.
 
 ## Cache misses (run online)
 - `FTS-101-01-L-S`
@@ -17,27 +17,18 @@ Built 2026-11-22: 39 rows, 958 candidates, 1 gaps.
 - `FTS-114-01-L-D`
 - `FTS-118-01-L-D`
 - `FTS-119-01-L-D`
+- `GRPB011VWVN-RC`
+- `FTS-101-02-L-S`
+- `GRPB141VWVN-RC`
+- `GRPB151VWVN-RC`
+- `GRPB161VWVN-RC`
+- `GRPB171VWVN-RC`
+- `GRPB181VWVN-RC`
+- `GRPB191VWVN-RC`
+- `GRPB201VWVN-RC`
 
 ## Changes
-- added HDR-1.27-1x05-V GRPB051VWVN-RC (Sullins Connector Solutions) S9014E-05-ND
-- added HDR-1.27-1x08-V GRPB081VWVN-RC (Sullins Connector Solutions) S9014E-08-ND
-- added HDR-1.27-1x10-V GRPB101VWVN-RC (Sullins Connector Solutions) S9014E-10-ND
-- added HDR-1.27-1x11-V GRPB111VWVN-RC (Sullins Connector Solutions) S9014E-11-ND
-- added HDR-1.27-1x12-V GRPB121VWVN-RC (Sullins Connector Solutions) S9014E-12-ND
-- added HDR-1.27-1x13-V GRPB131VWVN-RC (Sullins Connector Solutions) S9014E-13-ND
-- added HDR-1.27-1x14-V SLM N 1 063 14 G (Fischer Elektronik) 5496-SLMN106314G-ND
-- added HDR-1.27-1x15-V SLM N 1 063 15 G (Fischer Elektronik) 5496-SLMN106315G-ND
-- added HDR-1.27-1x16-V SLM N 1 063 16 G (Fischer Elektronik) 5496-SLMN106316G-ND
-- added HDR-1.27-1x17-V SLM N 1 063 17 G (Fischer Elektronik) 5496-SLMN106317G-ND
-- added HDR-1.27-1x18-V SLM N 1 063 18 Z (Fischer Elektronik) 5496-SLMN106318Z-ND
-- added HDR-1.27-1x19-V SLM N 1 063 19 Z (Fischer Elektronik) 5496-SLMN106319Z-ND
-- added HDR-1.27-1x20-V SLV N 11 105 20 G (Fischer Elektronik) 5496-SLVN1110520G-ND
-- added HDR-1.27-2x01-V FTSH-101-01-L-DV (Samtec Inc.) 612-FTSH-101-01-L-DV-ND
-- added HDR-1.27-2x09-V GRPB092VWVN-RC (Sullins Connector Solutions) S9015E-09-ND
-- added HDR-1.27-2x11-V FTSH-111-01-L-DV (Samtec Inc.) 612-FTSH-111-01-L-DV-ND
-- added HDR-1.27-2x14-V FTSH-114-01-L-DV (Samtec Inc.) 612-FTSH-114-01-L-DV-ND
-- added HDR-1.27-2x18-V FTSH-118-01-L-DV (Samtec Inc.) 612-FTSH-118-01-L-DV-ND
-- added HDR-1.27-2x19-V FTSH-119-01-L-DV (Samtec Inc.) 612-FTSH-119-01-L-DV-ND
+- none
 
 ## Gaps (no eligible stocked part)
 - HDR-1.27-1x01-V

@@ -1,0 +1,2903 @@
+{
+  "meta": {
+    "version": 0
+  },
+  "name": "Application Parts Library",
+  "description": "Application parts (ICs, modules, connectors) prefilled from DigiKey per KiCad symbol; all non-rejected, non-obsolete parts with footprint (KiCad reads the *_Active views)",
+  "source": {
+    "type": "odbc",
+    "dsn": "",
+    "username": "",
+    "password": "",
+    "timeout_seconds": 2,
+    "connection_string": "Driver={SQLite3 ODBC Driver};Database=${CWD}/application.sqlite;"
+  },
+  "libraries": [
+    {
+      "name": "Amplifiers",
+      "table": "Amplifiers_Active",
+      "key": "Part_ID",
+      "symbols": "Symbol",
+      "footprints": "Footprint",
+      "properties": {
+        "description": "Description",
+        "footprint_filters": "FP_Filter",
+        "keywords": "Keywords",
+        "datasheet": "Datasheet"
+      },
+      "fields": [
+        {
+          "column": "Value",
+          "name": "Value",
+          "visible_on_add": true,
+          "visible_in_chooser": true,
+          "show_name": false,
+          "inherit_properties": false
+        },
+        {
+          "column": "Part_ID",
+          "name": "Part ID",
+          "visible_on_add": false,
+          "visible_in_chooser": true,
+          "show_name": false,
+          "inherit_properties": false
+        },
+        {
+          "column": "Review_Status",
+          "name": "Review Status",
+          "visible_on_add": false,
+          "visible_in_chooser": true,
+          "show_name": false,
+          "inherit_properties": false
+        },
+        {
+          "column": "Lifecycle",
+          "name": "Lifecycle",
+          "visible_on_add": false,
+          "visible_in_chooser": true,
+          "show_name": false,
+          "inherit_properties": false
+        },
+        {
+          "column": "MPN",
+          "name": "MPN",
+          "visible_on_add": false,
+          "visible_in_chooser": true,
+          "show_name": false,
+          "inherit_properties": false
+        },
+        {
+          "column": "Manufacturer",
+          "name": "Manufacturer",
+          "visible_on_add": false,
+          "visible_in_chooser": true,
+          "show_name": false,
+          "inherit_properties": false
+        },
+        {
+          "column": "Supplier",
+          "name": "Supplier",
+          "visible_on_add": false,
+          "visible_in_chooser": false,
+          "show_name": false,
+          "inherit_properties": false
+        },
+        {
+          "column": "Supplier_PN",
+          "name": "Supplier PN",
+          "visible_on_add": false,
+          "visible_in_chooser": true,
+          "show_name": false,
+          "inherit_properties": false
+        },
+        {
+          "column": "Packaging",
+          "name": "Packaging",
+          "visible_on_add": false,
+          "visible_in_chooser": true,
+          "show_name": false,
+          "inherit_properties": false
+        },
+        {
+          "column": "Key_Params",
+          "name": "Key Params",
+          "visible_on_add": false,
+          "visible_in_chooser": true,
+          "show_name": false,
+          "inherit_properties": false
+        },
+        {
+          "column": "Package",
+          "name": "Package",
+          "visible_on_add": false,
+          "visible_in_chooser": true,
+          "show_name": false,
+          "inherit_properties": false
+        },
+        {
+          "column": "DK_Stock",
+          "name": "DK Stock",
+          "visible_on_add": false,
+          "visible_in_chooser": true,
+          "show_name": false,
+          "inherit_properties": false
+        }
+      ]
+    },
+    {
+      "name": "Analog - ADC / DAC / Digipot",
+      "table": "Analog_ADC_DAC_Active",
+      "key": "Part_ID",
+      "symbols": "Symbol",
+      "footprints": "Footprint",
+      "properties": {
+        "description": "Description",
+        "footprint_filters": "FP_Filter",
+        "keywords": "Keywords",
+        "datasheet": "Datasheet"
+      },
+      "fields": [
+        {
+          "column": "Value",
+          "name": "Value",
+          "visible_on_add": true,
+          "visible_in_chooser": true,
+          "show_name": false,
+          "inherit_properties": false
+        },
+        {
+          "column": "Part_ID",
+          "name": "Part ID",
+          "visible_on_add": false,
+          "visible_in_chooser": true,
+          "show_name": false,
+          "inherit_properties": false
+        },
+        {
+          "column": "Review_Status",
+          "name": "Review Status",
+          "visible_on_add": false,
+          "visible_in_chooser": true,
+          "show_name": false,
+          "inherit_properties": false
+        },
+        {
+          "column": "Lifecycle",
+          "name": "Lifecycle",
+          "visible_on_add": false,
+          "visible_in_chooser": true,
+          "show_name": false,
+          "inherit_properties": false
+        },
+        {
+          "column": "MPN",
+          "name": "MPN",
+          "visible_on_add": false,
+          "visible_in_chooser": true,
+          "show_name": false,
+          "inherit_properties": false
+        },
+        {
+          "column": "Manufacturer",
+          "name": "Manufacturer",
+          "visible_on_add": false,
+          "visible_in_chooser": true,
+          "show_name": false,
+          "inherit_properties": false
+        },
+        {
+          "column": "Supplier",
+          "name": "Supplier",
+          "visible_on_add": false,
+          "visible_in_chooser": false,
+          "show_name": false,
+          "inherit_properties": false
+        },
+        {
+          "column": "Supplier_PN",
+          "name": "Supplier PN",
+          "visible_on_add": false,
+          "visible_in_chooser": true,
+          "show_name": false,
+          "inherit_properties": false
+        },
+        {
+          "column": "Packaging",
+          "name": "Packaging",
+          "visible_on_add": false,
+          "visible_in_chooser": true,
+          "show_name": false,
+          "inherit_properties": false
+        },
+        {
+          "column": "Key_Params",
+          "name": "Key Params",
+          "visible_on_add": false,
+          "visible_in_chooser": true,
+          "show_name": false,
+          "inherit_properties": false
+        },
+        {
+          "column": "Package",
+          "name": "Package",
+          "visible_on_add": false,
+          "visible_in_chooser": true,
+          "show_name": false,
+          "inherit_properties": false
+        },
+        {
+          "column": "DK_Stock",
+          "name": "DK Stock",
+          "visible_on_add": false,
+          "visible_in_chooser": true,
+          "show_name": false,
+          "inherit_properties": false
+        }
+      ]
+    },
+    {
+      "name": "Analog Switches",
+      "table": "Analog_Switch_Active",
+      "key": "Part_ID",
+      "symbols": "Symbol",
+      "footprints": "Footprint",
+      "properties": {
+        "description": "Description",
+        "footprint_filters": "FP_Filter",
+        "keywords": "Keywords",
+        "datasheet": "Datasheet"
+      },
+      "fields": [
+        {
+          "column": "Value",
+          "name": "Value",
+          "visible_on_add": true,
+          "visible_in_chooser": true,
+          "show_name": false,
+          "inherit_properties": false
+        },
+        {
+          "column": "Part_ID",
+          "name": "Part ID",
+          "visible_on_add": false,
+          "visible_in_chooser": true,
+          "show_name": false,
+          "inherit_properties": false
+        },
+        {
+          "column": "Review_Status",
+          "name": "Review Status",
+          "visible_on_add": false,
+          "visible_in_chooser": true,
+          "show_name": false,
+          "inherit_properties": false
+        },
+        {
+          "column": "Lifecycle",
+          "name": "Lifecycle",
+          "visible_on_add": false,
+          "visible_in_chooser": true,
+          "show_name": false,
+          "inherit_properties": false
+        },
+        {
+          "column": "MPN",
+          "name": "MPN",
+          "visible_on_add": false,
+          "visible_in_chooser": true,
+          "show_name": false,
+          "inherit_properties": false
+        },
+        {
+          "column": "Manufacturer",
+          "name": "Manufacturer",
+          "visible_on_add": false,
+          "visible_in_chooser": true,
+          "show_name": false,
+          "inherit_properties": false
+        },
+        {
+          "column": "Supplier",
+          "name": "Supplier",
+          "visible_on_add": false,
+          "visible_in_chooser": false,
+          "show_name": false,
+          "inherit_properties": false
+        },
+        {
+          "column": "Supplier_PN",
+          "name": "Supplier PN",
+          "visible_on_add": false,
+          "visible_in_chooser": true,
+          "show_name": false,
+          "inherit_properties": false
+        },
+        {
+          "column": "Packaging",
+          "name": "Packaging",
+          "visible_on_add": false,
+          "visible_in_chooser": true,
+          "show_name": false,
+          "inherit_properties": false
+        },
+        {
+          "column": "Key_Params",
+          "name": "Key Params",
+          "visible_on_add": false,
+          "visible_in_chooser": true,
+          "show_name": false,
+          "inherit_properties": false
+        },
+        {
+          "column": "Package",
+          "name": "Package",
+          "visible_on_add": false,
+          "visible_in_chooser": true,
+          "show_name": false,
+          "inherit_properties": false
+        },
+        {
+          "column": "DK_Stock",
+          "name": "DK Stock",
+          "visible_on_add": false,
+          "visible_in_chooser": true,
+          "show_name": false,
+          "inherit_properties": false
+        }
+      ]
+    },
+    {
+      "name": "Audio",
+      "table": "Audio_Active",
+      "key": "Part_ID",
+      "symbols": "Symbol",
+      "footprints": "Footprint",
+      "properties": {
+        "description": "Description",
+        "footprint_filters": "FP_Filter",
+        "keywords": "Keywords",
+        "datasheet": "Datasheet"
+      },
+      "fields": [
+        {
+          "column": "Value",
+          "name": "Value",
+          "visible_on_add": true,
+          "visible_in_chooser": true,
+          "show_name": false,
+          "inherit_properties": false
+        },
+        {
+          "column": "Part_ID",
+          "name": "Part ID",
+          "visible_on_add": false,
+          "visible_in_chooser": true,
+          "show_name": false,
+          "inherit_properties": false
+        },
+        {
+          "column": "Review_Status",
+          "name": "Review Status",
+          "visible_on_add": false,
+          "visible_in_chooser": true,
+          "show_name": false,
+          "inherit_properties": false
+        },
+        {
+          "column": "Lifecycle",
+          "name": "Lifecycle",
+          "visible_on_add": false,
+          "visible_in_chooser": true,
+          "show_name": false,
+          "inherit_properties": false
+        },
+        {
+          "column": "MPN",
+          "name": "MPN",
+          "visible_on_add": false,
+          "visible_in_chooser": true,
+          "show_name": false,
+          "inherit_properties": false
+        },
+        {
+          "column": "Manufacturer",
+          "name": "Manufacturer",
+          "visible_on_add": false,
+          "visible_in_chooser": true,
+          "show_name": false,
+          "inherit_properties": false
+        },
+        {
+          "column": "Supplier",
+          "name": "Supplier",
+          "visible_on_add": false,
+          "visible_in_chooser": false,
+          "show_name": false,
+          "inherit_properties": false
+        },
+        {
+          "column": "Supplier_PN",
+          "name": "Supplier PN",
+          "visible_on_add": false,
+          "visible_in_chooser": true,
+          "show_name": false,
+          "inherit_properties": false
+        },
+        {
+          "column": "Packaging",
+          "name": "Packaging",
+          "visible_on_add": false,
+          "visible_in_chooser": true,
+          "show_name": false,
+          "inherit_properties": false
+        },
+        {
+          "column": "Key_Params",
+          "name": "Key Params",
+          "visible_on_add": false,
+          "visible_in_chooser": true,
+          "show_name": false,
+          "inherit_properties": false
+        },
+        {
+          "column": "Package",
+          "name": "Package",
+          "visible_on_add": false,
+          "visible_in_chooser": true,
+          "show_name": false,
+          "inherit_properties": false
+        },
+        {
+          "column": "DK_Stock",
+          "name": "DK Stock",
+          "visible_on_add": false,
+          "visible_in_chooser": true,
+          "show_name": false,
+          "inherit_properties": false
+        }
+      ]
+    },
+    {
+      "name": "Battery Management",
+      "table": "Battery_Mgmt_Active",
+      "key": "Part_ID",
+      "symbols": "Symbol",
+      "footprints": "Footprint",
+      "properties": {
+        "description": "Description",
+        "footprint_filters": "FP_Filter",
+        "keywords": "Keywords",
+        "datasheet": "Datasheet"
+      },
+      "fields": [
+        {
+          "column": "Value",
+          "name": "Value",
+          "visible_on_add": true,
+          "visible_in_chooser": true,
+          "show_name": false,
+          "inherit_properties": false
+        },
+        {
+          "column": "Part_ID",
+          "name": "Part ID",
+          "visible_on_add": false,
+          "visible_in_chooser": true,
+          "show_name": false,
+          "inherit_properties": false
+        },
+        {
+          "column": "Review_Status",
+          "name": "Review Status",
+          "visible_on_add": false,
+          "visible_in_chooser": true,
+          "show_name": false,
+          "inherit_properties": false
+        },
+        {
+          "column": "Lifecycle",
+          "name": "Lifecycle",
+          "visible_on_add": false,
+          "visible_in_chooser": true,
+          "show_name": false,
+          "inherit_properties": false
+        },
+        {
+          "column": "MPN",
+          "name": "MPN",
+          "visible_on_add": false,
+          "visible_in_chooser": true,
+          "show_name": false,
+          "inherit_properties": false
+        },
+        {
+          "column": "Manufacturer",
+          "name": "Manufacturer",
+          "visible_on_add": false,
+          "visible_in_chooser": true,
+          "show_name": false,
+          "inherit_properties": false
+        },
+        {
+          "column": "Supplier",
+          "name": "Supplier",
+          "visible_on_add": false,
+          "visible_in_chooser": false,
+          "show_name": false,
+          "inherit_properties": false
+        },
+        {
+          "column": "Supplier_PN",
+          "name": "Supplier PN",
+          "visible_on_add": false,
+          "visible_in_chooser": true,
+          "show_name": false,
+          "inherit_properties": false
+        },
+        {
+          "column": "Packaging",
+          "name": "Packaging",
+          "visible_on_add": false,
+          "visible_in_chooser": true,
+          "show_name": false,
+          "inherit_properties": false
+        },
+        {
+          "column": "Key_Params",
+          "name": "Key Params",
+          "visible_on_add": false,
+          "visible_in_chooser": true,
+          "show_name": false,
+          "inherit_properties": false
+        },
+        {
+          "column": "Package",
+          "name": "Package",
+          "visible_on_add": false,
+          "visible_in_chooser": true,
+          "show_name": false,
+          "inherit_properties": false
+        },
+        {
+          "column": "DK_Stock",
+          "name": "DK Stock",
+          "visible_on_add": false,
+          "visible_in_chooser": true,
+          "show_name": false,
+          "inherit_properties": false
+        }
+      ]
+    },
+    {
+      "name": "Connectors",
+      "table": "Connectors_Active",
+      "key": "Part_ID",
+      "symbols": "Symbol",
+      "footprints": "Footprint",
+      "properties": {
+        "description": "Description",
+        "footprint_filters": "FP_Filter",
+        "keywords": "Keywords",
+        "datasheet": "Datasheet"
+      },
+      "fields": [
+        {
+          "column": "Value",
+          "name": "Value",
+          "visible_on_add": true,
+          "visible_in_chooser": true,
+          "show_name": false,
+          "inherit_properties": false
+        },
+        {
+          "column": "Part_ID",
+          "name": "Part ID",
+          "visible_on_add": false,
+          "visible_in_chooser": true,
+          "show_name": false,
+          "inherit_properties": false
+        },
+        {
+          "column": "Review_Status",
+          "name": "Review Status",
+          "visible_on_add": false,
+          "visible_in_chooser": true,
+          "show_name": false,
+          "inherit_properties": false
+        },
+        {
+          "column": "Lifecycle",
+          "name": "Lifecycle",
+          "visible_on_add": false,
+          "visible_in_chooser": true,
+          "show_name": false,
+          "inherit_properties": false
+        },
+        {
+          "column": "MPN",
+          "name": "MPN",
+          "visible_on_add": false,
+          "visible_in_chooser": true,
+          "show_name": false,
+          "inherit_properties": false
+        },
+        {
+          "column": "Manufacturer",
+          "name": "Manufacturer",
+          "visible_on_add": false,
+          "visible_in_chooser": true,
+          "show_name": false,
+          "inherit_properties": false
+        },
+        {
+          "column": "Supplier",
+          "name": "Supplier",
+          "visible_on_add": false,
+          "visible_in_chooser": false,
+          "show_name": false,
+          "inherit_properties": false
+        },
+        {
+          "column": "Supplier_PN",
+          "name": "Supplier PN",
+          "visible_on_add": false,
+          "visible_in_chooser": true,
+          "show_name": false,
+          "inherit_properties": false
+        },
+        {
+          "column": "Packaging",
+          "name": "Packaging",
+          "visible_on_add": false,
+          "visible_in_chooser": true,
+          "show_name": false,
+          "inherit_properties": false
+        },
+        {
+          "column": "Key_Params",
+          "name": "Key Params",
+          "visible_on_add": false,
+          "visible_in_chooser": true,
+          "show_name": false,
+          "inherit_properties": false
+        },
+        {
+          "column": "Package",
+          "name": "Package",
+          "visible_on_add": false,
+          "visible_in_chooser": true,
+          "show_name": false,
+          "inherit_properties": false
+        },
+        {
+          "column": "DK_Stock",
+          "name": "DK Stock",
+          "visible_on_add": false,
+          "visible_in_chooser": true,
+          "show_name": false,
+          "inherit_properties": false
+        }
+      ]
+    },
+    {
+      "name": "Connectors - USB",
+      "table": "Connectors_USB_Active",
+      "key": "Part_ID",
+      "symbols": "Symbol",
+      "footprints": "Footprint",
+      "properties": {
+        "description": "Description",
+        "footprint_filters": "FP_Filter",
+        "keywords": "Keywords",
+        "datasheet": "Datasheet"
+      },
+      "fields": [
+        {
+          "column": "Value",
+          "name": "Value",
+          "visible_on_add": true,
+          "visible_in_chooser": true,
+          "show_name": false,
+          "inherit_properties": false
+        },
+        {
+          "column": "Part_ID",
+          "name": "Part ID",
+          "visible_on_add": false,
+          "visible_in_chooser": true,
+          "show_name": false,
+          "inherit_properties": false
+        },
+        {
+          "column": "Review_Status",
+          "name": "Review Status",
+          "visible_on_add": false,
+          "visible_in_chooser": true,
+          "show_name": false,
+          "inherit_properties": false
+        },
+        {
+          "column": "Lifecycle",
+          "name": "Lifecycle",
+          "visible_on_add": false,
+          "visible_in_chooser": true,
+          "show_name": false,
+          "inherit_properties": false
+        },
+        {
+          "column": "MPN",
+          "name": "MPN",
+          "visible_on_add": false,
+          "visible_in_chooser": true,
+          "show_name": false,
+          "inherit_properties": false
+        },
+        {
+          "column": "Manufacturer",
+          "name": "Manufacturer",
+          "visible_on_add": false,
+          "visible_in_chooser": true,
+          "show_name": false,
+          "inherit_properties": false
+        },
+        {
+          "column": "Supplier",
+          "name": "Supplier",
+          "visible_on_add": false,
+          "visible_in_chooser": false,
+          "show_name": false,
+          "inherit_properties": false
+        },
+        {
+          "column": "Supplier_PN",
+          "name": "Supplier PN",
+          "visible_on_add": false,
+          "visible_in_chooser": true,
+          "show_name": false,
+          "inherit_properties": false
+        },
+        {
+          "column": "Packaging",
+          "name": "Packaging",
+          "visible_on_add": false,
+          "visible_in_chooser": true,
+          "show_name": false,
+          "inherit_properties": false
+        },
+        {
+          "column": "Key_Params",
+          "name": "Key Params",
+          "visible_on_add": false,
+          "visible_in_chooser": true,
+          "show_name": false,
+          "inherit_properties": false
+        },
+        {
+          "column": "Package",
+          "name": "Package",
+          "visible_on_add": false,
+          "visible_in_chooser": true,
+          "show_name": false,
+          "inherit_properties": false
+        },
+        {
+          "column": "DK_Stock",
+          "name": "DK Stock",
+          "visible_on_add": false,
+          "visible_in_chooser": true,
+          "show_name": false,
+          "inherit_properties": false
+        }
+      ]
+    },
+    {
+      "name": "Converters - DC/DC & AC/DC",
+      "table": "Converters_DCDC_Active",
+      "key": "Part_ID",
+      "symbols": "Symbol",
+      "footprints": "Footprint",
+      "properties": {
+        "description": "Description",
+        "footprint_filters": "FP_Filter",
+        "keywords": "Keywords",
+        "datasheet": "Datasheet"
+      },
+      "fields": [
+        {
+          "column": "Value",
+          "name": "Value",
+          "visible_on_add": true,
+          "visible_in_chooser": true,
+          "show_name": false,
+          "inherit_properties": false
+        },
+        {
+          "column": "Part_ID",
+          "name": "Part ID",
+          "visible_on_add": false,
+          "visible_in_chooser": true,
+          "show_name": false,
+          "inherit_properties": false
+        },
+        {
+          "column": "Review_Status",
+          "name": "Review Status",
+          "visible_on_add": false,
+          "visible_in_chooser": true,
+          "show_name": false,
+          "inherit_properties": false
+        },
+        {
+          "column": "Lifecycle",
+          "name": "Lifecycle",
+          "visible_on_add": false,
+          "visible_in_chooser": true,
+          "show_name": false,
+          "inherit_properties": false
+        },
+        {
+          "column": "MPN",
+          "name": "MPN",
+          "visible_on_add": false,
+          "visible_in_chooser": true,
+          "show_name": false,
+          "inherit_properties": false
+        },
+        {
+          "column": "Manufacturer",
+          "name": "Manufacturer",
+          "visible_on_add": false,
+          "visible_in_chooser": true,
+          "show_name": false,
+          "inherit_properties": false
+        },
+        {
+          "column": "Supplier",
+          "name": "Supplier",
+          "visible_on_add": false,
+          "visible_in_chooser": false,
+          "show_name": false,
+          "inherit_properties": false
+        },
+        {
+          "column": "Supplier_PN",
+          "name": "Supplier PN",
+          "visible_on_add": false,
+          "visible_in_chooser": true,
+          "show_name": false,
+          "inherit_properties": false
+        },
+        {
+          "column": "Packaging",
+          "name": "Packaging",
+          "visible_on_add": false,
+          "visible_in_chooser": true,
+          "show_name": false,
+          "inherit_properties": false
+        },
+        {
+          "column": "Key_Params",
+          "name": "Key Params",
+          "visible_on_add": false,
+          "visible_in_chooser": true,
+          "show_name": false,
+          "inherit_properties": false
+        },
+        {
+          "column": "Package",
+          "name": "Package",
+          "visible_on_add": false,
+          "visible_in_chooser": true,
+          "show_name": false,
+          "inherit_properties": false
+        },
+        {
+          "column": "DK_Stock",
+          "name": "DK Stock",
+          "visible_on_add": false,
+          "visible_in_chooser": true,
+          "show_name": false,
+          "inherit_properties": false
+        }
+      ]
+    },
+    {
+      "name": "Displays",
+      "table": "Displays_Active",
+      "key": "Part_ID",
+      "symbols": "Symbol",
+      "footprints": "Footprint",
+      "properties": {
+        "description": "Description",
+        "footprint_filters": "FP_Filter",
+        "keywords": "Keywords",
+        "datasheet": "Datasheet"
+      },
+      "fields": [
+        {
+          "column": "Value",
+          "name": "Value",
+          "visible_on_add": true,
+          "visible_in_chooser": true,
+          "show_name": false,
+          "inherit_properties": false
+        },
+        {
+          "column": "Part_ID",
+          "name": "Part ID",
+          "visible_on_add": false,
+          "visible_in_chooser": true,
+          "show_name": false,
+          "inherit_properties": false
+        },
+        {
+          "column": "Review_Status",
+          "name": "Review Status",
+          "visible_on_add": false,
+          "visible_in_chooser": true,
+          "show_name": false,
+          "inherit_properties": false
+        },
+        {
+          "column": "Lifecycle",
+          "name": "Lifecycle",
+          "visible_on_add": false,
+          "visible_in_chooser": true,
+          "show_name": false,
+          "inherit_properties": false
+        },
+        {
+          "column": "MPN",
+          "name": "MPN",
+          "visible_on_add": false,
+          "visible_in_chooser": true,
+          "show_name": false,
+          "inherit_properties": false
+        },
+        {
+          "column": "Manufacturer",
+          "name": "Manufacturer",
+          "visible_on_add": false,
+          "visible_in_chooser": true,
+          "show_name": false,
+          "inherit_properties": false
+        },
+        {
+          "column": "Supplier",
+          "name": "Supplier",
+          "visible_on_add": false,
+          "visible_in_chooser": false,
+          "show_name": false,
+          "inherit_properties": false
+        },
+        {
+          "column": "Supplier_PN",
+          "name": "Supplier PN",
+          "visible_on_add": false,
+          "visible_in_chooser": true,
+          "show_name": false,
+          "inherit_properties": false
+        },
+        {
+          "column": "Packaging",
+          "name": "Packaging",
+          "visible_on_add": false,
+          "visible_in_chooser": true,
+          "show_name": false,
+          "inherit_properties": false
+        },
+        {
+          "column": "Key_Params",
+          "name": "Key Params",
+          "visible_on_add": false,
+          "visible_in_chooser": true,
+          "show_name": false,
+          "inherit_properties": false
+        },
+        {
+          "column": "Package",
+          "name": "Package",
+          "visible_on_add": false,
+          "visible_in_chooser": true,
+          "show_name": false,
+          "inherit_properties": false
+        },
+        {
+          "column": "DK_Stock",
+          "name": "DK Stock",
+          "visible_on_add": false,
+          "visible_in_chooser": true,
+          "show_name": false,
+          "inherit_properties": false
+        }
+      ]
+    },
+    {
+      "name": "Drivers",
+      "table": "Drivers_Active",
+      "key": "Part_ID",
+      "symbols": "Symbol",
+      "footprints": "Footprint",
+      "properties": {
+        "description": "Description",
+        "footprint_filters": "FP_Filter",
+        "keywords": "Keywords",
+        "datasheet": "Datasheet"
+      },
+      "fields": [
+        {
+          "column": "Value",
+          "name": "Value",
+          "visible_on_add": true,
+          "visible_in_chooser": true,
+          "show_name": false,
+          "inherit_properties": false
+        },
+        {
+          "column": "Part_ID",
+          "name": "Part ID",
+          "visible_on_add": false,
+          "visible_in_chooser": true,
+          "show_name": false,
+          "inherit_properties": false
+        },
+        {
+          "column": "Review_Status",
+          "name": "Review Status",
+          "visible_on_add": false,
+          "visible_in_chooser": true,
+          "show_name": false,
+          "inherit_properties": false
+        },
+        {
+          "column": "Lifecycle",
+          "name": "Lifecycle",
+          "visible_on_add": false,
+          "visible_in_chooser": true,
+          "show_name": false,
+          "inherit_properties": false
+        },
+        {
+          "column": "MPN",
+          "name": "MPN",
+          "visible_on_add": false,
+          "visible_in_chooser": true,
+          "show_name": false,
+          "inherit_properties": false
+        },
+        {
+          "column": "Manufacturer",
+          "name": "Manufacturer",
+          "visible_on_add": false,
+          "visible_in_chooser": true,
+          "show_name": false,
+          "inherit_properties": false
+        },
+        {
+          "column": "Supplier",
+          "name": "Supplier",
+          "visible_on_add": false,
+          "visible_in_chooser": false,
+          "show_name": false,
+          "inherit_properties": false
+        },
+        {
+          "column": "Supplier_PN",
+          "name": "Supplier PN",
+          "visible_on_add": false,
+          "visible_in_chooser": true,
+          "show_name": false,
+          "inherit_properties": false
+        },
+        {
+          "column": "Packaging",
+          "name": "Packaging",
+          "visible_on_add": false,
+          "visible_in_chooser": true,
+          "show_name": false,
+          "inherit_properties": false
+        },
+        {
+          "column": "Key_Params",
+          "name": "Key Params",
+          "visible_on_add": false,
+          "visible_in_chooser": true,
+          "show_name": false,
+          "inherit_properties": false
+        },
+        {
+          "column": "Package",
+          "name": "Package",
+          "visible_on_add": false,
+          "visible_in_chooser": true,
+          "show_name": false,
+          "inherit_properties": false
+        },
+        {
+          "column": "DK_Stock",
+          "name": "DK Stock",
+          "visible_on_add": false,
+          "visible_in_chooser": true,
+          "show_name": false,
+          "inherit_properties": false
+        }
+      ]
+    },
+    {
+      "name": "Interface",
+      "table": "Interface_Active",
+      "key": "Part_ID",
+      "symbols": "Symbol",
+      "footprints": "Footprint",
+      "properties": {
+        "description": "Description",
+        "footprint_filters": "FP_Filter",
+        "keywords": "Keywords",
+        "datasheet": "Datasheet"
+      },
+      "fields": [
+        {
+          "column": "Value",
+          "name": "Value",
+          "visible_on_add": true,
+          "visible_in_chooser": true,
+          "show_name": false,
+          "inherit_properties": false
+        },
+        {
+          "column": "Part_ID",
+          "name": "Part ID",
+          "visible_on_add": false,
+          "visible_in_chooser": true,
+          "show_name": false,
+          "inherit_properties": false
+        },
+        {
+          "column": "Review_Status",
+          "name": "Review Status",
+          "visible_on_add": false,
+          "visible_in_chooser": true,
+          "show_name": false,
+          "inherit_properties": false
+        },
+        {
+          "column": "Lifecycle",
+          "name": "Lifecycle",
+          "visible_on_add": false,
+          "visible_in_chooser": true,
+          "show_name": false,
+          "inherit_properties": false
+        },
+        {
+          "column": "MPN",
+          "name": "MPN",
+          "visible_on_add": false,
+          "visible_in_chooser": true,
+          "show_name": false,
+          "inherit_properties": false
+        },
+        {
+          "column": "Manufacturer",
+          "name": "Manufacturer",
+          "visible_on_add": false,
+          "visible_in_chooser": true,
+          "show_name": false,
+          "inherit_properties": false
+        },
+        {
+          "column": "Supplier",
+          "name": "Supplier",
+          "visible_on_add": false,
+          "visible_in_chooser": false,
+          "show_name": false,
+          "inherit_properties": false
+        },
+        {
+          "column": "Supplier_PN",
+          "name": "Supplier PN",
+          "visible_on_add": false,
+          "visible_in_chooser": true,
+          "show_name": false,
+          "inherit_properties": false
+        },
+        {
+          "column": "Packaging",
+          "name": "Packaging",
+          "visible_on_add": false,
+          "visible_in_chooser": true,
+          "show_name": false,
+          "inherit_properties": false
+        },
+        {
+          "column": "Key_Params",
+          "name": "Key Params",
+          "visible_on_add": false,
+          "visible_in_chooser": true,
+          "show_name": false,
+          "inherit_properties": false
+        },
+        {
+          "column": "Package",
+          "name": "Package",
+          "visible_on_add": false,
+          "visible_in_chooser": true,
+          "show_name": false,
+          "inherit_properties": false
+        },
+        {
+          "column": "DK_Stock",
+          "name": "DK Stock",
+          "visible_on_add": false,
+          "visible_in_chooser": true,
+          "show_name": false,
+          "inherit_properties": false
+        }
+      ]
+    },
+    {
+      "name": "Isolators",
+      "table": "Isolators_Active",
+      "key": "Part_ID",
+      "symbols": "Symbol",
+      "footprints": "Footprint",
+      "properties": {
+        "description": "Description",
+        "footprint_filters": "FP_Filter",
+        "keywords": "Keywords",
+        "datasheet": "Datasheet"
+      },
+      "fields": [
+        {
+          "column": "Value",
+          "name": "Value",
+          "visible_on_add": true,
+          "visible_in_chooser": true,
+          "show_name": false,
+          "inherit_properties": false
+        },
+        {
+          "column": "Part_ID",
+          "name": "Part ID",
+          "visible_on_add": false,
+          "visible_in_chooser": true,
+          "show_name": false,
+          "inherit_properties": false
+        },
+        {
+          "column": "Review_Status",
+          "name": "Review Status",
+          "visible_on_add": false,
+          "visible_in_chooser": true,
+          "show_name": false,
+          "inherit_properties": false
+        },
+        {
+          "column": "Lifecycle",
+          "name": "Lifecycle",
+          "visible_on_add": false,
+          "visible_in_chooser": true,
+          "show_name": false,
+          "inherit_properties": false
+        },
+        {
+          "column": "MPN",
+          "name": "MPN",
+          "visible_on_add": false,
+          "visible_in_chooser": true,
+          "show_name": false,
+          "inherit_properties": false
+        },
+        {
+          "column": "Manufacturer",
+          "name": "Manufacturer",
+          "visible_on_add": false,
+          "visible_in_chooser": true,
+          "show_name": false,
+          "inherit_properties": false
+        },
+        {
+          "column": "Supplier",
+          "name": "Supplier",
+          "visible_on_add": false,
+          "visible_in_chooser": false,
+          "show_name": false,
+          "inherit_properties": false
+        },
+        {
+          "column": "Supplier_PN",
+          "name": "Supplier PN",
+          "visible_on_add": false,
+          "visible_in_chooser": true,
+          "show_name": false,
+          "inherit_properties": false
+        },
+        {
+          "column": "Packaging",
+          "name": "Packaging",
+          "visible_on_add": false,
+          "visible_in_chooser": true,
+          "show_name": false,
+          "inherit_properties": false
+        },
+        {
+          "column": "Key_Params",
+          "name": "Key Params",
+          "visible_on_add": false,
+          "visible_in_chooser": true,
+          "show_name": false,
+          "inherit_properties": false
+        },
+        {
+          "column": "Package",
+          "name": "Package",
+          "visible_on_add": false,
+          "visible_in_chooser": true,
+          "show_name": false,
+          "inherit_properties": false
+        },
+        {
+          "column": "DK_Stock",
+          "name": "DK Stock",
+          "visible_on_add": false,
+          "visible_in_chooser": true,
+          "show_name": false,
+          "inherit_properties": false
+        }
+      ]
+    },
+    {
+      "name": "Logic & Programmable Logic",
+      "table": "Logic_Active",
+      "key": "Part_ID",
+      "symbols": "Symbol",
+      "footprints": "Footprint",
+      "properties": {
+        "description": "Description",
+        "footprint_filters": "FP_Filter",
+        "keywords": "Keywords",
+        "datasheet": "Datasheet"
+      },
+      "fields": [
+        {
+          "column": "Value",
+          "name": "Value",
+          "visible_on_add": true,
+          "visible_in_chooser": true,
+          "show_name": false,
+          "inherit_properties": false
+        },
+        {
+          "column": "Part_ID",
+          "name": "Part ID",
+          "visible_on_add": false,
+          "visible_in_chooser": true,
+          "show_name": false,
+          "inherit_properties": false
+        },
+        {
+          "column": "Review_Status",
+          "name": "Review Status",
+          "visible_on_add": false,
+          "visible_in_chooser": true,
+          "show_name": false,
+          "inherit_properties": false
+        },
+        {
+          "column": "Lifecycle",
+          "name": "Lifecycle",
+          "visible_on_add": false,
+          "visible_in_chooser": true,
+          "show_name": false,
+          "inherit_properties": false
+        },
+        {
+          "column": "MPN",
+          "name": "MPN",
+          "visible_on_add": false,
+          "visible_in_chooser": true,
+          "show_name": false,
+          "inherit_properties": false
+        },
+        {
+          "column": "Manufacturer",
+          "name": "Manufacturer",
+          "visible_on_add": false,
+          "visible_in_chooser": true,
+          "show_name": false,
+          "inherit_properties": false
+        },
+        {
+          "column": "Supplier",
+          "name": "Supplier",
+          "visible_on_add": false,
+          "visible_in_chooser": false,
+          "show_name": false,
+          "inherit_properties": false
+        },
+        {
+          "column": "Supplier_PN",
+          "name": "Supplier PN",
+          "visible_on_add": false,
+          "visible_in_chooser": true,
+          "show_name": false,
+          "inherit_properties": false
+        },
+        {
+          "column": "Packaging",
+          "name": "Packaging",
+          "visible_on_add": false,
+          "visible_in_chooser": true,
+          "show_name": false,
+          "inherit_properties": false
+        },
+        {
+          "column": "Key_Params",
+          "name": "Key Params",
+          "visible_on_add": false,
+          "visible_in_chooser": true,
+          "show_name": false,
+          "inherit_properties": false
+        },
+        {
+          "column": "Package",
+          "name": "Package",
+          "visible_on_add": false,
+          "visible_in_chooser": true,
+          "show_name": false,
+          "inherit_properties": false
+        },
+        {
+          "column": "DK_Stock",
+          "name": "DK Stock",
+          "visible_on_add": false,
+          "visible_in_chooser": true,
+          "show_name": false,
+          "inherit_properties": false
+        }
+      ]
+    },
+    {
+      "name": "MCU / CPU / DSP",
+      "table": "MCU_Active",
+      "key": "Part_ID",
+      "symbols": "Symbol",
+      "footprints": "Footprint",
+      "properties": {
+        "description": "Description",
+        "footprint_filters": "FP_Filter",
+        "keywords": "Keywords",
+        "datasheet": "Datasheet"
+      },
+      "fields": [
+        {
+          "column": "Value",
+          "name": "Value",
+          "visible_on_add": true,
+          "visible_in_chooser": true,
+          "show_name": false,
+          "inherit_properties": false
+        },
+        {
+          "column": "Part_ID",
+          "name": "Part ID",
+          "visible_on_add": false,
+          "visible_in_chooser": true,
+          "show_name": false,
+          "inherit_properties": false
+        },
+        {
+          "column": "Review_Status",
+          "name": "Review Status",
+          "visible_on_add": false,
+          "visible_in_chooser": true,
+          "show_name": false,
+          "inherit_properties": false
+        },
+        {
+          "column": "Lifecycle",
+          "name": "Lifecycle",
+          "visible_on_add": false,
+          "visible_in_chooser": true,
+          "show_name": false,
+          "inherit_properties": false
+        },
+        {
+          "column": "MPN",
+          "name": "MPN",
+          "visible_on_add": false,
+          "visible_in_chooser": true,
+          "show_name": false,
+          "inherit_properties": false
+        },
+        {
+          "column": "Manufacturer",
+          "name": "Manufacturer",
+          "visible_on_add": false,
+          "visible_in_chooser": true,
+          "show_name": false,
+          "inherit_properties": false
+        },
+        {
+          "column": "Supplier",
+          "name": "Supplier",
+          "visible_on_add": false,
+          "visible_in_chooser": false,
+          "show_name": false,
+          "inherit_properties": false
+        },
+        {
+          "column": "Supplier_PN",
+          "name": "Supplier PN",
+          "visible_on_add": false,
+          "visible_in_chooser": true,
+          "show_name": false,
+          "inherit_properties": false
+        },
+        {
+          "column": "Packaging",
+          "name": "Packaging",
+          "visible_on_add": false,
+          "visible_in_chooser": true,
+          "show_name": false,
+          "inherit_properties": false
+        },
+        {
+          "column": "Key_Params",
+          "name": "Key Params",
+          "visible_on_add": false,
+          "visible_in_chooser": true,
+          "show_name": false,
+          "inherit_properties": false
+        },
+        {
+          "column": "Package",
+          "name": "Package",
+          "visible_on_add": false,
+          "visible_in_chooser": true,
+          "show_name": false,
+          "inherit_properties": false
+        },
+        {
+          "column": "DK_Stock",
+          "name": "DK Stock",
+          "visible_on_add": false,
+          "visible_in_chooser": true,
+          "show_name": false,
+          "inherit_properties": false
+        }
+      ]
+    },
+    {
+      "name": "Memory",
+      "table": "Memory_Active",
+      "key": "Part_ID",
+      "symbols": "Symbol",
+      "footprints": "Footprint",
+      "properties": {
+        "description": "Description",
+        "footprint_filters": "FP_Filter",
+        "keywords": "Keywords",
+        "datasheet": "Datasheet"
+      },
+      "fields": [
+        {
+          "column": "Value",
+          "name": "Value",
+          "visible_on_add": true,
+          "visible_in_chooser": true,
+          "show_name": false,
+          "inherit_properties": false
+        },
+        {
+          "column": "Part_ID",
+          "name": "Part ID",
+          "visible_on_add": false,
+          "visible_in_chooser": true,
+          "show_name": false,
+          "inherit_properties": false
+        },
+        {
+          "column": "Review_Status",
+          "name": "Review Status",
+          "visible_on_add": false,
+          "visible_in_chooser": true,
+          "show_name": false,
+          "inherit_properties": false
+        },
+        {
+          "column": "Lifecycle",
+          "name": "Lifecycle",
+          "visible_on_add": false,
+          "visible_in_chooser": true,
+          "show_name": false,
+          "inherit_properties": false
+        },
+        {
+          "column": "MPN",
+          "name": "MPN",
+          "visible_on_add": false,
+          "visible_in_chooser": true,
+          "show_name": false,
+          "inherit_properties": false
+        },
+        {
+          "column": "Manufacturer",
+          "name": "Manufacturer",
+          "visible_on_add": false,
+          "visible_in_chooser": true,
+          "show_name": false,
+          "inherit_properties": false
+        },
+        {
+          "column": "Supplier",
+          "name": "Supplier",
+          "visible_on_add": false,
+          "visible_in_chooser": false,
+          "show_name": false,
+          "inherit_properties": false
+        },
+        {
+          "column": "Supplier_PN",
+          "name": "Supplier PN",
+          "visible_on_add": false,
+          "visible_in_chooser": true,
+          "show_name": false,
+          "inherit_properties": false
+        },
+        {
+          "column": "Packaging",
+          "name": "Packaging",
+          "visible_on_add": false,
+          "visible_in_chooser": true,
+          "show_name": false,
+          "inherit_properties": false
+        },
+        {
+          "column": "Key_Params",
+          "name": "Key Params",
+          "visible_on_add": false,
+          "visible_in_chooser": true,
+          "show_name": false,
+          "inherit_properties": false
+        },
+        {
+          "column": "Package",
+          "name": "Package",
+          "visible_on_add": false,
+          "visible_in_chooser": true,
+          "show_name": false,
+          "inherit_properties": false
+        },
+        {
+          "column": "DK_Stock",
+          "name": "DK Stock",
+          "visible_on_add": false,
+          "visible_in_chooser": true,
+          "show_name": false,
+          "inherit_properties": false
+        }
+      ]
+    },
+    {
+      "name": "Oscillators & Timers",
+      "table": "Oscillators_Timers_Active",
+      "key": "Part_ID",
+      "symbols": "Symbol",
+      "footprints": "Footprint",
+      "properties": {
+        "description": "Description",
+        "footprint_filters": "FP_Filter",
+        "keywords": "Keywords",
+        "datasheet": "Datasheet"
+      },
+      "fields": [
+        {
+          "column": "Value",
+          "name": "Value",
+          "visible_on_add": true,
+          "visible_in_chooser": true,
+          "show_name": false,
+          "inherit_properties": false
+        },
+        {
+          "column": "Part_ID",
+          "name": "Part ID",
+          "visible_on_add": false,
+          "visible_in_chooser": true,
+          "show_name": false,
+          "inherit_properties": false
+        },
+        {
+          "column": "Review_Status",
+          "name": "Review Status",
+          "visible_on_add": false,
+          "visible_in_chooser": true,
+          "show_name": false,
+          "inherit_properties": false
+        },
+        {
+          "column": "Lifecycle",
+          "name": "Lifecycle",
+          "visible_on_add": false,
+          "visible_in_chooser": true,
+          "show_name": false,
+          "inherit_properties": false
+        },
+        {
+          "column": "MPN",
+          "name": "MPN",
+          "visible_on_add": false,
+          "visible_in_chooser": true,
+          "show_name": false,
+          "inherit_properties": false
+        },
+        {
+          "column": "Manufacturer",
+          "name": "Manufacturer",
+          "visible_on_add": false,
+          "visible_in_chooser": true,
+          "show_name": false,
+          "inherit_properties": false
+        },
+        {
+          "column": "Supplier",
+          "name": "Supplier",
+          "visible_on_add": false,
+          "visible_in_chooser": false,
+          "show_name": false,
+          "inherit_properties": false
+        },
+        {
+          "column": "Supplier_PN",
+          "name": "Supplier PN",
+          "visible_on_add": false,
+          "visible_in_chooser": true,
+          "show_name": false,
+          "inherit_properties": false
+        },
+        {
+          "column": "Packaging",
+          "name": "Packaging",
+          "visible_on_add": false,
+          "visible_in_chooser": true,
+          "show_name": false,
+          "inherit_properties": false
+        },
+        {
+          "column": "Key_Params",
+          "name": "Key Params",
+          "visible_on_add": false,
+          "visible_in_chooser": true,
+          "show_name": false,
+          "inherit_properties": false
+        },
+        {
+          "column": "Package",
+          "name": "Package",
+          "visible_on_add": false,
+          "visible_in_chooser": true,
+          "show_name": false,
+          "inherit_properties": false
+        },
+        {
+          "column": "DK_Stock",
+          "name": "DK Stock",
+          "visible_on_add": false,
+          "visible_in_chooser": true,
+          "show_name": false,
+          "inherit_properties": false
+        }
+      ]
+    },
+    {
+      "name": "Power Management & References",
+      "table": "Power_Management_Active",
+      "key": "Part_ID",
+      "symbols": "Symbol",
+      "footprints": "Footprint",
+      "properties": {
+        "description": "Description",
+        "footprint_filters": "FP_Filter",
+        "keywords": "Keywords",
+        "datasheet": "Datasheet"
+      },
+      "fields": [
+        {
+          "column": "Value",
+          "name": "Value",
+          "visible_on_add": true,
+          "visible_in_chooser": true,
+          "show_name": false,
+          "inherit_properties": false
+        },
+        {
+          "column": "Part_ID",
+          "name": "Part ID",
+          "visible_on_add": false,
+          "visible_in_chooser": true,
+          "show_name": false,
+          "inherit_properties": false
+        },
+        {
+          "column": "Review_Status",
+          "name": "Review Status",
+          "visible_on_add": false,
+          "visible_in_chooser": true,
+          "show_name": false,
+          "inherit_properties": false
+        },
+        {
+          "column": "Lifecycle",
+          "name": "Lifecycle",
+          "visible_on_add": false,
+          "visible_in_chooser": true,
+          "show_name": false,
+          "inherit_properties": false
+        },
+        {
+          "column": "MPN",
+          "name": "MPN",
+          "visible_on_add": false,
+          "visible_in_chooser": true,
+          "show_name": false,
+          "inherit_properties": false
+        },
+        {
+          "column": "Manufacturer",
+          "name": "Manufacturer",
+          "visible_on_add": false,
+          "visible_in_chooser": true,
+          "show_name": false,
+          "inherit_properties": false
+        },
+        {
+          "column": "Supplier",
+          "name": "Supplier",
+          "visible_on_add": false,
+          "visible_in_chooser": false,
+          "show_name": false,
+          "inherit_properties": false
+        },
+        {
+          "column": "Supplier_PN",
+          "name": "Supplier PN",
+          "visible_on_add": false,
+          "visible_in_chooser": true,
+          "show_name": false,
+          "inherit_properties": false
+        },
+        {
+          "column": "Packaging",
+          "name": "Packaging",
+          "visible_on_add": false,
+          "visible_in_chooser": true,
+          "show_name": false,
+          "inherit_properties": false
+        },
+        {
+          "column": "Key_Params",
+          "name": "Key Params",
+          "visible_on_add": false,
+          "visible_in_chooser": true,
+          "show_name": false,
+          "inherit_properties": false
+        },
+        {
+          "column": "Package",
+          "name": "Package",
+          "visible_on_add": false,
+          "visible_in_chooser": true,
+          "show_name": false,
+          "inherit_properties": false
+        },
+        {
+          "column": "DK_Stock",
+          "name": "DK Stock",
+          "visible_on_add": false,
+          "visible_in_chooser": true,
+          "show_name": false,
+          "inherit_properties": false
+        }
+      ]
+    },
+    {
+      "name": "Power Protection",
+      "table": "Power_Protection_Active",
+      "key": "Part_ID",
+      "symbols": "Symbol",
+      "footprints": "Footprint",
+      "properties": {
+        "description": "Description",
+        "footprint_filters": "FP_Filter",
+        "keywords": "Keywords",
+        "datasheet": "Datasheet"
+      },
+      "fields": [
+        {
+          "column": "Value",
+          "name": "Value",
+          "visible_on_add": true,
+          "visible_in_chooser": true,
+          "show_name": false,
+          "inherit_properties": false
+        },
+        {
+          "column": "Part_ID",
+          "name": "Part ID",
+          "visible_on_add": false,
+          "visible_in_chooser": true,
+          "show_name": false,
+          "inherit_properties": false
+        },
+        {
+          "column": "Review_Status",
+          "name": "Review Status",
+          "visible_on_add": false,
+          "visible_in_chooser": true,
+          "show_name": false,
+          "inherit_properties": false
+        },
+        {
+          "column": "Lifecycle",
+          "name": "Lifecycle",
+          "visible_on_add": false,
+          "visible_in_chooser": true,
+          "show_name": false,
+          "inherit_properties": false
+        },
+        {
+          "column": "MPN",
+          "name": "MPN",
+          "visible_on_add": false,
+          "visible_in_chooser": true,
+          "show_name": false,
+          "inherit_properties": false
+        },
+        {
+          "column": "Manufacturer",
+          "name": "Manufacturer",
+          "visible_on_add": false,
+          "visible_in_chooser": true,
+          "show_name": false,
+          "inherit_properties": false
+        },
+        {
+          "column": "Supplier",
+          "name": "Supplier",
+          "visible_on_add": false,
+          "visible_in_chooser": false,
+          "show_name": false,
+          "inherit_properties": false
+        },
+        {
+          "column": "Supplier_PN",
+          "name": "Supplier PN",
+          "visible_on_add": false,
+          "visible_in_chooser": true,
+          "show_name": false,
+          "inherit_properties": false
+        },
+        {
+          "column": "Packaging",
+          "name": "Packaging",
+          "visible_on_add": false,
+          "visible_in_chooser": true,
+          "show_name": false,
+          "inherit_properties": false
+        },
+        {
+          "column": "Key_Params",
+          "name": "Key Params",
+          "visible_on_add": false,
+          "visible_in_chooser": true,
+          "show_name": false,
+          "inherit_properties": false
+        },
+        {
+          "column": "Package",
+          "name": "Package",
+          "visible_on_add": false,
+          "visible_in_chooser": true,
+          "show_name": false,
+          "inherit_properties": false
+        },
+        {
+          "column": "DK_Stock",
+          "name": "DK Stock",
+          "visible_on_add": false,
+          "visible_in_chooser": true,
+          "show_name": false,
+          "inherit_properties": false
+        }
+      ]
+    },
+    {
+      "name": "Regulators - Linear",
+      "table": "Regulators_Linear_Active",
+      "key": "Part_ID",
+      "symbols": "Symbol",
+      "footprints": "Footprint",
+      "properties": {
+        "description": "Description",
+        "footprint_filters": "FP_Filter",
+        "keywords": "Keywords",
+        "datasheet": "Datasheet"
+      },
+      "fields": [
+        {
+          "column": "Value",
+          "name": "Value",
+          "visible_on_add": true,
+          "visible_in_chooser": true,
+          "show_name": false,
+          "inherit_properties": false
+        },
+        {
+          "column": "Part_ID",
+          "name": "Part ID",
+          "visible_on_add": false,
+          "visible_in_chooser": true,
+          "show_name": false,
+          "inherit_properties": false
+        },
+        {
+          "column": "Review_Status",
+          "name": "Review Status",
+          "visible_on_add": false,
+          "visible_in_chooser": true,
+          "show_name": false,
+          "inherit_properties": false
+        },
+        {
+          "column": "Lifecycle",
+          "name": "Lifecycle",
+          "visible_on_add": false,
+          "visible_in_chooser": true,
+          "show_name": false,
+          "inherit_properties": false
+        },
+        {
+          "column": "MPN",
+          "name": "MPN",
+          "visible_on_add": false,
+          "visible_in_chooser": true,
+          "show_name": false,
+          "inherit_properties": false
+        },
+        {
+          "column": "Manufacturer",
+          "name": "Manufacturer",
+          "visible_on_add": false,
+          "visible_in_chooser": true,
+          "show_name": false,
+          "inherit_properties": false
+        },
+        {
+          "column": "Supplier",
+          "name": "Supplier",
+          "visible_on_add": false,
+          "visible_in_chooser": false,
+          "show_name": false,
+          "inherit_properties": false
+        },
+        {
+          "column": "Supplier_PN",
+          "name": "Supplier PN",
+          "visible_on_add": false,
+          "visible_in_chooser": true,
+          "show_name": false,
+          "inherit_properties": false
+        },
+        {
+          "column": "Packaging",
+          "name": "Packaging",
+          "visible_on_add": false,
+          "visible_in_chooser": true,
+          "show_name": false,
+          "inherit_properties": false
+        },
+        {
+          "column": "Key_Params",
+          "name": "Key Params",
+          "visible_on_add": false,
+          "visible_in_chooser": true,
+          "show_name": false,
+          "inherit_properties": false
+        },
+        {
+          "column": "Package",
+          "name": "Package",
+          "visible_on_add": false,
+          "visible_in_chooser": true,
+          "show_name": false,
+          "inherit_properties": false
+        },
+        {
+          "column": "DK_Stock",
+          "name": "DK Stock",
+          "visible_on_add": false,
+          "visible_in_chooser": true,
+          "show_name": false,
+          "inherit_properties": false
+        }
+      ]
+    },
+    {
+      "name": "Regulators - Switching",
+      "table": "Regulators_Switching_Active",
+      "key": "Part_ID",
+      "symbols": "Symbol",
+      "footprints": "Footprint",
+      "properties": {
+        "description": "Description",
+        "footprint_filters": "FP_Filter",
+        "keywords": "Keywords",
+        "datasheet": "Datasheet"
+      },
+      "fields": [
+        {
+          "column": "Value",
+          "name": "Value",
+          "visible_on_add": true,
+          "visible_in_chooser": true,
+          "show_name": false,
+          "inherit_properties": false
+        },
+        {
+          "column": "Part_ID",
+          "name": "Part ID",
+          "visible_on_add": false,
+          "visible_in_chooser": true,
+          "show_name": false,
+          "inherit_properties": false
+        },
+        {
+          "column": "Review_Status",
+          "name": "Review Status",
+          "visible_on_add": false,
+          "visible_in_chooser": true,
+          "show_name": false,
+          "inherit_properties": false
+        },
+        {
+          "column": "Lifecycle",
+          "name": "Lifecycle",
+          "visible_on_add": false,
+          "visible_in_chooser": true,
+          "show_name": false,
+          "inherit_properties": false
+        },
+        {
+          "column": "MPN",
+          "name": "MPN",
+          "visible_on_add": false,
+          "visible_in_chooser": true,
+          "show_name": false,
+          "inherit_properties": false
+        },
+        {
+          "column": "Manufacturer",
+          "name": "Manufacturer",
+          "visible_on_add": false,
+          "visible_in_chooser": true,
+          "show_name": false,
+          "inherit_properties": false
+        },
+        {
+          "column": "Supplier",
+          "name": "Supplier",
+          "visible_on_add": false,
+          "visible_in_chooser": false,
+          "show_name": false,
+          "inherit_properties": false
+        },
+        {
+          "column": "Supplier_PN",
+          "name": "Supplier PN",
+          "visible_on_add": false,
+          "visible_in_chooser": true,
+          "show_name": false,
+          "inherit_properties": false
+        },
+        {
+          "column": "Packaging",
+          "name": "Packaging",
+          "visible_on_add": false,
+          "visible_in_chooser": true,
+          "show_name": false,
+          "inherit_properties": false
+        },
+        {
+          "column": "Key_Params",
+          "name": "Key Params",
+          "visible_on_add": false,
+          "visible_in_chooser": true,
+          "show_name": false,
+          "inherit_properties": false
+        },
+        {
+          "column": "Package",
+          "name": "Package",
+          "visible_on_add": false,
+          "visible_in_chooser": true,
+          "show_name": false,
+          "inherit_properties": false
+        },
+        {
+          "column": "DK_Stock",
+          "name": "DK Stock",
+          "visible_on_add": false,
+          "visible_in_chooser": true,
+          "show_name": false,
+          "inherit_properties": false
+        }
+      ]
+    },
+    {
+      "name": "Relays",
+      "table": "Relays_Active",
+      "key": "Part_ID",
+      "symbols": "Symbol",
+      "footprints": "Footprint",
+      "properties": {
+        "description": "Description",
+        "footprint_filters": "FP_Filter",
+        "keywords": "Keywords",
+        "datasheet": "Datasheet"
+      },
+      "fields": [
+        {
+          "column": "Value",
+          "name": "Value",
+          "visible_on_add": true,
+          "visible_in_chooser": true,
+          "show_name": false,
+          "inherit_properties": false
+        },
+        {
+          "column": "Part_ID",
+          "name": "Part ID",
+          "visible_on_add": false,
+          "visible_in_chooser": true,
+          "show_name": false,
+          "inherit_properties": false
+        },
+        {
+          "column": "Review_Status",
+          "name": "Review Status",
+          "visible_on_add": false,
+          "visible_in_chooser": true,
+          "show_name": false,
+          "inherit_properties": false
+        },
+        {
+          "column": "Lifecycle",
+          "name": "Lifecycle",
+          "visible_on_add": false,
+          "visible_in_chooser": true,
+          "show_name": false,
+          "inherit_properties": false
+        },
+        {
+          "column": "MPN",
+          "name": "MPN",
+          "visible_on_add": false,
+          "visible_in_chooser": true,
+          "show_name": false,
+          "inherit_properties": false
+        },
+        {
+          "column": "Manufacturer",
+          "name": "Manufacturer",
+          "visible_on_add": false,
+          "visible_in_chooser": true,
+          "show_name": false,
+          "inherit_properties": false
+        },
+        {
+          "column": "Supplier",
+          "name": "Supplier",
+          "visible_on_add": false,
+          "visible_in_chooser": false,
+          "show_name": false,
+          "inherit_properties": false
+        },
+        {
+          "column": "Supplier_PN",
+          "name": "Supplier PN",
+          "visible_on_add": false,
+          "visible_in_chooser": true,
+          "show_name": false,
+          "inherit_properties": false
+        },
+        {
+          "column": "Packaging",
+          "name": "Packaging",
+          "visible_on_add": false,
+          "visible_in_chooser": true,
+          "show_name": false,
+          "inherit_properties": false
+        },
+        {
+          "column": "Key_Params",
+          "name": "Key Params",
+          "visible_on_add": false,
+          "visible_in_chooser": true,
+          "show_name": false,
+          "inherit_properties": false
+        },
+        {
+          "column": "Package",
+          "name": "Package",
+          "visible_on_add": false,
+          "visible_in_chooser": true,
+          "show_name": false,
+          "inherit_properties": false
+        },
+        {
+          "column": "DK_Stock",
+          "name": "DK Stock",
+          "visible_on_add": false,
+          "visible_in_chooser": true,
+          "show_name": false,
+          "inherit_properties": false
+        }
+      ]
+    },
+    {
+      "name": "RF",
+      "table": "RF_Active",
+      "key": "Part_ID",
+      "symbols": "Symbol",
+      "footprints": "Footprint",
+      "properties": {
+        "description": "Description",
+        "footprint_filters": "FP_Filter",
+        "keywords": "Keywords",
+        "datasheet": "Datasheet"
+      },
+      "fields": [
+        {
+          "column": "Value",
+          "name": "Value",
+          "visible_on_add": true,
+          "visible_in_chooser": true,
+          "show_name": false,
+          "inherit_properties": false
+        },
+        {
+          "column": "Part_ID",
+          "name": "Part ID",
+          "visible_on_add": false,
+          "visible_in_chooser": true,
+          "show_name": false,
+          "inherit_properties": false
+        },
+        {
+          "column": "Review_Status",
+          "name": "Review Status",
+          "visible_on_add": false,
+          "visible_in_chooser": true,
+          "show_name": false,
+          "inherit_properties": false
+        },
+        {
+          "column": "Lifecycle",
+          "name": "Lifecycle",
+          "visible_on_add": false,
+          "visible_in_chooser": true,
+          "show_name": false,
+          "inherit_properties": false
+        },
+        {
+          "column": "MPN",
+          "name": "MPN",
+          "visible_on_add": false,
+          "visible_in_chooser": true,
+          "show_name": false,
+          "inherit_properties": false
+        },
+        {
+          "column": "Manufacturer",
+          "name": "Manufacturer",
+          "visible_on_add": false,
+          "visible_in_chooser": true,
+          "show_name": false,
+          "inherit_properties": false
+        },
+        {
+          "column": "Supplier",
+          "name": "Supplier",
+          "visible_on_add": false,
+          "visible_in_chooser": false,
+          "show_name": false,
+          "inherit_properties": false
+        },
+        {
+          "column": "Supplier_PN",
+          "name": "Supplier PN",
+          "visible_on_add": false,
+          "visible_in_chooser": true,
+          "show_name": false,
+          "inherit_properties": false
+        },
+        {
+          "column": "Packaging",
+          "name": "Packaging",
+          "visible_on_add": false,
+          "visible_in_chooser": true,
+          "show_name": false,
+          "inherit_properties": false
+        },
+        {
+          "column": "Key_Params",
+          "name": "Key Params",
+          "visible_on_add": false,
+          "visible_in_chooser": true,
+          "show_name": false,
+          "inherit_properties": false
+        },
+        {
+          "column": "Package",
+          "name": "Package",
+          "visible_on_add": false,
+          "visible_in_chooser": true,
+          "show_name": false,
+          "inherit_properties": false
+        },
+        {
+          "column": "DK_Stock",
+          "name": "DK Stock",
+          "visible_on_add": false,
+          "visible_in_chooser": true,
+          "show_name": false,
+          "inherit_properties": false
+        }
+      ]
+    },
+    {
+      "name": "Sensors",
+      "table": "Sensors_Active",
+      "key": "Part_ID",
+      "symbols": "Symbol",
+      "footprints": "Footprint",
+      "properties": {
+        "description": "Description",
+        "footprint_filters": "FP_Filter",
+        "keywords": "Keywords",
+        "datasheet": "Datasheet"
+      },
+      "fields": [
+        {
+          "column": "Value",
+          "name": "Value",
+          "visible_on_add": true,
+          "visible_in_chooser": true,
+          "show_name": false,
+          "inherit_properties": false
+        },
+        {
+          "column": "Part_ID",
+          "name": "Part ID",
+          "visible_on_add": false,
+          "visible_in_chooser": true,
+          "show_name": false,
+          "inherit_properties": false
+        },
+        {
+          "column": "Review_Status",
+          "name": "Review Status",
+          "visible_on_add": false,
+          "visible_in_chooser": true,
+          "show_name": false,
+          "inherit_properties": false
+        },
+        {
+          "column": "Lifecycle",
+          "name": "Lifecycle",
+          "visible_on_add": false,
+          "visible_in_chooser": true,
+          "show_name": false,
+          "inherit_properties": false
+        },
+        {
+          "column": "MPN",
+          "name": "MPN",
+          "visible_on_add": false,
+          "visible_in_chooser": true,
+          "show_name": false,
+          "inherit_properties": false
+        },
+        {
+          "column": "Manufacturer",
+          "name": "Manufacturer",
+          "visible_on_add": false,
+          "visible_in_chooser": true,
+          "show_name": false,
+          "inherit_properties": false
+        },
+        {
+          "column": "Supplier",
+          "name": "Supplier",
+          "visible_on_add": false,
+          "visible_in_chooser": false,
+          "show_name": false,
+          "inherit_properties": false
+        },
+        {
+          "column": "Supplier_PN",
+          "name": "Supplier PN",
+          "visible_on_add": false,
+          "visible_in_chooser": true,
+          "show_name": false,
+          "inherit_properties": false
+        },
+        {
+          "column": "Packaging",
+          "name": "Packaging",
+          "visible_on_add": false,
+          "visible_in_chooser": true,
+          "show_name": false,
+          "inherit_properties": false
+        },
+        {
+          "column": "Key_Params",
+          "name": "Key Params",
+          "visible_on_add": false,
+          "visible_in_chooser": true,
+          "show_name": false,
+          "inherit_properties": false
+        },
+        {
+          "column": "Package",
+          "name": "Package",
+          "visible_on_add": false,
+          "visible_in_chooser": true,
+          "show_name": false,
+          "inherit_properties": false
+        },
+        {
+          "column": "DK_Stock",
+          "name": "DK Stock",
+          "visible_on_add": false,
+          "visible_in_chooser": true,
+          "show_name": false,
+          "inherit_properties": false
+        }
+      ]
+    },
+    {
+      "name": "Transformers",
+      "table": "Transformers_Active",
+      "key": "Part_ID",
+      "symbols": "Symbol",
+      "footprints": "Footprint",
+      "properties": {
+        "description": "Description",
+        "footprint_filters": "FP_Filter",
+        "keywords": "Keywords",
+        "datasheet": "Datasheet"
+      },
+      "fields": [
+        {
+          "column": "Value",
+          "name": "Value",
+          "visible_on_add": true,
+          "visible_in_chooser": true,
+          "show_name": false,
+          "inherit_properties": false
+        },
+        {
+          "column": "Part_ID",
+          "name": "Part ID",
+          "visible_on_add": false,
+          "visible_in_chooser": true,
+          "show_name": false,
+          "inherit_properties": false
+        },
+        {
+          "column": "Review_Status",
+          "name": "Review Status",
+          "visible_on_add": false,
+          "visible_in_chooser": true,
+          "show_name": false,
+          "inherit_properties": false
+        },
+        {
+          "column": "Lifecycle",
+          "name": "Lifecycle",
+          "visible_on_add": false,
+          "visible_in_chooser": true,
+          "show_name": false,
+          "inherit_properties": false
+        },
+        {
+          "column": "MPN",
+          "name": "MPN",
+          "visible_on_add": false,
+          "visible_in_chooser": true,
+          "show_name": false,
+          "inherit_properties": false
+        },
+        {
+          "column": "Manufacturer",
+          "name": "Manufacturer",
+          "visible_on_add": false,
+          "visible_in_chooser": true,
+          "show_name": false,
+          "inherit_properties": false
+        },
+        {
+          "column": "Supplier",
+          "name": "Supplier",
+          "visible_on_add": false,
+          "visible_in_chooser": false,
+          "show_name": false,
+          "inherit_properties": false
+        },
+        {
+          "column": "Supplier_PN",
+          "name": "Supplier PN",
+          "visible_on_add": false,
+          "visible_in_chooser": true,
+          "show_name": false,
+          "inherit_properties": false
+        },
+        {
+          "column": "Packaging",
+          "name": "Packaging",
+          "visible_on_add": false,
+          "visible_in_chooser": true,
+          "show_name": false,
+          "inherit_properties": false
+        },
+        {
+          "column": "Key_Params",
+          "name": "Key Params",
+          "visible_on_add": false,
+          "visible_in_chooser": true,
+          "show_name": false,
+          "inherit_properties": false
+        },
+        {
+          "column": "Package",
+          "name": "Package",
+          "visible_on_add": false,
+          "visible_in_chooser": true,
+          "show_name": false,
+          "inherit_properties": false
+        },
+        {
+          "column": "DK_Stock",
+          "name": "DK Stock",
+          "visible_on_add": false,
+          "visible_in_chooser": true,
+          "show_name": false,
+          "inherit_properties": false
+        }
+      ]
+    },
+    {
+      "name": "Transistors & Discretes",
+      "table": "Transistors_Discretes_Active",
+      "key": "Part_ID",
+      "symbols": "Symbol",
+      "footprints": "Footprint",
+      "properties": {
+        "description": "Description",
+        "footprint_filters": "FP_Filter",
+        "keywords": "Keywords",
+        "datasheet": "Datasheet"
+      },
+      "fields": [
+        {
+          "column": "Value",
+          "name": "Value",
+          "visible_on_add": true,
+          "visible_in_chooser": true,
+          "show_name": false,
+          "inherit_properties": false
+        },
+        {
+          "column": "Part_ID",
+          "name": "Part ID",
+          "visible_on_add": false,
+          "visible_in_chooser": true,
+          "show_name": false,
+          "inherit_properties": false
+        },
+        {
+          "column": "Review_Status",
+          "name": "Review Status",
+          "visible_on_add": false,
+          "visible_in_chooser": true,
+          "show_name": false,
+          "inherit_properties": false
+        },
+        {
+          "column": "Lifecycle",
+          "name": "Lifecycle",
+          "visible_on_add": false,
+          "visible_in_chooser": true,
+          "show_name": false,
+          "inherit_properties": false
+        },
+        {
+          "column": "MPN",
+          "name": "MPN",
+          "visible_on_add": false,
+          "visible_in_chooser": true,
+          "show_name": false,
+          "inherit_properties": false
+        },
+        {
+          "column": "Manufacturer",
+          "name": "Manufacturer",
+          "visible_on_add": false,
+          "visible_in_chooser": true,
+          "show_name": false,
+          "inherit_properties": false
+        },
+        {
+          "column": "Supplier",
+          "name": "Supplier",
+          "visible_on_add": false,
+          "visible_in_chooser": false,
+          "show_name": false,
+          "inherit_properties": false
+        },
+        {
+          "column": "Supplier_PN",
+          "name": "Supplier PN",
+          "visible_on_add": false,
+          "visible_in_chooser": true,
+          "show_name": false,
+          "inherit_properties": false
+        },
+        {
+          "column": "Packaging",
+          "name": "Packaging",
+          "visible_on_add": false,
+          "visible_in_chooser": true,
+          "show_name": false,
+          "inherit_properties": false
+        },
+        {
+          "column": "Key_Params",
+          "name": "Key Params",
+          "visible_on_add": false,
+          "visible_in_chooser": true,
+          "show_name": false,
+          "inherit_properties": false
+        },
+        {
+          "column": "Package",
+          "name": "Package",
+          "visible_on_add": false,
+          "visible_in_chooser": true,
+          "show_name": false,
+          "inherit_properties": false
+        },
+        {
+          "column": "DK_Stock",
+          "name": "DK Stock",
+          "visible_on_add": false,
+          "visible_in_chooser": true,
+          "show_name": false,
+          "inherit_properties": false
+        }
+      ]
+    },
+    {
+      "name": "Misc (Filters, Switches, LEDs, Security)",
+      "table": "Misc_Active",
+      "key": "Part_ID",
+      "symbols": "Symbol",
+      "footprints": "Footprint",
+      "properties": {
+        "description": "Description",
+        "footprint_filters": "FP_Filter",
+        "keywords": "Keywords",
+        "datasheet": "Datasheet"
+      },
+      "fields": [
+        {
+          "column": "Value",
+          "name": "Value",
+          "visible_on_add": true,
+          "visible_in_chooser": true,
+          "show_name": false,
+          "inherit_properties": false
+        },
+        {
+          "column": "Part_ID",
+          "name": "Part ID",
+          "visible_on_add": false,
+          "visible_in_chooser": true,
+          "show_name": false,
+          "inherit_properties": false
+        },
+        {
+          "column": "Review_Status",
+          "name": "Review Status",
+          "visible_on_add": false,
+          "visible_in_chooser": true,
+          "show_name": false,
+          "inherit_properties": false
+        },
+        {
+          "column": "Lifecycle",
+          "name": "Lifecycle",
+          "visible_on_add": false,
+          "visible_in_chooser": true,
+          "show_name": false,
+          "inherit_properties": false
+        },
+        {
+          "column": "MPN",
+          "name": "MPN",
+          "visible_on_add": false,
+          "visible_in_chooser": true,
+          "show_name": false,
+          "inherit_properties": false
+        },
+        {
+          "column": "Manufacturer",
+          "name": "Manufacturer",
+          "visible_on_add": false,
+          "visible_in_chooser": true,
+          "show_name": false,
+          "inherit_properties": false
+        },
+        {
+          "column": "Supplier",
+          "name": "Supplier",
+          "visible_on_add": false,
+          "visible_in_chooser": false,
+          "show_name": false,
+          "inherit_properties": false
+        },
+        {
+          "column": "Supplier_PN",
+          "name": "Supplier PN",
+          "visible_on_add": false,
+          "visible_in_chooser": true,
+          "show_name": false,
+          "inherit_properties": false
+        },
+        {
+          "column": "Packaging",
+          "name": "Packaging",
+          "visible_on_add": false,
+          "visible_in_chooser": true,
+          "show_name": false,
+          "inherit_properties": false
+        },
+        {
+          "column": "Key_Params",
+          "name": "Key Params",
+          "visible_on_add": false,
+          "visible_in_chooser": true,
+          "show_name": false,
+          "inherit_properties": false
+        },
+        {
+          "column": "Package",
+          "name": "Package",
+          "visible_on_add": false,
+          "visible_in_chooser": true,
+          "show_name": false,
+          "inherit_properties": false
+        },
+        {
+          "column": "DK_Stock",
+          "name": "DK Stock",
+          "visible_on_add": false,
+          "visible_in_chooser": true,
+          "show_name": false,
+          "inherit_properties": false
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,35 @@
+# Fuses_Chip
+
+Built 2026-11-21: 27 rows, 351 candidates, 0 gaps.
+
+## Changes
+- added FUSE-0402-250MA-FAST 0435.250KRS (Littelfuse Inc.) F3785CT-ND
+- added FUSE-0402-500MA-FAST 0435.500KR (Littelfuse Inc.) F1442CT-ND
+- added FUSE-0402-750MA-FAST 0435.750KR (Littelfuse Inc.) F1443CT-ND
+- added FUSE-0402-1A-FAST 0435001.KR (Littelfuse Inc.) F1444CT-ND
+- added FUSE-0402-1A5-FAST 043501.5KRHF (Littelfuse Inc.) 18-043501.5KRHFCT-ND
+- added FUSE-0402-2A-FAST 0435002.KRHF (Littelfuse Inc.) F6013CT-ND
+- added FUSE-0402-3A-FAST 0435003.KR (Littelfuse Inc.) F1616CT-ND
+- added FUSE-0402-4A-FAST 0435004.KR (Littelfuse Inc.) 18-0435004.KRCT-ND
+- added FUSE-0402-5A-FAST 0435005.KRHF (Littelfuse Inc.) F10784CT-ND
+- added FUSE-0603-250MA-FAST 0467.250NR (Littelfuse Inc.) F1389CT-ND
+- added FUSE-0603-500MA-FAST 0467.500NRHF (Littelfuse Inc.) F5698CT-ND
+- added FUSE-0603-750MA-FAST 0467.750NR (Littelfuse Inc.) F1392CT-ND
+- added FUSE-0603-1A-FAST 0467001.NR (Littelfuse Inc.) F1393CT-ND
+- added FUSE-0603-1A5-FAST 046701.5NR (Littelfuse Inc.) F1395CT-ND
+- added FUSE-0603-2A-FAST 0467002.NR (Littelfuse Inc.) F1397CT-ND
+- added FUSE-0603-3A-FAST 0467003.NRHF (Littelfuse Inc.) F5700CT-ND
+- added FUSE-0603-4A-FAST 0467004.NRHF (Littelfuse Inc.) F6021CT-ND
+- added FUSE-0603-5A-FAST 0467005.NR (Littelfuse Inc.) F1402CT-ND
+- added FUSE-1206-250MA-FAST 0466.250NR (Littelfuse Inc.) F1452CT-ND
+- added FUSE-1206-500MA-FAST 0466.500NRHF (Littelfuse Inc.) F5694CT-ND
+- added FUSE-1206-750MA-FAST 0466.750NR (Littelfuse Inc.) F1455CT-ND
+- added FUSE-1206-1A-FAST 0466001.NR (Littelfuse Inc.) F1456CT-ND
+- added FUSE-1206-1A5-FAST 046601.5NR (Littelfuse Inc.) F1462CT-ND
+- added FUSE-1206-2A-FAST 0466002.NR (Littelfuse Inc.) F1457CT-ND
+- added FUSE-1206-3A-FAST 0466003.NR (Littelfuse Inc.) F1458CT-ND
+- added FUSE-1206-4A-FAST 0466004.NR (Littelfuse Inc.) F1459CT-ND
+- added FUSE-1206-5A-FAST 0466005.NR (Littelfuse Inc.) F1460CT-ND
+
+## Gaps (no eligible stocked part)
+- none

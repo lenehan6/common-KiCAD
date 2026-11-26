@@ -1,0 +1,2942 @@
+{
+  "meta": {
+    "version": 0
+  },
+  "name": "Company Parts Library",
+  "description": "SQLite-backed commodity component database with DigiKey ordering info (KiCad reads the *_Active views)",
+  "source": {
+    "type": "odbc",
+    "dsn": "",
+    "username": "",
+    "password": "",
+    "timeout_seconds": 2,
+    "connection_string": "Driver={SQLite3 ODBC Driver};Database=${CWD}/parts.sqlite;"
+  },
+  "libraries": [
+    {
+      "name": "Resistors - Thin Film 0.1% Precision",
+      "table": "Resistors_ThinFilm_Precision_Active",
+      "key": "Part_ID",
+      "symbols": "Symbol",
+      "footprints": "Footprint",
+      "fields": [
+        {
+          "column": "Value",
+          "name": "Value",
+          "visible_on_add": true,
+          "visible_in_chooser": true,
+          "show_name": false,
+          "inherit_properties": false
+        },
+        {
+          "column": "Part_ID",
+          "name": "Part ID",
+          "visible_on_add": false,
+          "visible_in_chooser": true,
+          "show_name": false,
+          "inherit_properties": false
+        },
+        {
+          "column": "Manufacturer",
+          "name": "Manufacturer",
+          "visible_on_add": false,
+          "visible_in_chooser": true,
+          "show_name": false,
+          "inherit_properties": false
+        },
+        {
+          "column": "MPN",
+          "name": "MPN",
+          "visible_on_add": false,
+          "visible_in_chooser": true,
+          "show_name": false,
+          "inherit_properties": false
+        },
+        {
+          "column": "Supplier",
+          "name": "Supplier",
+          "visible_on_add": false,
+          "visible_in_chooser": true,
+          "show_name": false,
+          "inherit_properties": false
+        },
+        {
+          "column": "Supplier_PN",
+          "name": "Supplier PN",
+          "visible_on_add": false,
+          "visible_in_chooser": true,
+          "show_name": false,
+          "inherit_properties": false
+        },
+        {
+          "column": "Package",
+          "name": "Package",
+          "visible_on_add": false,
+          "visible_in_chooser": true,
+          "show_name": false,
+          "inherit_properties": false
+        },
+        {
+          "column": "Tolerance",
+          "name": "Tolerance",
+          "visible_on_add": false,
+          "visible_in_chooser": true,
+          "show_name": false,
+          "inherit_properties": false
+        },
+        {
+          "column": "Rating",
+          "name": "Power",
+          "visible_on_add": false,
+          "visible_in_chooser": true,
+          "show_name": false,
+          "inherit_properties": false
+        },
+        {
+          "column": "TC_Dielectric",
+          "name": "TCR",
+          "visible_on_add": false,
+          "visible_in_chooser": true,
+          "show_name": false,
+          "inherit_properties": false
+        },
+        {
+          "column": "DK_Stock",
+          "name": "DigiKey Stock",
+          "visible_on_add": false,
+          "visible_in_chooser": true,
+          "show_name": false,
+          "inherit_properties": false
+        },
+        {
+          "column": "Status",
+          "name": "Status",
+          "visible_on_add": false,
+          "visible_in_chooser": true,
+          "show_name": false,
+          "inherit_properties": false
+        }
+      ],
+      "properties": {
+        "description": "Description",
+        "footprint_filters": "FP_Filter",
+        "keywords": "Keywords",
+        "datasheet": "Datasheet"
+      }
+    },
+    {
+      "name": "Resistors - Thin Film 1%",
+      "table": "Resistors_ThinFilm_1pct_Active",
+      "key": "Part_ID",
+      "symbols": "Symbol",
+      "footprints": "Footprint",
+      "fields": [
+        {
+          "column": "Value",
+          "name": "Value",
+          "visible_on_add": true,
+          "visible_in_chooser": true,
+          "show_name": false,
+          "inherit_properties": false
+        },
+        {
+          "column": "Part_ID",
+          "name": "Part ID",
+          "visible_on_add": false,
+          "visible_in_chooser": true,
+          "show_name": false,
+          "inherit_properties": false
+        },
+        {
+          "column": "Manufacturer",
+          "name": "Manufacturer",
+          "visible_on_add": false,
+          "visible_in_chooser": true,
+          "show_name": false,
+          "inherit_properties": false
+        },
+        {
+          "column": "MPN",
+          "name": "MPN",
+          "visible_on_add": false,
+          "visible_in_chooser": true,
+          "show_name": false,
+          "inherit_properties": false
+        },
+        {
+          "column": "Supplier",
+          "name": "Supplier",
+          "visible_on_add": false,
+          "visible_in_chooser": true,
+          "show_name": false,
+          "inherit_properties": false
+        },
+        {
+          "column": "Supplier_PN",
+          "name": "Supplier PN",
+          "visible_on_add": false,
+          "visible_in_chooser": true,
+          "show_name": false,
+          "inherit_properties": false
+        },
+        {
+          "column": "Package",
+          "name": "Package",
+          "visible_on_add": false,
+          "visible_in_chooser": true,
+          "show_name": false,
+          "inherit_properties": false
+        },
+        {
+          "column": "Tolerance",
+          "name": "Tolerance",
+          "visible_on_add": false,
+          "visible_in_chooser": true,
+          "show_name": false,
+          "inherit_properties": false
+        },
+        {
+          "column": "Rating",
+          "name": "Power",
+          "visible_on_add": false,
+          "visible_in_chooser": true,
+          "show_name": false,
+          "inherit_properties": false
+        },
+        {
+          "column": "TC_Dielectric",
+          "name": "TCR",
+          "visible_on_add": false,
+          "visible_in_chooser": true,
+          "show_name": false,
+          "inherit_properties": false
+        },
+        {
+          "column": "DK_Stock",
+          "name": "DigiKey Stock",
+          "visible_on_add": false,
+          "visible_in_chooser": true,
+          "show_name": false,
+          "inherit_properties": false
+        },
+        {
+          "column": "Status",
+          "name": "Status",
+          "visible_on_add": false,
+          "visible_in_chooser": true,
+          "show_name": false,
+          "inherit_properties": false
+        }
+      ],
+      "properties": {
+        "description": "Description",
+        "footprint_filters": "FP_Filter",
+        "keywords": "Keywords",
+        "datasheet": "Datasheet"
+      }
+    },
+    {
+      "name": "Resistors - Thick Film 5%",
+      "table": "Resistors_ThickFilm_Active",
+      "key": "Part_ID",
+      "symbols": "Symbol",
+      "footprints": "Footprint",
+      "fields": [
+        {
+          "column": "Value",
+          "name": "Value",
+          "visible_on_add": true,
+          "visible_in_chooser": true,
+          "show_name": false,
+          "inherit_properties": false
+        },
+        {
+          "column": "Part_ID",
+          "name": "Part ID",
+          "visible_on_add": false,
+          "visible_in_chooser": true,
+          "show_name": false,
+          "inherit_properties": false
+        },
+        {
+          "column": "Manufacturer",
+          "name": "Manufacturer",
+          "visible_on_add": false,
+          "visible_in_chooser": true,
+          "show_name": false,
+          "inherit_properties": false
+        },
+        {
+          "column": "MPN",
+          "name": "MPN",
+          "visible_on_add": false,
+          "visible_in_chooser": true,
+          "show_name": false,
+          "inherit_properties": false
+        },
+        {
+          "column": "Supplier",
+          "name": "Supplier",
+          "visible_on_add": false,
+          "visible_in_chooser": true,
+          "show_name": false,
+          "inherit_properties": false
+        },
+        {
+          "column": "Supplier_PN",
+          "name": "Supplier PN",
+          "visible_on_add": false,
+          "visible_in_chooser": true,
+          "show_name": false,
+          "inherit_properties": false
+        },
+        {
+          "column": "Package",
+          "name": "Package",
+          "visible_on_add": false,
+          "visible_in_chooser": true,
+          "show_name": false,
+          "inherit_properties": false
+        },
+        {
+          "column": "Tolerance",
+          "name": "Tolerance",
+          "visible_on_add": false,
+          "visible_in_chooser": true,
+          "show_name": false,
+          "inherit_properties": false
+        },
+        {
+          "column": "Rating",
+          "name": "Power",
+          "visible_on_add": false,
+          "visible_in_chooser": true,
+          "show_name": false,
+          "inherit_properties": false
+        },
+        {
+          "column": "TC_Dielectric",
+          "name": "TCR",
+          "visible_on_add": false,
+          "visible_in_chooser": true,
+          "show_name": false,
+          "inherit_properties": false
+        },
+        {
+          "column": "DK_Stock",
+          "name": "DigiKey Stock",
+          "visible_on_add": false,
+          "visible_in_chooser": true,
+          "show_name": false,
+          "inherit_properties": false
+        },
+        {
+          "column": "Status",
+          "name": "Status",
+          "visible_on_add": false,
+          "visible_in_chooser": true,
+          "show_name": false,
+          "inherit_properties": false
+        }
+      ],
+      "properties": {
+        "description": "Description",
+        "footprint_filters": "FP_Filter",
+        "keywords": "Keywords",
+        "datasheet": "Datasheet"
+      }
+    },
+    {
+      "name": "Capacitors - Ceramic",
+      "table": "Capacitors_Ceramic_Active",
+      "key": "Part_ID",
+      "symbols": "Symbol",
+      "footprints": "Footprint",
+      "fields": [
+        {
+          "column": "Value",
+          "name": "Value",
+          "visible_on_add": true,
+          "visible_in_chooser": true,
+          "show_name": false,
+          "inherit_properties": false
+        },
+        {
+          "column": "Part_ID",
+          "name": "Part ID",
+          "visible_on_add": false,
+          "visible_in_chooser": true,
+          "show_name": false,
+          "inherit_properties": false
+        },
+        {
+          "column": "Manufacturer",
+          "name": "Manufacturer",
+          "visible_on_add": false,
+          "visible_in_chooser": true,
+          "show_name": false,
+          "inherit_properties": false
+        },
+        {
+          "column": "MPN",
+          "name": "MPN",
+          "visible_on_add": false,
+          "visible_in_chooser": true,
+          "show_name": false,
+          "inherit_properties": false
+        },
+        {
+          "column": "Supplier",
+          "name": "Supplier",
+          "visible_on_add": false,
+          "visible_in_chooser": true,
+          "show_name": false,
+          "inherit_properties": false
+        },
+        {
+          "column": "Supplier_PN",
+          "name": "Supplier PN",
+          "visible_on_add": false,
+          "visible_in_chooser": true,
+          "show_name": false,
+          "inherit_properties": false
+        },
+        {
+          "column": "Package",
+          "name": "Package",
+          "visible_on_add": false,
+          "visible_in_chooser": true,
+          "show_name": false,
+          "inherit_properties": false
+        },
+        {
+          "column": "Tolerance",
+          "name": "Tolerance",
+          "visible_on_add": false,
+          "visible_in_chooser": true,
+          "show_name": false,
+          "inherit_properties": false
+        },
+        {
+          "column": "Rating",
+          "name": "Voltage",
+          "visible_on_add": false,
+          "visible_in_chooser": true,
+          "show_name": false,
+          "inherit_properties": false
+        },
+        {
+          "column": "TC_Dielectric",
+          "name": "Dielectric",
+          "visible_on_add": false,
+          "visible_in_chooser": true,
+          "show_name": false,
+          "inherit_properties": false
+        },
+        {
+          "column": "DK_Stock",
+          "name": "DigiKey Stock",
+          "visible_on_add": false,
+          "visible_in_chooser": true,
+          "show_name": false,
+          "inherit_properties": false
+        },
+        {
+          "column": "Status",
+          "name": "Status",
+          "visible_on_add": false,
+          "visible_in_chooser": true,
+          "show_name": false,
+          "inherit_properties": false
+        }
+      ],
+      "properties": {
+        "description": "Description",
+        "footprint_filters": "FP_Filter",
+        "keywords": "Keywords",
+        "datasheet": "Datasheet"
+      }
+    },
+    {
+      "name": "Capacitors - RF 0402 C0G",
+      "table": "Capacitors_RF_Active",
+      "key": "Part_ID",
+      "symbols": "Symbol",
+      "footprints": "Footprint",
+      "fields": [
+        {
+          "column": "Value",
+          "name": "Value",
+          "visible_on_add": true,
+          "visible_in_chooser": true,
+          "show_name": false,
+          "inherit_properties": false
+        },
+        {
+          "column": "Part_ID",
+          "name": "Part ID",
+          "visible_on_add": false,
+          "visible_in_chooser": true,
+          "show_name": false,
+          "inherit_properties": false
+        },
+        {
+          "column": "Manufacturer",
+          "name": "Manufacturer",
+          "visible_on_add": false,
+          "visible_in_chooser": true,
+          "show_name": false,
+          "inherit_properties": false
+        },
+        {
+          "column": "MPN",
+          "name": "MPN",
+          "visible_on_add": false,
+          "visible_in_chooser": true,
+          "show_name": false,
+          "inherit_properties": false
+        },
+        {
+          "column": "Supplier",
+          "name": "Supplier",
+          "visible_on_add": false,
+          "visible_in_chooser": true,
+          "show_name": false,
+          "inherit_properties": false
+        },
+        {
+          "column": "Supplier_PN",
+          "name": "Supplier PN",
+          "visible_on_add": false,
+          "visible_in_chooser": true,
+          "show_name": false,
+          "inherit_properties": false
+        },
+        {
+          "column": "Package",
+          "name": "Package",
+          "visible_on_add": false,
+          "visible_in_chooser": true,
+          "show_name": false,
+          "inherit_properties": false
+        },
+        {
+          "column": "Tolerance",
+          "name": "Tolerance",
+          "visible_on_add": false,
+          "visible_in_chooser": true,
+          "show_name": false,
+          "inherit_properties": false
+        },
+        {
+          "column": "Rating",
+          "name": "Voltage",
+          "visible_on_add": false,
+          "visible_in_chooser": true,
+          "show_name": false,
+          "inherit_properties": false
+        },
+        {
+          "column": "TC_Dielectric",
+          "name": "Dielectric",
+          "visible_on_add": false,
+          "visible_in_chooser": true,
+          "show_name": false,
+          "inherit_properties": false
+        },
+        {
+          "column": "DK_Stock",
+          "name": "DigiKey Stock",
+          "visible_on_add": false,
+          "visible_in_chooser": true,
+          "show_name": false,
+          "inherit_properties": false
+        },
+        {
+          "column": "Status",
+          "name": "Status",
+          "visible_on_add": false,
+          "visible_in_chooser": true,
+          "show_name": false,
+          "inherit_properties": false
+        }
+      ],
+      "properties": {
+        "description": "Description",
+        "footprint_filters": "FP_Filter",
+        "keywords": "Keywords",
+        "datasheet": "Datasheet"
+      }
+    },
+    {
+      "name": "Capacitors - Bulk",
+      "table": "Capacitors_Bulk_Active",
+      "key": "Part_ID",
+      "symbols": "Symbol",
+      "footprints": "Footprint",
+      "fields": [
+        {
+          "column": "Value",
+          "name": "Value",
+          "visible_on_add": true,
+          "visible_in_chooser": true,
+          "show_name": false,
+          "inherit_properties": false
+        },
+        {
+          "column": "Part_ID",
+          "name": "Part ID",
+          "visible_on_add": false,
+          "visible_in_chooser": true,
+          "show_name": false,
+          "inherit_properties": false
+        },
+        {
+          "column": "Manufacturer",
+          "name": "Manufacturer",
+          "visible_on_add": false,
+          "visible_in_chooser": true,
+          "show_name": false,
+          "inherit_properties": false
+        },
+        {
+          "column": "MPN",
+          "name": "MPN",
+          "visible_on_add": false,
+          "visible_in_chooser": true,
+          "show_name": false,
+          "inherit_properties": false
+        },
+        {
+          "column": "Supplier",
+          "name": "Supplier",
+          "visible_on_add": false,
+          "visible_in_chooser": true,
+          "show_name": false,
+          "inherit_properties": false
+        },
+        {
+          "column": "Supplier_PN",
+          "name": "Supplier PN",
+          "visible_on_add": false,
+          "visible_in_chooser": true,
+          "show_name": false,
+          "inherit_properties": false
+        },
+        {
+          "column": "Package",
+          "name": "Package",
+          "visible_on_add": false,
+          "visible_in_chooser": true,
+          "show_name": false,
+          "inherit_properties": false
+        },
+        {
+          "column": "Tolerance",
+          "name": "Tolerance",
+          "visible_on_add": false,
+          "visible_in_chooser": true,
+          "show_name": false,
+          "inherit_properties": false
+        },
+        {
+          "column": "Rating",
+          "name": "Voltage",
+          "visible_on_add": false,
+          "visible_in_chooser": true,
+          "show_name": false,
+          "inherit_properties": false
+        },
+        {
+          "column": "TC_Dielectric",
+          "name": "Dielectric",
+          "visible_on_add": false,
+          "visible_in_chooser": true,
+          "show_name": false,
+          "inherit_properties": false
+        },
+        {
+          "column": "DK_Stock",
+          "name": "DigiKey Stock",
+          "visible_on_add": false,
+          "visible_in_chooser": true,
+          "show_name": false,
+          "inherit_properties": false
+        },
+        {
+          "column": "Status",
+          "name": "Status",
+          "visible_on_add": false,
+          "visible_in_chooser": true,
+          "show_name": false,
+          "inherit_properties": false
+        }
+      ],
+      "properties": {
+        "description": "Description",
+        "footprint_filters": "FP_Filter",
+        "keywords": "Keywords",
+        "datasheet": "Datasheet"
+      }
+    },
+    {
+      "name": "Capacitors - Tantalum 50V",
+      "table": "Capacitors_Tantalum_Active",
+      "key": "Part_ID",
+      "symbols": "Symbol",
+      "footprints": "Footprint",
+      "fields": [
+        {
+          "column": "Value",
+          "name": "Value",
+          "visible_on_add": true,
+          "visible_in_chooser": true,
+          "show_name": false,
+          "inherit_properties": false
+        },
+        {
+          "column": "Part_ID",
+          "name": "Part ID",
+          "visible_on_add": false,
+          "visible_in_chooser": true,
+          "show_name": false,
+          "inherit_properties": false
+        },
+        {
+          "column": "Manufacturer",
+          "name": "Manufacturer",
+          "visible_on_add": false,
+          "visible_in_chooser": true,
+          "show_name": false,
+          "inherit_properties": false
+        },
+        {
+          "column": "MPN",
+          "name": "MPN",
+          "visible_on_add": false,
+          "visible_in_chooser": true,
+          "show_name": false,
+          "inherit_properties": false
+        },
+        {
+          "column": "Supplier",
+          "name": "Supplier",
+          "visible_on_add": false,
+          "visible_in_chooser": true,
+          "show_name": false,
+          "inherit_properties": false
+        },
+        {
+          "column": "Supplier_PN",
+          "name": "Supplier PN",
+          "visible_on_add": false,
+          "visible_in_chooser": true,
+          "show_name": false,
+          "inherit_properties": false
+        },
+        {
+          "column": "Package",
+          "name": "Package",
+          "visible_on_add": false,
+          "visible_in_chooser": true,
+          "show_name": false,
+          "inherit_properties": false
+        },
+        {
+          "column": "Tolerance",
+          "name": "Tolerance",
+          "visible_on_add": false,
+          "visible_in_chooser": true,
+          "show_name": false,
+          "inherit_properties": false
+        },
+        {
+          "column": "Rating",
+          "name": "Voltage",
+          "visible_on_add": false,
+          "visible_in_chooser": true,
+          "show_name": false,
+          "inherit_properties": false
+        },
+        {
+          "column": "TC_Dielectric",
+          "name": "Technology",
+          "visible_on_add": false,
+          "visible_in_chooser": true,
+          "show_name": false,
+          "inherit_properties": false
+        },
+        {
+          "column": "DK_Stock",
+          "name": "DigiKey Stock",
+          "visible_on_add": false,
+          "visible_in_chooser": true,
+          "show_name": false,
+          "inherit_properties": false
+        },
+        {
+          "column": "Status",
+          "name": "Status",
+          "visible_on_add": false,
+          "visible_in_chooser": true,
+          "show_name": false,
+          "inherit_properties": false
+        }
+      ],
+      "properties": {
+        "description": "Description",
+        "footprint_filters": "FP_Filter",
+        "keywords": "Keywords",
+        "datasheet": "Datasheet"
+      }
+    },
+    {
+      "name": "Capacitors - Electrolytic 50V",
+      "table": "Capacitors_Electrolytic_Active",
+      "key": "Part_ID",
+      "symbols": "Symbol",
+      "footprints": "Footprint",
+      "fields": [
+        {
+          "column": "Value",
+          "name": "Value",
+          "visible_on_add": true,
+          "visible_in_chooser": true,
+          "show_name": false,
+          "inherit_properties": false
+        },
+        {
+          "column": "Part_ID",
+          "name": "Part ID",
+          "visible_on_add": false,
+          "visible_in_chooser": true,
+          "show_name": false,
+          "inherit_properties": false
+        },
+        {
+          "column": "Manufacturer",
+          "name": "Manufacturer",
+          "visible_on_add": false,
+          "visible_in_chooser": true,
+          "show_name": false,
+          "inherit_properties": false
+        },
+        {
+          "column": "MPN",
+          "name": "MPN",
+          "visible_on_add": false,
+          "visible_in_chooser": true,
+          "show_name": false,
+          "inherit_properties": false
+        },
+        {
+          "column": "Supplier",
+          "name": "Supplier",
+          "visible_on_add": false,
+          "visible_in_chooser": true,
+          "show_name": false,
+          "inherit_properties": false
+        },
+        {
+          "column": "Supplier_PN",
+          "name": "Supplier PN",
+          "visible_on_add": false,
+          "visible_in_chooser": true,
+          "show_name": false,
+          "inherit_properties": false
+        },
+        {
+          "column": "Package",
+          "name": "Package",
+          "visible_on_add": false,
+          "visible_in_chooser": true,
+          "show_name": false,
+          "inherit_properties": false
+        },
+        {
+          "column": "Tolerance",
+          "name": "Tolerance",
+          "visible_on_add": false,
+          "visible_in_chooser": true,
+          "show_name": false,
+          "inherit_properties": false
+        },
+        {
+          "column": "Rating",
+          "name": "Voltage",
+          "visible_on_add": false,
+          "visible_in_chooser": true,
+          "show_name": false,
+          "inherit_properties": false
+        },
+        {
+          "column": "TC_Dielectric",
+          "name": "Technology",
+          "visible_on_add": false,
+          "visible_in_chooser": true,
+          "show_name": false,
+          "inherit_properties": false
+        },
+        {
+          "column": "DK_Stock",
+          "name": "DigiKey Stock",
+          "visible_on_add": false,
+          "visible_in_chooser": true,
+          "show_name": false,
+          "inherit_properties": false
+        },
+        {
+          "column": "Status",
+          "name": "Status",
+          "visible_on_add": false,
+          "visible_in_chooser": true,
+          "show_name": false,
+          "inherit_properties": false
+        }
+      ],
+      "properties": {
+        "description": "Description",
+        "footprint_filters": "FP_Filter",
+        "keywords": "Keywords",
+        "datasheet": "Datasheet"
+      }
+    },
+    {
+      "name": "Inductors",
+      "table": "Inductors_Active",
+      "key": "Part_ID",
+      "symbols": "Symbol",
+      "footprints": "Footprint",
+      "fields": [
+        {
+          "column": "Value",
+          "name": "Value",
+          "visible_on_add": true,
+          "visible_in_chooser": true,
+          "show_name": false,
+          "inherit_properties": false
+        },
+        {
+          "column": "Part_ID",
+          "name": "Part ID",
+          "visible_on_add": false,
+          "visible_in_chooser": true,
+          "show_name": false,
+          "inherit_properties": false
+        },
+        {
+          "column": "Manufacturer",
+          "name": "Manufacturer",
+          "visible_on_add": false,
+          "visible_in_chooser": true,
+          "show_name": false,
+          "inherit_properties": false
+        },
+        {
+          "column": "MPN",
+          "name": "MPN",
+          "visible_on_add": false,
+          "visible_in_chooser": true,
+          "show_name": false,
+          "inherit_properties": false
+        },
+        {
+          "column": "Supplier",
+          "name": "Supplier",
+          "visible_on_add": false,
+          "visible_in_chooser": true,
+          "show_name": false,
+          "inherit_properties": false
+        },
+        {
+          "column": "Supplier_PN",
+          "name": "Supplier PN",
+          "visible_on_add": false,
+          "visible_in_chooser": true,
+          "show_name": false,
+          "inherit_properties": false
+        },
+        {
+          "column": "Package",
+          "name": "Package",
+          "visible_on_add": false,
+          "visible_in_chooser": true,
+          "show_name": false,
+          "inherit_properties": false
+        },
+        {
+          "column": "Tolerance",
+          "name": "Tolerance",
+          "visible_on_add": false,
+          "visible_in_chooser": true,
+          "show_name": false,
+          "inherit_properties": false
+        },
+        {
+          "column": "Rating",
+          "name": "Rated Current",
+          "visible_on_add": false,
+          "visible_in_chooser": true,
+          "show_name": false,
+          "inherit_properties": false
+        },
+        {
+          "column": "TC_Dielectric",
+          "name": "Characteristics",
+          "visible_on_add": false,
+          "visible_in_chooser": true,
+          "show_name": false,
+          "inherit_properties": false
+        },
+        {
+          "column": "DK_Stock",
+          "name": "DigiKey Stock",
+          "visible_on_add": false,
+          "visible_in_chooser": true,
+          "show_name": false,
+          "inherit_properties": false
+        },
+        {
+          "column": "Status",
+          "name": "Status",
+          "visible_on_add": false,
+          "visible_in_chooser": true,
+          "show_name": false,
+          "inherit_properties": false
+        }
+      ],
+      "properties": {
+        "description": "Description",
+        "footprint_filters": "FP_Filter",
+        "keywords": "Keywords",
+        "datasheet": "Datasheet"
+      }
+    },
+    {
+      "name": "Inductors - RF 0402",
+      "table": "Inductors_RF_Active",
+      "key": "Part_ID",
+      "symbols": "Symbol",
+      "footprints": "Footprint",
+      "fields": [
+        {
+          "column": "Value",
+          "name": "Value",
+          "visible_on_add": true,
+          "visible_in_chooser": true,
+          "show_name": false,
+          "inherit_properties": false
+        },
+        {
+          "column": "Part_ID",
+          "name": "Part ID",
+          "visible_on_add": false,
+          "visible_in_chooser": true,
+          "show_name": false,
+          "inherit_properties": false
+        },
+        {
+          "column": "Manufacturer",
+          "name": "Manufacturer",
+          "visible_on_add": false,
+          "visible_in_chooser": true,
+          "show_name": false,
+          "inherit_properties": false
+        },
+        {
+          "column": "MPN",
+          "name": "MPN",
+          "visible_on_add": false,
+          "visible_in_chooser": true,
+          "show_name": false,
+          "inherit_properties": false
+        },
+        {
+          "column": "Supplier",
+          "name": "Supplier",
+          "visible_on_add": false,
+          "visible_in_chooser": true,
+          "show_name": false,
+          "inherit_properties": false
+        },
+        {
+          "column": "Supplier_PN",
+          "name": "Supplier PN",
+          "visible_on_add": false,
+          "visible_in_chooser": true,
+          "show_name": false,
+          "inherit_properties": false
+        },
+        {
+          "column": "Package",
+          "name": "Package",
+          "visible_on_add": false,
+          "visible_in_chooser": true,
+          "show_name": false,
+          "inherit_properties": false
+        },
+        {
+          "column": "Tolerance",
+          "name": "Tolerance",
+          "visible_on_add": false,
+          "visible_in_chooser": true,
+          "show_name": false,
+          "inherit_properties": false
+        },
+        {
+          "column": "Rating",
+          "name": "Rated Current",
+          "visible_on_add": false,
+          "visible_in_chooser": true,
+          "show_name": false,
+          "inherit_properties": false
+        },
+        {
+          "column": "TC_Dielectric",
+          "name": "Characteristics",
+          "visible_on_add": false,
+          "visible_in_chooser": true,
+          "show_name": false,
+          "inherit_properties": false
+        },
+        {
+          "column": "DK_Stock",
+          "name": "DigiKey Stock",
+          "visible_on_add": false,
+          "visible_in_chooser": true,
+          "show_name": false,
+          "inherit_properties": false
+        },
+        {
+          "column": "Status",
+          "name": "Status",
+          "visible_on_add": false,
+          "visible_in_chooser": true,
+          "show_name": false,
+          "inherit_properties": false
+        }
+      ],
+      "properties": {
+        "description": "Description",
+        "footprint_filters": "FP_Filter",
+        "keywords": "Keywords",
+        "datasheet": "Datasheet"
+      }
+    },
+    {
+      "name": "Ferrite Beads",
+      "table": "Ferrite_Beads_Active",
+      "key": "Part_ID",
+      "symbols": "Symbol",
+      "footprints": "Footprint",
+      "fields": [
+        {
+          "column": "Value",
+          "name": "Value",
+          "visible_on_add": true,
+          "visible_in_chooser": true,
+          "show_name": false,
+          "inherit_properties": false
+        },
+        {
+          "column": "Part_ID",
+          "name": "Part ID",
+          "visible_on_add": false,
+          "visible_in_chooser": true,
+          "show_name": false,
+          "inherit_properties": false
+        },
+        {
+          "column": "Manufacturer",
+          "name": "Manufacturer",
+          "visible_on_add": false,
+          "visible_in_chooser": true,
+          "show_name": false,
+          "inherit_properties": false
+        },
+        {
+          "column": "MPN",
+          "name": "MPN",
+          "visible_on_add": false,
+          "visible_in_chooser": true,
+          "show_name": false,
+          "inherit_properties": false
+        },
+        {
+          "column": "Supplier",
+          "name": "Supplier",
+          "visible_on_add": false,
+          "visible_in_chooser": true,
+          "show_name": false,
+          "inherit_properties": false
+        },
+        {
+          "column": "Supplier_PN",
+          "name": "Supplier PN",
+          "visible_on_add": false,
+          "visible_in_chooser": true,
+          "show_name": false,
+          "inherit_properties": false
+        },
+        {
+          "column": "Package",
+          "name": "Package",
+          "visible_on_add": false,
+          "visible_in_chooser": true,
+          "show_name": false,
+          "inherit_properties": false
+        },
+        {
+          "column": "Tolerance",
+          "name": "Tolerance",
+          "visible_on_add": false,
+          "visible_in_chooser": true,
+          "show_name": false,
+          "inherit_properties": false
+        },
+        {
+          "column": "Rating",
+          "name": "Rated Current",
+          "visible_on_add": false,
+          "visible_in_chooser": true,
+          "show_name": false,
+          "inherit_properties": false
+        },
+        {
+          "column": "TC_Dielectric",
+          "name": "Characteristics",
+          "visible_on_add": false,
+          "visible_in_chooser": true,
+          "show_name": false,
+          "inherit_properties": false
+        },
+        {
+          "column": "DK_Stock",
+          "name": "DigiKey Stock",
+          "visible_on_add": false,
+          "visible_in_chooser": true,
+          "show_name": false,
+          "inherit_properties": false
+        },
+        {
+          "column": "Status",
+          "name": "Status",
+          "visible_on_add": false,
+          "visible_in_chooser": true,
+          "show_name": false,
+          "inherit_properties": false
+        }
+      ],
+      "properties": {
+        "description": "Description",
+        "footprint_filters": "FP_Filter",
+        "keywords": "Keywords",
+        "datasheet": "Datasheet"
+      }
+    },
+    {
+      "name": "Diodes - Signal",
+      "table": "Diodes_Signal_Active",
+      "key": "Part_ID",
+      "symbols": "Symbol",
+      "footprints": "Footprint",
+      "fields": [
+        {
+          "column": "Value",
+          "name": "Value",
+          "visible_on_add": true,
+          "visible_in_chooser": true,
+          "show_name": false,
+          "inherit_properties": false
+        },
+        {
+          "column": "Part_ID",
+          "name": "Part ID",
+          "visible_on_add": false,
+          "visible_in_chooser": true,
+          "show_name": false,
+          "inherit_properties": false
+        },
+        {
+          "column": "Manufacturer",
+          "name": "Manufacturer",
+          "visible_on_add": false,
+          "visible_in_chooser": true,
+          "show_name": false,
+          "inherit_properties": false
+        },
+        {
+          "column": "MPN",
+          "name": "MPN",
+          "visible_on_add": false,
+          "visible_in_chooser": true,
+          "show_name": false,
+          "inherit_properties": false
+        },
+        {
+          "column": "Supplier",
+          "name": "Supplier",
+          "visible_on_add": false,
+          "visible_in_chooser": true,
+          "show_name": false,
+          "inherit_properties": false
+        },
+        {
+          "column": "Supplier_PN",
+          "name": "Supplier PN",
+          "visible_on_add": false,
+          "visible_in_chooser": true,
+          "show_name": false,
+          "inherit_properties": false
+        },
+        {
+          "column": "Package",
+          "name": "Package",
+          "visible_on_add": false,
+          "visible_in_chooser": true,
+          "show_name": false,
+          "inherit_properties": false
+        },
+        {
+          "column": "Rating",
+          "name": "Ratings",
+          "visible_on_add": false,
+          "visible_in_chooser": true,
+          "show_name": false,
+          "inherit_properties": false
+        },
+        {
+          "column": "TC_Dielectric",
+          "name": "Characteristics",
+          "visible_on_add": false,
+          "visible_in_chooser": true,
+          "show_name": false,
+          "inherit_properties": false
+        },
+        {
+          "column": "Pinout",
+          "name": "Pinout",
+          "visible_on_add": false,
+          "visible_in_chooser": true,
+          "show_name": false,
+          "inherit_properties": false
+        },
+        {
+          "column": "DK_Stock",
+          "name": "DigiKey Stock",
+          "visible_on_add": false,
+          "visible_in_chooser": true,
+          "show_name": false,
+          "inherit_properties": false
+        },
+        {
+          "column": "Status",
+          "name": "Status",
+          "visible_on_add": false,
+          "visible_in_chooser": true,
+          "show_name": false,
+          "inherit_properties": false
+        }
+      ],
+      "properties": {
+        "description": "Description",
+        "footprint_filters": "FP_Filter",
+        "keywords": "Keywords",
+        "datasheet": "Datasheet"
+      }
+    },
+    {
+      "name": "Diodes - Schottky",
+      "table": "Diodes_Schottky_Active",
+      "key": "Part_ID",
+      "symbols": "Symbol",
+      "footprints": "Footprint",
+      "fields": [
+        {
+          "column": "Value",
+          "name": "Value",
+          "visible_on_add": true,
+          "visible_in_chooser": true,
+          "show_name": false,
+          "inherit_properties": false
+        },
+        {
+          "column": "Part_ID",
+          "name": "Part ID",
+          "visible_on_add": false,
+          "visible_in_chooser": true,
+          "show_name": false,
+          "inherit_properties": false
+        },
+        {
+          "column": "Manufacturer",
+          "name": "Manufacturer",
+          "visible_on_add": false,
+          "visible_in_chooser": true,
+          "show_name": false,
+          "inherit_properties": false
+        },
+        {
+          "column": "MPN",
+          "name": "MPN",
+          "visible_on_add": false,
+          "visible_in_chooser": true,
+          "show_name": false,
+          "inherit_properties": false
+        },
+        {
+          "column": "Supplier",
+          "name": "Supplier",
+          "visible_on_add": false,
+          "visible_in_chooser": true,
+          "show_name": false,
+          "inherit_properties": false
+        },
+        {
+          "column": "Supplier_PN",
+          "name": "Supplier PN",
+          "visible_on_add": false,
+          "visible_in_chooser": true,
+          "show_name": false,
+          "inherit_properties": false
+        },
+        {
+          "column": "Package",
+          "name": "Package",
+          "visible_on_add": false,
+          "visible_in_chooser": true,
+          "show_name": false,
+          "inherit_properties": false
+        },
+        {
+          "column": "Rating",
+          "name": "Ratings",
+          "visible_on_add": false,
+          "visible_in_chooser": true,
+          "show_name": false,
+          "inherit_properties": false
+        },
+        {
+          "column": "TC_Dielectric",
+          "name": "Characteristics",
+          "visible_on_add": false,
+          "visible_in_chooser": true,
+          "show_name": false,
+          "inherit_properties": false
+        },
+        {
+          "column": "Pinout",
+          "name": "Pinout",
+          "visible_on_add": false,
+          "visible_in_chooser": true,
+          "show_name": false,
+          "inherit_properties": false
+        },
+        {
+          "column": "DK_Stock",
+          "name": "DigiKey Stock",
+          "visible_on_add": false,
+          "visible_in_chooser": true,
+          "show_name": false,
+          "inherit_properties": false
+        },
+        {
+          "column": "Status",
+          "name": "Status",
+          "visible_on_add": false,
+          "visible_in_chooser": true,
+          "show_name": false,
+          "inherit_properties": false
+        }
+      ],
+      "properties": {
+        "description": "Description",
+        "footprint_filters": "FP_Filter",
+        "keywords": "Keywords",
+        "datasheet": "Datasheet"
+      }
+    },
+    {
+      "name": "Diodes - Zener",
+      "table": "Diodes_Zener_Active",
+      "key": "Part_ID",
+      "symbols": "Symbol",
+      "footprints": "Footprint",
+      "fields": [
+        {
+          "column": "Value",
+          "name": "Value",
+          "visible_on_add": true,
+          "visible_in_chooser": true,
+          "show_name": false,
+          "inherit_properties": false
+        },
+        {
+          "column": "Part_ID",
+          "name": "Part ID",
+          "visible_on_add": false,
+          "visible_in_chooser": true,
+          "show_name": false,
+          "inherit_properties": false
+        },
+        {
+          "column": "Manufacturer",
+          "name": "Manufacturer",
+          "visible_on_add": false,
+          "visible_in_chooser": true,
+          "show_name": false,
+          "inherit_properties": false
+        },
+        {
+          "column": "MPN",
+          "name": "MPN",
+          "visible_on_add": false,
+          "visible_in_chooser": true,
+          "show_name": false,
+          "inherit_properties": false
+        },
+        {
+          "column": "Supplier",
+          "name": "Supplier",
+          "visible_on_add": false,
+          "visible_in_chooser": true,
+          "show_name": false,
+          "inherit_properties": false
+        },
+        {
+          "column": "Supplier_PN",
+          "name": "Supplier PN",
+          "visible_on_add": false,
+          "visible_in_chooser": true,
+          "show_name": false,
+          "inherit_properties": false
+        },
+        {
+          "column": "Package",
+          "name": "Package",
+          "visible_on_add": false,
+          "visible_in_chooser": true,
+          "show_name": false,
+          "inherit_properties": false
+        },
+        {
+          "column": "Tolerance",
+          "name": "Tolerance",
+          "visible_on_add": false,
+          "visible_in_chooser": true,
+          "show_name": false,
+          "inherit_properties": false
+        },
+        {
+          "column": "Rating",
+          "name": "Power",
+          "visible_on_add": false,
+          "visible_in_chooser": true,
+          "show_name": false,
+          "inherit_properties": false
+        },
+        {
+          "column": "TC_Dielectric",
+          "name": "Characteristics",
+          "visible_on_add": false,
+          "visible_in_chooser": true,
+          "show_name": false,
+          "inherit_properties": false
+        },
+        {
+          "column": "Pinout",
+          "name": "Pinout",
+          "visible_on_add": false,
+          "visible_in_chooser": true,
+          "show_name": false,
+          "inherit_properties": false
+        },
+        {
+          "column": "DK_Stock",
+          "name": "DigiKey Stock",
+          "visible_on_add": false,
+          "visible_in_chooser": true,
+          "show_name": false,
+          "inherit_properties": false
+        },
+        {
+          "column": "Status",
+          "name": "Status",
+          "visible_on_add": false,
+          "visible_in_chooser": true,
+          "show_name": false,
+          "inherit_properties": false
+        }
+      ],
+      "properties": {
+        "description": "Description",
+        "footprint_filters": "FP_Filter",
+        "keywords": "Keywords",
+        "datasheet": "Datasheet"
+      }
+    },
+    {
+      "name": "Diodes - TVS",
+      "table": "Diodes_TVS_Active",
+      "key": "Part_ID",
+      "symbols": "Symbol",
+      "footprints": "Footprint",
+      "fields": [
+        {
+          "column": "Value",
+          "name": "Value",
+          "visible_on_add": true,
+          "visible_in_chooser": true,
+          "show_name": false,
+          "inherit_properties": false
+        },
+        {
+          "column": "Part_ID",
+          "name": "Part ID",
+          "visible_on_add": false,
+          "visible_in_chooser": true,
+          "show_name": false,
+          "inherit_properties": false
+        },
+        {
+          "column": "Manufacturer",
+          "name": "Manufacturer",
+          "visible_on_add": false,
+          "visible_in_chooser": true,
+          "show_name": false,
+          "inherit_properties": false
+        },
+        {
+          "column": "MPN",
+          "name": "MPN",
+          "visible_on_add": false,
+          "visible_in_chooser": true,
+          "show_name": false,
+          "inherit_properties": false
+        },
+        {
+          "column": "Supplier",
+          "name": "Supplier",
+          "visible_on_add": false,
+          "visible_in_chooser": true,
+          "show_name": false,
+          "inherit_properties": false
+        },
+        {
+          "column": "Supplier_PN",
+          "name": "Supplier PN",
+          "visible_on_add": false,
+          "visible_in_chooser": true,
+          "show_name": false,
+          "inherit_properties": false
+        },
+        {
+          "column": "Package",
+          "name": "Package",
+          "visible_on_add": false,
+          "visible_in_chooser": true,
+          "show_name": false,
+          "inherit_properties": false
+        },
+        {
+          "column": "Tolerance",
+          "name": "Tolerance",
+          "visible_on_add": false,
+          "visible_in_chooser": true,
+          "show_name": false,
+          "inherit_properties": false
+        },
+        {
+          "column": "Rating",
+          "name": "Ratings",
+          "visible_on_add": false,
+          "visible_in_chooser": true,
+          "show_name": false,
+          "inherit_properties": false
+        },
+        {
+          "column": "TC_Dielectric",
+          "name": "Clamping",
+          "visible_on_add": false,
+          "visible_in_chooser": true,
+          "show_name": false,
+          "inherit_properties": false
+        },
+        {
+          "column": "Pinout",
+          "name": "Pinout",
+          "visible_on_add": false,
+          "visible_in_chooser": true,
+          "show_name": false,
+          "inherit_properties": false
+        },
+        {
+          "column": "DK_Stock",
+          "name": "DigiKey Stock",
+          "visible_on_add": false,
+          "visible_in_chooser": true,
+          "show_name": false,
+          "inherit_properties": false
+        },
+        {
+          "column": "Status",
+          "name": "Status",
+          "visible_on_add": false,
+          "visible_in_chooser": true,
+          "show_name": false,
+          "inherit_properties": false
+        }
+      ],
+      "properties": {
+        "description": "Description",
+        "footprint_filters": "FP_Filter",
+        "keywords": "Keywords",
+        "datasheet": "Datasheet"
+      }
+    },
+    {
+      "name": "ESD Protection",
+      "table": "ESD_Protection_Active",
+      "key": "Part_ID",
+      "symbols": "Symbol",
+      "footprints": "Footprint",
+      "fields": [
+        {
+          "column": "Value",
+          "name": "Value",
+          "visible_on_add": true,
+          "visible_in_chooser": true,
+          "show_name": false,
+          "inherit_properties": false
+        },
+        {
+          "column": "Part_ID",
+          "name": "Part ID",
+          "visible_on_add": false,
+          "visible_in_chooser": true,
+          "show_name": false,
+          "inherit_properties": false
+        },
+        {
+          "column": "Manufacturer",
+          "name": "Manufacturer",
+          "visible_on_add": false,
+          "visible_in_chooser": true,
+          "show_name": false,
+          "inherit_properties": false
+        },
+        {
+          "column": "MPN",
+          "name": "MPN",
+          "visible_on_add": false,
+          "visible_in_chooser": true,
+          "show_name": false,
+          "inherit_properties": false
+        },
+        {
+          "column": "Supplier",
+          "name": "Supplier",
+          "visible_on_add": false,
+          "visible_in_chooser": true,
+          "show_name": false,
+          "inherit_properties": false
+        },
+        {
+          "column": "Supplier_PN",
+          "name": "Supplier PN",
+          "visible_on_add": false,
+          "visible_in_chooser": true,
+          "show_name": false,
+          "inherit_properties": false
+        },
+        {
+          "column": "Package",
+          "name": "Package",
+          "visible_on_add": false,
+          "visible_in_chooser": true,
+          "show_name": false,
+          "inherit_properties": false
+        },
+        {
+          "column": "Rating",
+          "name": "Working Voltage",
+          "visible_on_add": false,
+          "visible_in_chooser": true,
+          "show_name": false,
+          "inherit_properties": false
+        },
+        {
+          "column": "TC_Dielectric",
+          "name": "Characteristics",
+          "visible_on_add": false,
+          "visible_in_chooser": true,
+          "show_name": false,
+          "inherit_properties": false
+        },
+        {
+          "column": "Pinout",
+          "name": "Pinout",
+          "visible_on_add": false,
+          "visible_in_chooser": true,
+          "show_name": false,
+          "inherit_properties": false
+        },
+        {
+          "column": "DK_Stock",
+          "name": "DigiKey Stock",
+          "visible_on_add": false,
+          "visible_in_chooser": true,
+          "show_name": false,
+          "inherit_properties": false
+        },
+        {
+          "column": "Status",
+          "name": "Status",
+          "visible_on_add": false,
+          "visible_in_chooser": true,
+          "show_name": false,
+          "inherit_properties": false
+        }
+      ],
+      "properties": {
+        "description": "Description",
+        "footprint_filters": "FP_Filter",
+        "keywords": "Keywords",
+        "datasheet": "Datasheet"
+      }
+    },
+    {
+      "name": "LEDs",
+      "table": "LEDs_Active",
+      "key": "Part_ID",
+      "symbols": "Symbol",
+      "footprints": "Footprint",
+      "fields": [
+        {
+          "column": "Value",
+          "name": "Value",
+          "visible_on_add": true,
+          "visible_in_chooser": true,
+          "show_name": false,
+          "inherit_properties": false
+        },
+        {
+          "column": "Part_ID",
+          "name": "Part ID",
+          "visible_on_add": false,
+          "visible_in_chooser": true,
+          "show_name": false,
+          "inherit_properties": false
+        },
+        {
+          "column": "Manufacturer",
+          "name": "Manufacturer",
+          "visible_on_add": false,
+          "visible_in_chooser": true,
+          "show_name": false,
+          "inherit_properties": false
+        },
+        {
+          "column": "MPN",
+          "name": "MPN",
+          "visible_on_add": false,
+          "visible_in_chooser": true,
+          "show_name": false,
+          "inherit_properties": false
+        },
+        {
+          "column": "Supplier",
+          "name": "Supplier",
+          "visible_on_add": false,
+          "visible_in_chooser": true,
+          "show_name": false,
+          "inherit_properties": false
+        },
+        {
+          "column": "Supplier_PN",
+          "name": "Supplier PN",
+          "visible_on_add": false,
+          "visible_in_chooser": true,
+          "show_name": false,
+          "inherit_properties": false
+        },
+        {
+          "column": "Package",
+          "name": "Package",
+          "visible_on_add": false,
+          "visible_in_chooser": true,
+          "show_name": false,
+          "inherit_properties": false
+        },
+        {
+          "column": "Rating",
+          "name": "Ratings",
+          "visible_on_add": false,
+          "visible_in_chooser": true,
+          "show_name": false,
+          "inherit_properties": false
+        },
+        {
+          "column": "TC_Dielectric",
+          "name": "Optical",
+          "visible_on_add": false,
+          "visible_in_chooser": true,
+          "show_name": false,
+          "inherit_properties": false
+        },
+        {
+          "column": "Pinout",
+          "name": "Pinout",
+          "visible_on_add": false,
+          "visible_in_chooser": true,
+          "show_name": false,
+          "inherit_properties": false
+        },
+        {
+          "column": "DK_Stock",
+          "name": "DigiKey Stock",
+          "visible_on_add": false,
+          "visible_in_chooser": true,
+          "show_name": false,
+          "inherit_properties": false
+        },
+        {
+          "column": "Status",
+          "name": "Status",
+          "visible_on_add": false,
+          "visible_in_chooser": true,
+          "show_name": false,
+          "inherit_properties": false
+        }
+      ],
+      "properties": {
+        "description": "Description",
+        "footprint_filters": "FP_Filter",
+        "keywords": "Keywords",
+        "datasheet": "Datasheet"
+      }
+    },
+    {
+      "name": "Transistors - MOSFET Small Signal",
+      "table": "MOSFETs_SmallSignal_Active",
+      "key": "Part_ID",
+      "symbols": "Symbol",
+      "footprints": "Footprint",
+      "fields": [
+        {
+          "column": "Value",
+          "name": "Value",
+          "visible_on_add": true,
+          "visible_in_chooser": true,
+          "show_name": false,
+          "inherit_properties": false
+        },
+        {
+          "column": "Part_ID",
+          "name": "Part ID",
+          "visible_on_add": false,
+          "visible_in_chooser": true,
+          "show_name": false,
+          "inherit_properties": false
+        },
+        {
+          "column": "Manufacturer",
+          "name": "Manufacturer",
+          "visible_on_add": false,
+          "visible_in_chooser": true,
+          "show_name": false,
+          "inherit_properties": false
+        },
+        {
+          "column": "MPN",
+          "name": "MPN",
+          "visible_on_add": false,
+          "visible_in_chooser": true,
+          "show_name": false,
+          "inherit_properties": false
+        },
+        {
+          "column": "Supplier",
+          "name": "Supplier",
+          "visible_on_add": false,
+          "visible_in_chooser": true,
+          "show_name": false,
+          "inherit_properties": false
+        },
+        {
+          "column": "Supplier_PN",
+          "name": "Supplier PN",
+          "visible_on_add": false,
+          "visible_in_chooser": true,
+          "show_name": false,
+          "inherit_properties": false
+        },
+        {
+          "column": "Package",
+          "name": "Package",
+          "visible_on_add": false,
+          "visible_in_chooser": true,
+          "show_name": false,
+          "inherit_properties": false
+        },
+        {
+          "column": "Rating",
+          "name": "Ratings",
+          "visible_on_add": false,
+          "visible_in_chooser": true,
+          "show_name": false,
+          "inherit_properties": false
+        },
+        {
+          "column": "TC_Dielectric",
+          "name": "Characteristics",
+          "visible_on_add": false,
+          "visible_in_chooser": true,
+          "show_name": false,
+          "inherit_properties": false
+        },
+        {
+          "column": "Pinout",
+          "name": "Pinout",
+          "visible_on_add": false,
+          "visible_in_chooser": true,
+          "show_name": false,
+          "inherit_properties": false
+        },
+        {
+          "column": "DK_Stock",
+          "name": "DigiKey Stock",
+          "visible_on_add": false,
+          "visible_in_chooser": true,
+          "show_name": false,
+          "inherit_properties": false
+        },
+        {
+          "column": "Status",
+          "name": "Status",
+          "visible_on_add": false,
+          "visible_in_chooser": true,
+          "show_name": false,
+          "inherit_properties": false
+        }
+      ],
+      "properties": {
+        "description": "Description",
+        "footprint_filters": "FP_Filter",
+        "keywords": "Keywords",
+        "datasheet": "Datasheet"
+      }
+    },
+    {
+      "name": "Transistors - BJT Small Signal",
+      "table": "BJTs_SmallSignal_Active",
+      "key": "Part_ID",
+      "symbols": "Symbol",
+      "footprints": "Footprint",
+      "fields": [
+        {
+          "column": "Value",
+          "name": "Value",
+          "visible_on_add": true,
+          "visible_in_chooser": true,
+          "show_name": false,
+          "inherit_properties": false
+        },
+        {
+          "column": "Part_ID",
+          "name": "Part ID",
+          "visible_on_add": false,
+          "visible_in_chooser": true,
+          "show_name": false,
+          "inherit_properties": false
+        },
+        {
+          "column": "Manufacturer",
+          "name": "Manufacturer",
+          "visible_on_add": false,
+          "visible_in_chooser": true,
+          "show_name": false,
+          "inherit_properties": false
+        },
+        {
+          "column": "MPN",
+          "name": "MPN",
+          "visible_on_add": false,
+          "visible_in_chooser": true,
+          "show_name": false,
+          "inherit_properties": false
+        },
+        {
+          "column": "Supplier",
+          "name": "Supplier",
+          "visible_on_add": false,
+          "visible_in_chooser": true,
+          "show_name": false,
+          "inherit_properties": false
+        },
+        {
+          "column": "Supplier_PN",
+          "name": "Supplier PN",
+          "visible_on_add": false,
+          "visible_in_chooser": true,
+          "show_name": false,
+          "inherit_properties": false
+        },
+        {
+          "column": "Package",
+          "name": "Package",
+          "visible_on_add": false,
+          "visible_in_chooser": true,
+          "show_name": false,
+          "inherit_properties": false
+        },
+        {
+          "column": "Rating",
+          "name": "Ratings",
+          "visible_on_add": false,
+          "visible_in_chooser": true,
+          "show_name": false,
+          "inherit_properties": false
+        },
+        {
+          "column": "TC_Dielectric",
+          "name": "Characteristics",
+          "visible_on_add": false,
+          "visible_in_chooser": true,
+          "show_name": false,
+          "inherit_properties": false
+        },
+        {
+          "column": "Pinout",
+          "name": "Pinout",
+          "visible_on_add": false,
+          "visible_in_chooser": true,
+          "show_name": false,
+          "inherit_properties": false
+        },
+        {
+          "column": "DK_Stock",
+          "name": "DigiKey Stock",
+          "visible_on_add": false,
+          "visible_in_chooser": true,
+          "show_name": false,
+          "inherit_properties": false
+        },
+        {
+          "column": "Status",
+          "name": "Status",
+          "visible_on_add": false,
+          "visible_in_chooser": true,
+          "show_name": false,
+          "inherit_properties": false
+        }
+      ],
+      "properties": {
+        "description": "Description",
+        "footprint_filters": "FP_Filter",
+        "keywords": "Keywords",
+        "datasheet": "Datasheet"
+      }
+    },
+    {
+      "name": "Regulators - LDO",
+      "table": "LDOs_Active",
+      "key": "Part_ID",
+      "symbols": "Symbol",
+      "footprints": "Footprint",
+      "fields": [
+        {
+          "column": "Value",
+          "name": "Value",
+          "visible_on_add": true,
+          "visible_in_chooser": true,
+          "show_name": false,
+          "inherit_properties": false
+        },
+        {
+          "column": "Part_ID",
+          "name": "Part ID",
+          "visible_on_add": false,
+          "visible_in_chooser": true,
+          "show_name": false,
+          "inherit_properties": false
+        },
+        {
+          "column": "Manufacturer",
+          "name": "Manufacturer",
+          "visible_on_add": false,
+          "visible_in_chooser": true,
+          "show_name": false,
+          "inherit_properties": false
+        },
+        {
+          "column": "MPN",
+          "name": "MPN",
+          "visible_on_add": false,
+          "visible_in_chooser": true,
+          "show_name": false,
+          "inherit_properties": false
+        },
+        {
+          "column": "Supplier",
+          "name": "Supplier",
+          "visible_on_add": false,
+          "visible_in_chooser": true,
+          "show_name": false,
+          "inherit_properties": false
+        },
+        {
+          "column": "Supplier_PN",
+          "name": "Supplier PN",
+          "visible_on_add": false,
+          "visible_in_chooser": true,
+          "show_name": false,
+          "inherit_properties": false
+        },
+        {
+          "column": "Package",
+          "name": "Package",
+          "visible_on_add": false,
+          "visible_in_chooser": true,
+          "show_name": false,
+          "inherit_properties": false
+        },
+        {
+          "column": "Rating",
+          "name": "Output",
+          "visible_on_add": false,
+          "visible_in_chooser": true,
+          "show_name": false,
+          "inherit_properties": false
+        },
+        {
+          "column": "TC_Dielectric",
+          "name": "Characteristics",
+          "visible_on_add": false,
+          "visible_in_chooser": true,
+          "show_name": false,
+          "inherit_properties": false
+        },
+        {
+          "column": "Pinout",
+          "name": "Pinout",
+          "visible_on_add": false,
+          "visible_in_chooser": true,
+          "show_name": false,
+          "inherit_properties": false
+        },
+        {
+          "column": "DK_Stock",
+          "name": "DigiKey Stock",
+          "visible_on_add": false,
+          "visible_in_chooser": true,
+          "show_name": false,
+          "inherit_properties": false
+        },
+        {
+          "column": "Status",
+          "name": "Status",
+          "visible_on_add": false,
+          "visible_in_chooser": true,
+          "show_name": false,
+          "inherit_properties": false
+        }
+      ],
+      "properties": {
+        "description": "Description",
+        "footprint_filters": "FP_Filter",
+        "keywords": "Keywords",
+        "datasheet": "Datasheet"
+      }
+    },
+    {
+      "name": "Fuses - Resettable PTC",
+      "table": "Polyfuses_Active",
+      "key": "Part_ID",
+      "symbols": "Symbol",
+      "footprints": "Footprint",
+      "fields": [
+        {
+          "column": "Value",
+          "name": "Value",
+          "visible_on_add": true,
+          "visible_in_chooser": true,
+          "show_name": false,
+          "inherit_properties": false
+        },
+        {
+          "column": "Part_ID",
+          "name": "Part ID",
+          "visible_on_add": false,
+          "visible_in_chooser": true,
+          "show_name": false,
+          "inherit_properties": false
+        },
+        {
+          "column": "Manufacturer",
+          "name": "Manufacturer",
+          "visible_on_add": false,
+          "visible_in_chooser": true,
+          "show_name": false,
+          "inherit_properties": false
+        },
+        {
+          "column": "MPN",
+          "name": "MPN",
+          "visible_on_add": false,
+          "visible_in_chooser": true,
+          "show_name": false,
+          "inherit_properties": false
+        },
+        {
+          "column": "Supplier",
+          "name": "Supplier",
+          "visible_on_add": false,
+          "visible_in_chooser": true,
+          "show_name": false,
+          "inherit_properties": false
+        },
+        {
+          "column": "Supplier_PN",
+          "name": "Supplier PN",
+          "visible_on_add": false,
+          "visible_in_chooser": true,
+          "show_name": false,
+          "inherit_properties": false
+        },
+        {
+          "column": "Package",
+          "name": "Package",
+          "visible_on_add": false,
+          "visible_in_chooser": true,
+          "show_name": false,
+          "inherit_properties": false
+        },
+        {
+          "column": "Rating",
+          "name": "Ratings",
+          "visible_on_add": false,
+          "visible_in_chooser": true,
+          "show_name": false,
+          "inherit_properties": false
+        },
+        {
+          "column": "TC_Dielectric",
+          "name": "Characteristics",
+          "visible_on_add": false,
+          "visible_in_chooser": true,
+          "show_name": false,
+          "inherit_properties": false
+        },
+        {
+          "column": "DK_Stock",
+          "name": "DigiKey Stock",
+          "visible_on_add": false,
+          "visible_in_chooser": true,
+          "show_name": false,
+          "inherit_properties": false
+        },
+        {
+          "column": "Status",
+          "name": "Status",
+          "visible_on_add": false,
+          "visible_in_chooser": true,
+          "show_name": false,
+          "inherit_properties": false
+        }
+      ],
+      "properties": {
+        "description": "Description",
+        "footprint_filters": "FP_Filter",
+        "keywords": "Keywords",
+        "datasheet": "Datasheet"
+      }
+    },
+    {
+      "name": "Fuses - Chip",
+      "table": "Fuses_Chip_Active",
+      "key": "Part_ID",
+      "symbols": "Symbol",
+      "footprints": "Footprint",
+      "fields": [
+        {
+          "column": "Value",
+          "name": "Value",
+          "visible_on_add": true,
+          "visible_in_chooser": true,
+          "show_name": false,
+          "inherit_properties": false
+        },
+        {
+          "column": "Part_ID",
+          "name": "Part ID",
+          "visible_on_add": false,
+          "visible_in_chooser": true,
+          "show_name": false,
+          "inherit_properties": false
+        },
+        {
+          "column": "Manufacturer",
+          "name": "Manufacturer",
+          "visible_on_add": false,
+          "visible_in_chooser": true,
+          "show_name": false,
+          "inherit_properties": false
+        },
+        {
+          "column": "MPN",
+          "name": "MPN",
+          "visible_on_add": false,
+          "visible_in_chooser": true,
+          "show_name": false,
+          "inherit_properties": false
+        },
+        {
+          "column": "Supplier",
+          "name": "Supplier",
+          "visible_on_add": false,
+          "visible_in_chooser": true,
+          "show_name": false,
+          "inherit_properties": false
+        },
+        {
+          "column": "Supplier_PN",
+          "name": "Supplier PN",
+          "visible_on_add": false,
+          "visible_in_chooser": true,
+          "show_name": false,
+          "inherit_properties": false
+        },
+        {
+          "column": "Package",
+          "name": "Package",
+          "visible_on_add": false,
+          "visible_in_chooser": true,
+          "show_name": false,
+          "inherit_properties": false
+        },
+        {
+          "column": "Rating",
+          "name": "Ratings",
+          "visible_on_add": false,
+          "visible_in_chooser": true,
+          "show_name": false,
+          "inherit_properties": false
+        },
+        {
+          "column": "TC_Dielectric",
+          "name": "Characteristics",
+          "visible_on_add": false,
+          "visible_in_chooser": true,
+          "show_name": false,
+          "inherit_properties": false
+        },
+        {
+          "column": "DK_Stock",
+          "name": "DigiKey Stock",
+          "visible_on_add": false,
+          "visible_in_chooser": true,
+          "show_name": false,
+          "inherit_properties": false
+        },
+        {
+          "column": "Status",
+          "name": "Status",
+          "visible_on_add": false,
+          "visible_in_chooser": true,
+          "show_name": false,
+          "inherit_properties": false
+        }
+      ],
+      "properties": {
+        "description": "Description",
+        "footprint_filters": "FP_Filter",
+        "keywords": "Keywords",
+        "datasheet": "Datasheet"
+      }
+    },
+    {
+      "name": "Switches - Tactile",
+      "table": "Switches_Tactile_Active",
+      "key": "Part_ID",
+      "symbols": "Symbol",
+      "footprints": "Footprint",
+      "fields": [
+        {
+          "column": "Value",
+          "name": "Value",
+          "visible_on_add": true,
+          "visible_in_chooser": true,
+          "show_name": false,
+          "inherit_properties": false
+        },
+        {
+          "column": "Part_ID",
+          "name": "Part ID",
+          "visible_on_add": false,
+          "visible_in_chooser": true,
+          "show_name": false,
+          "inherit_properties": false
+        },
+        {
+          "column": "Manufacturer",
+          "name": "Manufacturer",
+          "visible_on_add": false,
+          "visible_in_chooser": true,
+          "show_name": false,
+          "inherit_properties": false
+        },
+        {
+          "column": "MPN",
+          "name": "MPN",
+          "visible_on_add": false,
+          "visible_in_chooser": true,
+          "show_name": false,
+          "inherit_properties": false
+        },
+        {
+          "column": "Supplier",
+          "name": "Supplier",
+          "visible_on_add": false,
+          "visible_in_chooser": true,
+          "show_name": false,
+          "inherit_properties": false
+        },
+        {
+          "column": "Supplier_PN",
+          "name": "Supplier PN",
+          "visible_on_add": false,
+          "visible_in_chooser": true,
+          "show_name": false,
+          "inherit_properties": false
+        },
+        {
+          "column": "Package",
+          "name": "Package",
+          "visible_on_add": false,
+          "visible_in_chooser": true,
+          "show_name": false,
+          "inherit_properties": false
+        },
+        {
+          "column": "Rating",
+          "name": "Contact Rating",
+          "visible_on_add": false,
+          "visible_in_chooser": true,
+          "show_name": false,
+          "inherit_properties": false
+        },
+        {
+          "column": "TC_Dielectric",
+          "name": "Characteristics",
+          "visible_on_add": false,
+          "visible_in_chooser": true,
+          "show_name": false,
+          "inherit_properties": false
+        },
+        {
+          "column": "DK_Stock",
+          "name": "DigiKey Stock",
+          "visible_on_add": false,
+          "visible_in_chooser": true,
+          "show_name": false,
+          "inherit_properties": false
+        },
+        {
+          "column": "Status",
+          "name": "Status",
+          "visible_on_add": false,
+          "visible_in_chooser": true,
+          "show_name": false,
+          "inherit_properties": false
+        }
+      ],
+      "properties": {
+        "description": "Description",
+        "footprint_filters": "FP_Filter",
+        "keywords": "Keywords",
+        "datasheet": "Datasheet"
+      }
+    },
+    {
+      "name": "Headers - 2.54mm",
+      "table": "Headers_2p54mm_Active",
+      "key": "Part_ID",
+      "symbols": "Symbol",
+      "footprints": "Footprint",
+      "fields": [
+        {
+          "column": "Value",
+          "name": "Value",
+          "visible_on_add": true,
+          "visible_in_chooser": true,
+          "show_name": false,
+          "inherit_properties": false
+        },
+        {
+          "column": "Part_ID",
+          "name": "Part ID",
+          "visible_on_add": false,
+          "visible_in_chooser": true,
+          "show_name": false,
+          "inherit_properties": false
+        },
+        {
+          "column": "Manufacturer",
+          "name": "Manufacturer",
+          "visible_on_add": false,
+          "visible_in_chooser": true,
+          "show_name": false,
+          "inherit_properties": false
+        },
+        {
+          "column": "MPN",
+          "name": "MPN",
+          "visible_on_add": false,
+          "visible_in_chooser": true,
+          "show_name": false,
+          "inherit_properties": false
+        },
+        {
+          "column": "Supplier",
+          "name": "Supplier",
+          "visible_on_add": false,
+          "visible_in_chooser": true,
+          "show_name": false,
+          "inherit_properties": false
+        },
+        {
+          "column": "Supplier_PN",
+          "name": "Supplier PN",
+          "visible_on_add": false,
+          "visible_in_chooser": true,
+          "show_name": false,
+          "inherit_properties": false
+        },
+        {
+          "column": "Package",
+          "name": "Package",
+          "visible_on_add": false,
+          "visible_in_chooser": true,
+          "show_name": false,
+          "inherit_properties": false
+        },
+        {
+          "column": "Rating",
+          "name": "Current Rating",
+          "visible_on_add": false,
+          "visible_in_chooser": true,
+          "show_name": false,
+          "inherit_properties": false
+        },
+        {
+          "column": "DK_Stock",
+          "name": "DigiKey Stock",
+          "visible_on_add": false,
+          "visible_in_chooser": true,
+          "show_name": false,
+          "inherit_properties": false
+        },
+        {
+          "column": "Status",
+          "name": "Status",
+          "visible_on_add": false,
+          "visible_in_chooser": true,
+          "show_name": false,
+          "inherit_properties": false
+        }
+      ],
+      "properties": {
+        "description": "Description",
+        "footprint_filters": "FP_Filter",
+        "keywords": "Keywords",
+        "datasheet": "Datasheet"
+      }
+    },
+    {
+      "name": "Headers - 1.27mm",
+      "table": "Headers_1p27mm_Active",
+      "key": "Part_ID",
+      "symbols": "Symbol",
+      "footprints": "Footprint",
+      "fields": [
+        {
+          "column": "Value",
+          "name": "Value",
+          "visible_on_add": true,
+          "visible_in_chooser": true,
+          "show_name": false,
+          "inherit_properties": false
+        },
+        {
+          "column": "Part_ID",
+          "name": "Part ID",
+          "visible_on_add": false,
+          "visible_in_chooser": true,
+          "show_name": false,
+          "inherit_properties": false
+        },
+        {
+          "column": "Manufacturer",
+          "name": "Manufacturer",
+          "visible_on_add": false,
+          "visible_in_chooser": true,
+          "show_name": false,
+          "inherit_properties": false
+        },
+        {
+          "column": "MPN",
+          "name": "MPN",
+          "visible_on_add": false,
+          "visible_in_chooser": true,
+          "show_name": false,
+          "inherit_properties": false
+        },
+        {
+          "column": "Supplier",
+          "name": "Supplier",
+          "visible_on_add": false,
+          "visible_in_chooser": true,
+          "show_name": false,
+          "inherit_properties": false
+        },
+        {
+          "column": "Supplier_PN",
+          "name": "Supplier PN",
+          "visible_on_add": false,
+          "visible_in_chooser": true,
+          "show_name": false,
+          "inherit_properties": false
+        },
+        {
+          "column": "Package",
+          "name": "Package",
+          "visible_on_add": false,
+          "visible_in_chooser": true,
+          "show_name": false,
+          "inherit_properties": false
+        },
+        {
+          "column": "Rating",
+          "name": "Current Rating",
+          "visible_on_add": false,
+          "visible_in_chooser": true,
+          "show_name": false,
+          "inherit_properties": false
+        },
+        {
+          "column": "DK_Stock",
+          "name": "DigiKey Stock",
+          "visible_on_add": false,
+          "visible_in_chooser": true,
+          "show_name": false,
+          "inherit_properties": false
+        },
+        {
+          "column": "Status",
+          "name": "Status",
+          "visible_on_add": false,
+          "visible_in_chooser": true,
+          "show_name": false,
+          "inherit_properties": false
+        }
+      ],
+      "properties": {
+        "description": "Description",
+        "footprint_filters": "FP_Filter",
+        "keywords": "Keywords",
+        "datasheet": "Datasheet"
+      }
+    },
+    {
+      "name": "Headers - IDC Shrouded",
+      "table": "Headers_IDC_Shrouded_Active",
+      "key": "Part_ID",
+      "symbols": "Symbol",
+      "footprints": "Footprint",
+      "fields": [
+        {
+          "column": "Value",
+          "name": "Value",
+          "visible_on_add": true,
+          "visible_in_chooser": true,
+          "show_name": false,
+          "inherit_properties": false
+        },
+        {
+          "column": "Part_ID",
+          "name": "Part ID",
+          "visible_on_add": false,
+          "visible_in_chooser": true,
+          "show_name": false,
+          "inherit_properties": false
+        },
+        {
+          "column": "Manufacturer",
+          "name": "Manufacturer",
+          "visible_on_add": false,
+          "visible_in_chooser": true,
+          "show_name": false,
+          "inherit_properties": false
+        },
+        {
+          "column": "MPN",
+          "name": "MPN",
+          "visible_on_add": false,
+          "visible_in_chooser": true,
+          "show_name": false,
+          "inherit_properties": false
+        },
+        {
+          "column": "Supplier",
+          "name": "Supplier",
+          "visible_on_add": false,
+          "visible_in_chooser": true,
+          "show_name": false,
+          "inherit_properties": false
+        },
+        {
+          "column": "Supplier_PN",
+          "name": "Supplier PN",
+          "visible_on_add": false,
+          "visible_in_chooser": true,
+          "show_name": false,
+          "inherit_properties": false
+        },
+        {
+          "column": "Package",
+          "name": "Package",
+          "visible_on_add": false,
+          "visible_in_chooser": true,
+          "show_name": false,
+          "inherit_properties": false
+        },
+        {
+          "column": "Rating",
+          "name": "Current Rating",
+          "visible_on_add": false,
+          "visible_in_chooser": true,
+          "show_name": false,
+          "inherit_properties": false
+        },
+        {
+          "column": "DK_Stock",
+          "name": "DigiKey Stock",
+          "visible_on_add": false,
+          "visible_in_chooser": true,
+          "show_name": false,
+          "inherit_properties": false
+        },
+        {
+          "column": "Status",
+          "name": "Status",
+          "visible_on_add": false,
+          "visible_in_chooser": true,
+          "show_name": false,
+          "inherit_properties": false
+        }
+      ],
+      "properties": {
+        "description": "Description",
+        "footprint_filters": "FP_Filter",
+        "keywords": "Keywords",
+        "datasheet": "Datasheet"
+      }
+    },
+    {
+      "name": "Test Points",
+      "table": "TestPoints_Active",
+      "key": "Part_ID",
+      "symbols": "Symbol",
+      "footprints": "Footprint",
+      "fields": [
+        {
+          "column": "Value",
+          "name": "Value",
+          "visible_on_add": true,
+          "visible_in_chooser": true,
+          "show_name": false,
+          "inherit_properties": false
+        },
+        {
+          "column": "Part_ID",
+          "name": "Part ID",
+          "visible_on_add": false,
+          "visible_in_chooser": true,
+          "show_name": false,
+          "inherit_properties": false
+        },
+        {
+          "column": "Manufacturer",
+          "name": "Manufacturer",
+          "visible_on_add": false,
+          "visible_in_chooser": true,
+          "show_name": false,
+          "inherit_properties": false
+        },
+        {
+          "column": "MPN",
+          "name": "MPN",
+          "visible_on_add": false,
+          "visible_in_chooser": true,
+          "show_name": false,
+          "inherit_properties": false
+        },
+        {
+          "column": "Supplier",
+          "name": "Supplier",
+          "visible_on_add": false,
+          "visible_in_chooser": true,
+          "show_name": false,
+          "inherit_properties": false
+        },
+        {
+          "column": "Supplier_PN",
+          "name": "Supplier PN",
+          "visible_on_add": false,
+          "visible_in_chooser": true,
+          "show_name": false,
+          "inherit_properties": false
+        },
+        {
+          "column": "Package",
+          "name": "Package",
+          "visible_on_add": false,
+          "visible_in_chooser": true,
+          "show_name": false,
+          "inherit_properties": false
+        },
+        {
+          "column": "Rating",
+          "name": "Hole",
+          "visible_on_add": false,
+          "visible_in_chooser": true,
+          "show_name": false,
+          "inherit_properties": false
+        },
+        {
+          "column": "DK_Stock",
+          "name": "DigiKey Stock",
+          "visible_on_add": false,
+          "visible_in_chooser": true,
+          "show_name": false,
+          "inherit_properties": false
+        },
+        {
+          "column": "Status",
+          "name": "Status",
+          "visible_on_add": false,
+          "visible_in_chooser": true,
+          "show_name": false,
+          "inherit_properties": false
+        }
+      ],
+      "properties": {
+        "description": "Description",
+        "footprint_filters": "FP_Filter",
+        "keywords": "Keywords",
+        "datasheet": "Datasheet"
+      }
+    }
+  ]
+}

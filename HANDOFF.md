@@ -1,8 +1,8 @@
 # Handoff: KiCad component database libraries
 
-Last updated 2026-11-26. Branch `claude/stoic-cray-07e00h` on `lenehan6/common-kicad`
-(not merged to the default branch). Everything needed to continue is in this branch;
-nothing lives only in the old Claude account.
+Last updated 2026-11-26. Merged to `master` on `lenehan6/common-kicad`
+(PR #2). Everything needed to continue is on `master`; nothing lives only in the
+old Claude account.
 
 ## What this is
 Two KiCad 10 **database libraries** (SQLite over ODBC, Windows `SQLite3 ODBC Driver`):
@@ -37,7 +37,7 @@ Application DB usage/review: `application_dbl/README.md`, `application_dbl/REVIE
 1. **DigiKey credentials:** the old client secret was pasted into the old chat — **rotate it** at developer.digikey.com (or create a new app: Production, "Product Information v4"). Never commit it.
 2. **Claude Code cloud environment** (new account): connect GitHub with access to `lenehan6/common-kicad`; create an environment with **limited network** + these allowed hosts:
    `api.digikey.com, www.vishay.com, www.we-online.com, www.ti.com, assets.nexperia.com, www.nexperia.com, www.onsemi.com, www.diodes.com, www.kingbrightusa.com, www.kingbright.com, www.littelfuse.com, www.st.com, aosmd.com, optoelectronics.liteon.com, mm.digikey.com` (gitlab.com is needed for KiCad library checks and is normally reachable).
-3. Start a session on branch `claude/stoic-cray-07e00h` and paste this prompt:
+3. Start a session on `master` (work on a new branch and open PRs) and paste this prompt:
    > Continue the KiCad database project described in HANDOFF.md. Read HANDOFF.md, kicad_dbl_library/MAINTAINING.md and application_dbl/README.md first. I will paste DigiKey credentials; export them as env vars only, never write them to files. Then each day run `python3 tools/prefill_app.py --budget 900`, rebuild with `python3 application_dbl/init_app_db.py` and `python3 kicad_dbl_library/init_db.py`, run `python3 tools/validate.py`, commit and push. Set up a daily scheduled task (≈01:23 UTC, after DigiKey's quota reset) into this session to do that until prefill reports complete, then delete the task.
 4. Alternatively run it on your own PC (no Claude needed): `git pull`, set `DIGIKEY_CLIENT_ID`/`DIGIKEY_CLIENT_SECRET`, run the commands in step 3 daily, commit and push.
 
@@ -46,4 +46,3 @@ Application DB usage/review: `application_dbl/README.md`, `application_dbl/REVIE
 - Application DB: 0 parts reviewed; 1,107 symbols had no DigiKey match; 315 matched symbols have no KiCad default footprint (hidden until a reviewer assigns one via `app_part.py review --footprint`).
 - Commodity gaps that DigiKey doesn't stock (see `kicad_dbl_library/reports/*.md`): 0402 22R ferrite bead; amber LEDs and 0805 white LED (datasheets unobtainable); PMBT2222A; 1.27mm 1x01, 2.54mm 1x17/1x19 headers; IDC 2x06/09/11/12; 3.3V SMA TVS; PRTR5V0U2X; many E96 values in the 1% thin film table.
 - Decisions to confirm with the user: Part_ID `Q-P-AO3401A-SOT23` now holds Diodes DMP3056L-7 (rename while unreleased?); TVS-SMB-3V3-UNI uses Vishay SMBJ3V3 (non-"A" grade); 1812 4.7µF in the ≥10µF bulk table; 1.27mm 1x14–1x20 are long-post Fischer parts.
-- Branch not merged: open a PR from `claude/stoic-cray-07e00h` when ready.
